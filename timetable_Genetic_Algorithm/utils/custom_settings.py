@@ -91,3 +91,7 @@ class DataFromFront(IDataFromFront):
                     err_msg += key + " "
 
             raise ValueError("Need set all JSON values before convert: " + err_msg)
+
+a = DataFromFront()
+# a.setAudiencesJSON("asd")
+print(a.getAllPossibleSetsClass().__doc__)

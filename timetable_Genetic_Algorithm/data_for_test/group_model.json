@@ -1,0 +1,10 @@
+{
+  "second_shift": true,
+  "max_days": 6,
+  "groups": [
+    {
+      "number": 1,
+      "count": 3
+    }
+  ]
+}
