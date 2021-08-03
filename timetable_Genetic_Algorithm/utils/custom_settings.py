@@ -79,9 +79,15 @@ class DataFromFront(IDataFromFront):
         self._audiencesJSON = OurJsonClass(audiencesJSON)
 
     def getAllPossibleSetsClass(self):
+        """ Wrap calling this method into try/except! """
         if list(self.__dict__.values()).count(None) == 0:
             return AllPossibleSets(self._groupsJSON, self._disciplinesJSON,
                                    self._pedagogsJSON, self._audiencesJSON,
                                    self._loadPlanJSON)
         else:
-            raise ValueError("Need set all JSON values before convert")
+            err_msg = ""
+            for key, value in self.__dict__.items():
+                if value is None:
+                    err_msg += key + " "
+
+            raise ValueError("Need set all JSON values before convert: " + err_msg)
