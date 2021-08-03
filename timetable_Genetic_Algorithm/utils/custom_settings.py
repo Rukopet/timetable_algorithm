@@ -42,8 +42,9 @@ class IDataFromFront:
         pass
 
 
-class AllPossibleSets:
+class AllPossibleSetsInDF:
     """ contain main sets in DF format. no validate data!! """
+
     def __init__(self, groupsJSON: OurJsonClass, disciplinesJSON: OurJsonClass,
                  loadPlanJSON: OurJsonClass, pedagogsJSON: OurJsonClass, audiencesJSON: OurJsonClass):
         self.groupsDF = groupsJSON.intoDataFrame()
@@ -57,33 +58,33 @@ class DataFromFront(IDataFromFront):
     """ This class collect data, and parsing into needed shape """
 
     def __init__(self, groupsJSON=None, disciplinesJSON=None, loadPlanJSON=None, pedagogsJSON=None, audiencesJSON=None):
-        self._groupsJSON = OurJsonClass(groupsJSON)
-        self._disciplinesJSON = OurJsonClass(disciplinesJSON)
-        self._loadPlanJSON = OurJsonClass(loadPlanJSON)
-        self._pedagogsJSON = OurJsonClass(pedagogsJSON)
-        self._audiencesJSON = OurJsonClass(audiencesJSON)
+        self.groupsJSON = OurJsonClass(groupsJSON)
+        self.disciplinesJSON = OurJsonClass(disciplinesJSON)
+        self.loadPlanJSON = OurJsonClass(loadPlanJSON)
+        self.pedagogsJSON = OurJsonClass(pedagogsJSON)
+        self.audiencesJSON = OurJsonClass(audiencesJSON)
 
     def setGroupsJSON(self, groupsJSON):
-        self._groupsJSON = OurJsonClass(groupsJSON)
+        self.groupsJSON = OurJsonClass(groupsJSON)
 
     def setDisciplinesJSON(self, disciplinesJSON):
-        self._disciplinesJSON = OurJsonClass(disciplinesJSON)
+        self.disciplinesJSON = OurJsonClass(disciplinesJSON)
 
     def setLoadPlanJSON(self, loadPlanJSON):
-        self._loadPlanJSON = OurJsonClass(loadPlanJSON)
+        self.loadPlanJSON = OurJsonClass(loadPlanJSON)
 
     def setPedagogsJSON(self, pedagogsJSON):
-        self._pedagogsJSON = OurJsonClass(pedagogsJSON)
+        self.pedagogsJSON = OurJsonClass(pedagogsJSON)
 
     def setAudiencesJSON(self, audiencesJSON):
-        self._audiencesJSON = OurJsonClass(audiencesJSON)
+        self.audiencesJSON = OurJsonClass(audiencesJSON)
 
-    def getAllPossibleSetsClass(self):
+    def getAllPossibleSetsInDFClass(self):
         """ Wrap calling this method into try/except! """
         if list(self.__dict__.values()).count(None) == 0:
-            return AllPossibleSets(self._groupsJSON, self._disciplinesJSON,
-                                   self._pedagogsJSON, self._audiencesJSON,
-                                   self._loadPlanJSON)
+            return AllPossibleSetsInDF(self.groupsJSON, self.disciplinesJSON,
+                                       self.pedagogsJSON, self.audiencesJSON,
+                                       self.loadPlanJSON)
         else:
             err_msg = ""
             for key, value in self.__dict__.items():
