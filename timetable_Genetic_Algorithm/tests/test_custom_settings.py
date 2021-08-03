@@ -22,3 +22,6 @@ class TestDataFromFront(TestCase):
 
     def test_get_all_possible_sets_class(self):
         pass
+
+    def test_whole_class(self):
+        pass
