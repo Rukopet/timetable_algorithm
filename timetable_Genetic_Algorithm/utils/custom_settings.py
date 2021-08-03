@@ -42,7 +42,7 @@ class IDataFromFront:
         pass
 
 
-class AllPossibleSets:
+class AllPossibleSetsInDF:
     """ contain main sets in DF format. no validate data!! """
 
     def __init__(self, groupsJSON: OurJsonClass, disciplinesJSON: OurJsonClass,
@@ -79,12 +79,12 @@ class DataFromFront(IDataFromFront):
     def setAudiencesJSON(self, audiencesJSON):
         self.audiencesJSON = OurJsonClass(audiencesJSON)
 
-    def getAllPossibleSetsClass(self):
+    def getAllPossibleSetsInDFClass(self):
         """ Wrap calling this method into try/except! """
         if list(self.__dict__.values()).count(None) == 0:
-            return AllPossibleSets(self.groupsJSON, self.disciplinesJSON,
-                                   self.pedagogsJSON, self.audiencesJSON,
-                                   self.loadPlanJSON)
+            return AllPossibleSetsInDF(self.groupsJSON, self.disciplinesJSON,
+                                       self.pedagogsJSON, self.audiencesJSON,
+                                       self.loadPlanJSON)
         else:
             err_msg = ""
             for key, value in self.__dict__.items():
