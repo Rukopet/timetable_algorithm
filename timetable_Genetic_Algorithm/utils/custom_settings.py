@@ -129,8 +129,7 @@ def main():
         wow.setLoadPlanJSON(json.load(load_plan_json))
     with open("../data_for_test/pedagogs_model.json") as pedagogs_json:
         wow.setPedagogsJSON(json.load(pedagogs_json))
-        wow.pedagogsJSON.valueDF
-        # print(wow.pedagogsJSON.valueDF)
+        print(wow.pedagogsJSON.valueDF)
 
     # DFS = wow.getAllPossibleSetsInDFClass()
     # print(DFS.groupsDF)
