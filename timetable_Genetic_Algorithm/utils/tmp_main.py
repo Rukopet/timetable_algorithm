@@ -17,13 +17,12 @@ def main():
         wow.setLoadPlanJSON(json.load(load_plan_json))
     with open("../data_for_test/pedagogs_model.json") as pedagogs_json:
         wow.setPedagogsJSON(json.load(pedagogs_json))
-        # print(wow.pedagogsJSON.valueDF)
+        print(wow.pedagogsJSON.valueDF)
     with open("../data_for_test/auditories.json") as auditories_json:
         wow.setAudiencesJSON(json.load(auditories_json))
-        # print(wow.audiencesJSON.valueDF)
+        print(wow.audiencesJSON.valueDF)
 
     table_settings = AlgorithmSettings(wow)
-
     print(table_settings.GROUPS_RANGE,
           table_settings.main_data,
           table_settings.PEDAGOGS_LIST,

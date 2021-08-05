@@ -19,6 +19,9 @@ class AlgorithmSettings:
     # list of all disciplines in school
     DISCIPLINES_LIST = []
 
+    # sum all working hours for all groups
+    WHOLE_TIME = 0
+
     # whole pedagogs
     main_data = {}
 
@@ -47,7 +50,7 @@ class AlgorithmSettings:
             self.DISCIPLINES_LIST = AlgorithmSettings.__gen_all_disciplines(data_front.disciplinesJSON.valueDF)
 
             # call generate main data struct
-            self.__generate_main_data(data_front)
+            self.__generate_main_data_and_validate(data_front)
         except Exception as e:
             raise e
 
@@ -65,6 +68,9 @@ class AlgorithmSettings:
     def __gen_all_disciplines(df: pd.DataFrame):
         return df["discipline"].unique()
 
-    def __generate_main_data(self, data_front: DataFromFront):
+    def __generate_main_data_and_validate(self, data_front: DataFromFront):
+        sum_work_hours_for_teacher = 0
         for group in self.GROUPS_LIST:
-            pass
+            for teacher in self.PEDAGOGS_LIST:
+
+            # self.main_data[group] =

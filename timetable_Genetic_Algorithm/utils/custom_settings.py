@@ -83,5 +83,7 @@ class DataFromFront(IDataFromFront):
 
     def setAudiencesJSON(self, audiencesJSON):
         self.audiencesJSON = OurJsonClass(audiencesJSON)
-        df = pd.DataFrame(data=audiencesJSON)
+        df = pd.json_normalize(audiencesJSON, record_path=['params'],
+                               meta=["number_audience",
+                                     "link_flags"])
         self.audiencesJSON.setValueDF(df)
