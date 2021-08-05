@@ -78,9 +78,23 @@ class AlgorithmSettings:
     def __gen_disciplines_with_pairs(df: pd.DataFrame):
         return df.dropna()["discipline"].unique()
 
+    @staticmethod
+    def __get_disc_group_fill_data(main_data: dict, teacher: str, discipline: str, groups: list):
+        for group in groups:
+            main_data[tuple(group.values())] = main_data.get(tuple(group.values()))\
+                .append({discipline: {"pedagog": teacher,
+                                      "weight": None,
+                                      "load": None}}) if main_data.get(tuple(group.values())) is None else []
+
     def __gen_main_data_and_validate(self, data_front: DataFromFront):
         # sum_work_hours_for_teacher = 0
         # for group in self.GROUPS_LIST:
+        ped_table = data_front.pedagogsJSON.valueDF
         for teacher in self.PEDAGOGS_LIST:
+            teacher_df = ped_table[ped_table["ped_name"] == teacher]
 
-                # self.main_data[tuple(group)] = []
+            # fast alternative to iterrows() just list generator
+            [AlgorithmSettings.__get_disc_group_fill_data(self.main_data, teacher, row[0], row[1])
+             for row in zip(teacher_df['discipline'], teacher_df['groups'])]
+
+        print(self.main_data)

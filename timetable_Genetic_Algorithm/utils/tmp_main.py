@@ -24,13 +24,20 @@ def main():
         wow.setAudiencesJSON(json.load(auditories_json))
         wow.audiencesJSON.valueDF.to_csv("../data_for_test/audiences.csv")
 
-    table_settings = AlgorithmSettings(wow)
-    print(table_settings.GROUPS_RANGE,
-          table_settings.main_data,
-          table_settings.PEDAGOGS_LIST,
-          table_settings.DISCIPLINES_LIST,
-          table_settings.DISCIPLINES_LIST_WITH_PAIR,
-          table_settings.GROUPS_LIST, sep="\n")
+    # table_settings = AlgorithmSettings(wow)
+    po = {}
+    po["asd"] = po.get("asd", [])
+    print(po)
+
+    # kek_test = wow.groupsJSON.valueDF
+    # kek_test = kek_test[kek_test["count"] == 3]
+    # print(kek_test)
+    # print(table_settings.GROUPS_RANGE,
+    #       table_settings.main_data,
+    #       table_settings.PEDAGOGS_LIST,
+    #       table_settings.DISCIPLINES_LIST,
+    #       table_settings.DISCIPLINES_LIST_WITH_PAIR,
+    #       table_settings.GROUPS_LIST, sep="\n")
 
 
 if __name__ == "__main__":
