@@ -47,18 +47,6 @@ class IDataFromFront:
         pass
 
 
-class AllPossibleSetsInDF:
-    """ contain main sets in DF format. no validate data!! """
-
-    def __init__(self, groupsJSON: OurJsonClass, disciplinesJSON: OurJsonClass,
-                 loadPlanJSON: OurJsonClass, pedagogsJSON: OurJsonClass, audiencesJSON: OurJsonClass):
-        self.groupsDF = groupsJSON.intoDataFrame()
-        self.disciplinesDF = disciplinesJSON.intoDataFrame()
-        self.loadPlanDF = loadPlanJSON.intoDataFrame()
-        self.pedagogsDF = pedagogsJSON.intoDataFrame()
-        self.audiencesDF = audiencesJSON.intoDataFrame()
-
-
 class DataFromFront(IDataFromFront):
     """ This class collect data, and parsing into needed shape """
 
@@ -96,23 +84,17 @@ class DataFromFront(IDataFromFront):
 
     def setAudiencesJSON(self, audiencesJSON):
         self.audiencesJSON = OurJsonClass(audiencesJSON)
+        df = pd.DataFrame(data=audiencesJSON)
+        self.audiencesJSON.setValueDF(df)
 
-    def getAllPossibleSetsInDFClass(self):
+    def validation(self):
         """ Wrap calling this method into try/except! """
-
         try:
-            # if list(self.__dict__.values()).count(None) == 0:
-            if True:
-                ret = AllPossibleSetsInDF(self.groupsJSON, self.disciplinesJSON,
-                                          self.pedagogsJSON, self.audiencesJSON,
-                                          self.loadPlanJSON)
-                return ret
-            else:
+            if list(self.__dict__.values()).count(None) != 0:
                 err_msg = ""
                 for key, value in self.__dict__.items():
                     if value is None:
                         err_msg += key + " "
-
                 raise ValueError("Need set all JSON values before convert: " + err_msg)
         except Exception as e:
             raise e
@@ -120,6 +102,7 @@ class DataFromFront(IDataFromFront):
 
 def main():
     wow = DataFromFront()
+    pd.set_option('display.max_columns', None)
     with open("../data_for_test/disciplines_model.json") as disciplines_json:
         wow.setDisciplinesJSON(json.load(disciplines_json))
     with open("../data_for_test/group_model.json") as groups_json:
@@ -129,8 +112,9 @@ def main():
         wow.setLoadPlanJSON(json.load(load_plan_json))
     with open("../data_for_test/pedagogs_model.json") as pedagogs_json:
         wow.setPedagogsJSON(json.load(pedagogs_json))
-        print(wow.pedagogsJSON.valueDF)
-
+    with open("../data_for_test/auditories.json") as auditories_json:
+        wow.setAudiencesJSON(json.load(auditories_json))
+        print(wow.audiencesJSON.valueDF)
     # DFS = wow.getAllPossibleSetsInDFClass()
     # print(DFS.groupsDF)
 
