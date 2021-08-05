@@ -19,6 +19,9 @@ class AlgorithmSettings:
     # list of all disciplines in school
     DISCIPLINES_LIST = []
 
+    # list of disciplines in school with some pairs
+    DISCIPLINES_LIST_WITH_PAIR = []
+
     # sum all working hours for all groups
     WHOLE_TIME = 0
 
@@ -47,10 +50,13 @@ class AlgorithmSettings:
             # call list generators for all pedagogs from DataFrame
             self.PEDAGOGS_LIST = AlgorithmSettings.__gen_pedagogs_list_from_df(data_front.pedagogsJSON.valueDF)
 
+            # call for all subjects
             self.DISCIPLINES_LIST = AlgorithmSettings.__gen_all_disciplines(data_front.disciplinesJSON.valueDF)
+            self.DISCIPLINES_LIST_WITH_PAIR = AlgorithmSettings.__gen_disciplines_with_pairs(
+                data_front.disciplinesJSON.valueDF)
 
             # call generate main data struct
-            self.__generate_main_data_and_validate(data_front)
+            self.__gen_main_data_and_validate(data_front)
         except Exception as e:
             raise e
 
@@ -68,9 +74,13 @@ class AlgorithmSettings:
     def __gen_all_disciplines(df: pd.DataFrame):
         return df["discipline"].unique()
 
-    def __generate_main_data_and_validate(self, data_front: DataFromFront):
-        sum_work_hours_for_teacher = 0
-        for group in self.GROUPS_LIST:
-            for teacher in self.PEDAGOGS_LIST:
+    @staticmethod
+    def __gen_disciplines_with_pairs(df: pd.DataFrame):
+        return df.dropna()["discipline"].unique()
 
-            # self.main_data[group] =
+    def __gen_main_data_and_validate(self, data_front: DataFromFront):
+        # sum_work_hours_for_teacher = 0
+        # for group in self.GROUPS_LIST:
+        for teacher in self.PEDAGOGS_LIST:
+
+                # self.main_data[tuple(group)] = []
