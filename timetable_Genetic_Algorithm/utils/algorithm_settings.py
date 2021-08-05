@@ -1,7 +1,7 @@
 import pandas as pd
 
-from .custom_settings import DataFromFront
-from .constants import RUSSIAN_ALPHABET
+from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET
+from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 
 
 class AlgorithmSettings:
@@ -81,19 +81,19 @@ class AlgorithmSettings:
     @staticmethod
     def __get_disc_group_fill_data(main_data: dict, teacher: str, discipline: str, groups: list):
         for group in groups:
-            main_data[tuple(group.values())] = main_data.get(tuple(group.values()))\
-                .append({discipline: {"pedagog": teacher,
-                                      "weight": None,
-                                      "load": None}}) if main_data.get(tuple(group.values())) is None else []
+            tmp_dict = main_data.get(tuple(group.values()), [])
+            tmp_dict.append({discipline: {"pedagog": teacher,
+                                          "weight": None,
+                                          "load": None}})
+            main_data[tuple(group.values())] = tmp_dict
 
     def __gen_main_data_and_validate(self, data_front: DataFromFront):
         # sum_work_hours_for_teacher = 0
-        # for group in self.GROUPS_LIST:
         ped_table = data_front.pedagogsJSON.valueDF
         for teacher in self.PEDAGOGS_LIST:
             teacher_df = ped_table[ped_table["ped_name"] == teacher]
 
-            # fast alternative to iterrows() just list generator
+            """fast alternative to iterrows() just list generator"""
             [AlgorithmSettings.__get_disc_group_fill_data(self.main_data, teacher, row[0], row[1])
              for row in zip(teacher_df['discipline'], teacher_df['groups'])]
 
