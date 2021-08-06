@@ -1612,101 +1612,6 @@
       }
     ]
   },
-  {
-    "num": 7,
-    "letter": "Г",
-    "discipline": [
-      {
-        "discipline": "Русский язык",
-        "load": 4
-      },
-
-      {
-        "discipline": "Литература",
-        "load": 2
-      },
-
-      {
-        "discipline": "Иностранный язык (гр1)",
-        "load": 3
-      },
-
-      {
-        "discipline": "Иностранный язык (гр2)",
-        "load": 3
-      },
-
-      {
-        "discipline": "Алгебра",
-        "load": 4
-      },
-
-      {
-        "discipline": "Геометрия",
-        "load": 2
-      },
-
-      {
-        "discipline": "Информатика (гр1)",
-        "load": 1
-      },
-
-      {
-        "discipline": "Информатика (гр2)",
-        "load": 1
-      },
-
-      {
-        "discipline": "История",
-        "load": 2
-      },
-
-      {
-        "discipline": "Обществознание",
-        "load": 1
-      },
-
-       {
-        "discipline": "География",
-        "load": 2
-      },
-
-      {
-        "discipline": "Биология",
-        "load": 2
-      },
-
-      {
-        "discipline": "Физика",
-        "load": 2
-      },
-
-      {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
-      {
-        "discipline": "Музыка",
-        "load": 1
-      },
-
-      {
-        "discipline": "Физкультура",
-        "load": 3
-      },
-
-      {
-        "discipline": "Технология (дев)",
-        "load": 2
-      },
-
-      {
-        "discipline": "Технология (мал)",
-        "load": 2
-      }
-    ]
-  },
 
   {
     "num": 8,
@@ -1781,12 +1686,6 @@
         "discipline": "Физика",
         "load": 2
       },
-
-      {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
 
       {
         "discipline": "Физкультура",
@@ -1889,12 +1788,6 @@
       },
 
       {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
-
-      {
         "discipline": "Физкультура",
         "load": 3
       },
@@ -1993,12 +1886,6 @@
         "discipline": "Физика",
         "load": 2
       },
-
-      {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
 
       {
         "discipline": "Физкультура",
@@ -2102,12 +1989,6 @@
       },
 
       {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
-
-      {
         "discipline": "Физкультура",
         "load": 3
       },
@@ -2198,12 +2079,6 @@
       },
 
       {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
-
-      {
         "discipline": "Физкультура",
         "load": 3
       },
@@ -2292,12 +2167,6 @@
         "discipline": "Физика",
         "load": 2
       },
-
-      {
-        "discipline": "ИЗО",
-        "load": 1
-      },
-
 
       {
         "discipline": "Физкультура",
