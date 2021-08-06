@@ -100,6 +100,8 @@ class AlgorithmSettings:
     @staticmethod
     def __fill_main_data_load_for_group(main_data: dict, keys: tuple, discipline: str,
                                         load: int, pedagogs_load: dict, sum_time: int):
+        if discipline in []:
+            return
         group = main_data.get(keys)
         if group is None:
             raise ValueError(f"Uncreated groups in main data")
