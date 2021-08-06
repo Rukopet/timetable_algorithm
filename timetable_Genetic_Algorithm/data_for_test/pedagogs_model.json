@@ -2361,7 +2361,41 @@
     "ped_name": "И.А.А.",
     "disciplines": [
       {
-        "discipline": "Информатика",
+        "discipline": "Информатика (гр1)",
+        "groups": [
+          {
+            "num": 8,
+            "letter": "А"
+          },
+
+          {
+            "num": 8,
+            "letter": "Б"
+          },
+
+          {
+            "num": 8,
+            "letter": "В"
+          },
+
+          {
+            "num": 9,
+            "letter": "А"
+          },
+
+          {
+            "num": 9,
+            "letter": "Б"
+          },
+
+          {
+            "num": 9,
+            "letter": "В"
+          }
+        ]
+      },
+      {
+        "discipline": "Информатика (гр2)",
         "groups": [
           {
             "num": 8,
@@ -2400,7 +2434,7 @@
     "ped_name": "П.Е.А.",
     "disciplines": [
       {
-        "discipline": "Информатика",
+        "discipline": "Информатика (гр1)",
         "groups": [
           {
             "num": 7,
@@ -2422,23 +2456,28 @@
             "letter": "Г"
           }
         ]
-      }
-    ]
-  },
-  {
-    "ped_name": "Я.Н.М.",
-    "disciplines": [
+      },
       {
-        "discipline": "Информатика",
+        "discipline": "Информатика (гр2)",
         "groups": [
           {
-            "num": 10,
+            "num": 7,
             "letter": "А"
           },
 
           {
-            "num": 11,
-            "letter": "А"
+            "num": 7,
+            "letter": "Б"
+          },
+
+          {
+            "num": 7,
+            "letter": "В"
+          },
+
+          {
+            "num": 7,
+            "letter": "Г"
           }
         ]
       }
@@ -2564,6 +2603,20 @@
       {
         "discipline": "Обществознание",
         "groups": [
+          {
+            "num": 5,
+            "letter": "А"
+          },
+
+          {
+            "num": 5,
+            "letter": "Б"
+          },
+          {
+            "num": 5,
+            "letter": "В"
+          },
+
           {
             "num": 10,
             "letter": "А"
