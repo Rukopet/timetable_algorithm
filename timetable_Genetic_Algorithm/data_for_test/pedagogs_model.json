@@ -3050,5 +3050,246 @@
         ]
       }
     ]
+  },
+  {
+    "ped_name": "A",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр1)",
+        "groups": [
+          {
+            "num": 5,
+            "letter": "А"
+          },
+
+          {
+            "num": 5,
+            "letter": "Б"
+          },
+
+          {
+            "num": 5,
+            "letter": "В"
+          },
+          {
+            "num": 6,
+            "letter": "А"
+          },
+
+          {
+            "num": 6,
+            "letter": "Б"
+          },
+
+          {
+            "num": 6,
+            "letter": "В"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "ped_name": "Б",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр2)",
+        "groups": [
+          {
+            "num": 5,
+            "letter": "А"
+          },
+
+          {
+            "num": 5,
+            "letter": "Б"
+          },
+
+          {
+            "num": 5,
+            "letter": "В"
+          },
+          {
+            "num": 6,
+            "letter": "А"
+          },
+
+          {
+            "num": 6,
+            "letter": "Б"
+          },
+
+          {
+            "num": 6,
+            "letter": "В"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "ped_name": "В",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр1)",
+        "groups": [
+          {
+            "num": 7,
+            "letter": "А"
+          },
+
+          {
+            "num": 7,
+            "letter": "Б"
+          },
+
+          {
+            "num": 7,
+            "letter": "В"
+          },
+          {
+            "num": 7,
+            "letter": "Г"
+          },
+          {
+            "num": 8,
+            "letter": "А"
+          },
+
+          {
+            "num": 8,
+            "letter": "Б"
+          },
+
+          {
+            "num": 8,
+            "letter": "В"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "ped_name": "Г",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр2)",
+        "groups": [
+          {
+            "num": 7,
+            "letter": "А"
+          },
+
+          {
+            "num": 7,
+            "letter": "Б"
+          },
+
+          {
+            "num": 7,
+            "letter": "В"
+          },
+          {
+            "num": 7,
+            "letter": "Г"
+          },
+          {
+            "num": 8,
+            "letter": "А"
+          },
+
+          {
+            "num": 8,
+            "letter": "Б"
+          },
+
+          {
+            "num": 8,
+            "letter": "В"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "ped_name": "Д",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр1)",
+        "groups": [
+          {
+            "num": 9,
+            "letter": "А"
+          },
+
+          {
+            "num": 9,
+            "letter": "Б"
+          },
+
+          {
+            "num": 9,
+            "letter": "В"
+          },
+          {
+            "num": 10,
+            "letter": "А"
+          },
+
+          {
+            "num": 11,
+            "letter": "А"
+          }
+        ]
+      },
+      {
+        "discipline": "Иностранный язык",
+        "groups": [
+          {
+            "num": 6,
+            "letter": "Г"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "ped_name": "Е",
+    "disciplines": [
+      {
+        "discipline": "Иностранный язык (гр2)",
+        "groups": [
+          {
+            "num": 9,
+            "letter": "А"
+          },
+
+          {
+            "num": 9,
+            "letter": "Б"
+          },
+
+          {
+            "num": 9,
+            "letter": "В"
+          },
+          {
+            "num": 10,
+            "letter": "А"
+          },
+
+          {
+            "num": 11,
+            "letter": "А"
+          }
+        ]
+      }
+
+    ]
   }
 ]
