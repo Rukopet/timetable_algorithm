@@ -28,6 +28,9 @@ class AlgorithmSettings:
     # whole pedagogs
     main_data = {}
 
+    # for validate data
+    __pedagogs_load = {}
+
     def __init__(self, data_front: DataFromFront):
         self._validationSetMainData(data_front)
 
@@ -80,21 +83,57 @@ class AlgorithmSettings:
 
     @staticmethod
     def __get_disc_group_fill_data(main_data: dict, teacher: str, discipline: str, groups: list):
-        for group in groups:
-            tmp_dict = main_data.get(tuple(group.values()), [])
-            tmp_dict.append({discipline: {"pedagog": teacher,
-                                          "weight": None,
-                                          "load": None}})
-            main_data[tuple(group.values())] = tmp_dict
+        try:
+            for group in groups:
+                main_data[tuple(group.values())] = main_data.get(tuple(group.values()), {})
+                main_data[tuple(group.values())][discipline] = {
+                    "pedagog": teacher,
+                    "weight": None,
+                    "load": None,
+                    "type_discipline": None
+                }
+        except Exception as e:
+            raise e
+
+
+
+    @staticmethod
+    def __fill_main_data_load_for_group(main_data: dict, keys: tuple, discipline: str,
+                                        load: int, pedagogs_load: dict, sum_time: int):
+        group = main_data.get(keys)
+        if group is None:
+            raise ValueError(f"Uncreated groups in main data")
+        group = group.get(discipline)
+        if group is None:
+            raise ValueError(f"Wrong discipline in loadplan - {discipline} "
+                             f"not implemented in pedagogs_model")
+        main_data[keys][discipline]["load"] = load
+        ped_name = main_data.get(keys).get(discipline, {}).get("pedagog")
+        if ped_name is None:
+            raise ValueError(f"Bad teacher values in main_data, need check pedagogs table")
+        sum_time += load
+        pedagogs_load[ped_name] = pedagogs_load.get(ped_name, 0) + load
 
     def __gen_main_data_and_validate(self, data_front: DataFromFront):
-        # sum_work_hours_for_teacher = 0
-        ped_table = data_front.pedagogsJSON.valueDF
-        for teacher in self.PEDAGOGS_LIST:
-            teacher_df = ped_table[ped_table["ped_name"] == teacher]
+        try:
+            ped_table = data_front.pedagogsJSON.valueDF
+            for teacher in self.PEDAGOGS_LIST:
+                teacher_df = ped_table[ped_table["ped_name"] == teacher]
 
-            """fast alternative to iterrows() just list generator"""
-            [AlgorithmSettings.__get_disc_group_fill_data(self.main_data, teacher, row[0], row[1])
-             for row in zip(teacher_df['discipline'], teacher_df['groups'])]
+                """fast alternative to iterrows() just list generator"""
+                [AlgorithmSettings.__get_disc_group_fill_data(self.main_data, teacher, row[0], row[1])
+                 for row in zip(teacher_df['discipline'], teacher_df['groups'])]
 
-        print(self.main_data)
+            load_table = data_front.loadPlanJSON.valueDF
+            for key, value in self.main_data.items():
+                groupDF = load_table[(load_table["num"] == key[0]) & (load_table["letter"] == key[1])]
+                if groupDF.dropna().empty:
+                    raise ValueError(f'Don`t have {str(key[0], key[1])} in loadplans table')
+
+                """fast alternative to iterrows() just list generator"""
+                [AlgorithmSettings.__fill_main_data_load_for_group(self.main_data, key, row[0], row[1],
+                                                                   self.__pedagogs_load, self.WHOLE_TIME)
+                 for row in zip(groupDF['discipline'], groupDF['load'])]
+            print(self.main_data)
+        except Exception as e:
+            raise e
