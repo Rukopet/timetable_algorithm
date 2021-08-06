@@ -23,7 +23,7 @@ class AlgorithmSettings:
     DISCIPLINES_LIST_WITH_PAIR = []
 
     # sum all working hours for all groups
-    WHOLE_TIME = 0
+    OTHER_DATA = {}
 
     # whole pedagogs
     main_data = {}
@@ -99,7 +99,7 @@ class AlgorithmSettings:
 
     @staticmethod
     def __fill_main_data_load_for_group(main_data: dict, keys: tuple, discipline: str,
-                                        load: int, pedagogs_load: dict, sum_time: int):
+                                        load: int, pedagogs_load: dict, OTHER_DATA: dict):
         if discipline in []:
             return
         group = main_data.get(keys)
@@ -116,6 +116,7 @@ class AlgorithmSettings:
         main_data[keys][discipline]["type_discipline"] = TYPE_DISCIPLINES.get(discipline)
         main_data[keys][discipline]["weight"] = WEIGHT_DISCIPLINES.get(keys[0], 11).get(discipline, 1)
         pedagogs_load[ped_name] = pedagogs_load.get(ped_name, 0) + load
+        OTHER_DATA["whole_time"] = load + OTHER_DATA.get("whole_time", 0)
 
     def __gen_main_data_and_validate(self, data_front: DataFromFront):
         try:
@@ -135,8 +136,9 @@ class AlgorithmSettings:
 
                 """fast alternative to iterrows() just list generator"""
                 [AlgorithmSettings.__fill_main_data_load_for_group(self.main_data, key, row[0], row[1],
-                                                                   self.__pedagogs_load, self.WHOLE_TIME)
+                                                                   self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
             print(self.main_data)
+            print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
             raise e
