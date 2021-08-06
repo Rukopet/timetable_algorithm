@@ -1,6 +1,6 @@
 import pandas as pd
 
-from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET
+from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 
 
@@ -85,6 +85,8 @@ class AlgorithmSettings:
     def __get_disc_group_fill_data(main_data: dict, teacher: str, discipline: str, groups: list):
         try:
             for group in groups:
+                if tuple(group.values()) == (7, 'Г'):
+                    pass
                 main_data[tuple(group.values())] = main_data.get(tuple(group.values()), {})
                 main_data[tuple(group.values())][discipline] = {
                     "pedagog": teacher,
@@ -94,8 +96,6 @@ class AlgorithmSettings:
                 }
         except Exception as e:
             raise e
-
-
 
     @staticmethod
     def __fill_main_data_load_for_group(main_data: dict, keys: tuple, discipline: str,
@@ -113,7 +113,8 @@ class AlgorithmSettings:
         ped_name = main_data.get(keys).get(discipline, {}).get("pedagog")
         if ped_name is None:
             raise ValueError(f"Bad teacher values in main_data, need check pedagogs table")
-        sum_time += load
+        main_data[keys][discipline]["type_discipline"] = TYPE_DISCIPLINES.get(discipline)
+        main_data[keys][discipline]["weight"] = WEIGHT_DISCIPLINES.get(keys[0], 11).get(discipline, 1)
         pedagogs_load[ped_name] = pedagogs_load.get(ped_name, 0) + load
 
     def __gen_main_data_and_validate(self, data_front: DataFromFront):
