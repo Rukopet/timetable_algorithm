@@ -38,12 +38,6 @@ class AlgorithmSettings:
     # list auditories
     AUDIENCE_LIST = []
 
-    """
-    keys:
-        num_audience --> params
-    """
-    AUDIENCE_PARAMS = {}
-
     TOTAL_POPULATION = 400
 
     def __init__(self, data_front: DataFromFront):
@@ -75,8 +69,6 @@ class AlgorithmSettings:
                 data_front.disciplinesJSON.valueDF)
 
             self.AUDIENCE_LIST = AlgorithmSettings.__get_audience_list(data_front.audiencesJSON.valueDF)
-            self.AUDIENCE_PARAMS = AlgorithmSettings.__gen_audience_params(data_front.audiencesJSON.valueDF,
-                                                                           self.AUDIENCE_LIST)
 
             # call generate main data struct
             self.__gen_main_data_and_validate(data_front)
@@ -94,11 +86,11 @@ class AlgorithmSettings:
         return df["ped_name"].unique()
 
     @staticmethod
-    def __gen_all_disciplines(df: pd.DataFrame):
+    def __gen_all_disciplines(df: pd.DataFrame) -> list:
         return df["discipline"].unique()
 
     @staticmethod
-    def __gen_disciplines_with_pairs(df: pd.DataFrame):
+    def __gen_disciplines_with_pairs(df: pd.DataFrame) -> list:
         return df.dropna()["discipline"].unique()
 
     @staticmethod
@@ -116,28 +108,21 @@ class AlgorithmSettings:
             raise e
 
     @staticmethod
-    def __get_audience_list(audiencesDF: pd.DataFrame) -> list:
+    def __get_audience_list(audiencesDF: pd.DataFrame):
         return audiencesDF["number_audience"].unique()
 
-    @staticmethod
-    def __gen_audience_params(audiencesDF: pd.DataFrame, all_audiences: list) -> dict:
-        return {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
-                for audience in all_audiences}
-        # for audience in all_audiences:
-        #     if audience[1] > 0
-        #
-        # pass
+    # def __get_params_from_audience(self, audience_tuple: tuple) -> list:
+    #     df = self.data_from_front.audiencesJSON.valueDF
+    #     return df[""]
 
     def getAudienceForGeneration(self):
         df = self.data_from_front.audiencesJSON.valueDF
         # check value of link_flag if != 0 ret tuple
-        # return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
-        #                 df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
-        return list(map(lambda x: tuple(x),
+        return list(map(lambda x: x[0] if x[1] == 0 else tuple([x, ]),
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
-    def __validateMainData(main_data: dict) -> None:
+    def __validateMainData(main_data: dict):
         for key, value in main_data.items():
             for disc, val in value.items():
                 if val["load"] is None:
@@ -186,6 +171,8 @@ class AlgorithmSettings:
                                                                    self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
             AlgorithmSettings.__validateMainData(self.main_data)
+            print(self.main_data)
+            print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
             raise e
 
