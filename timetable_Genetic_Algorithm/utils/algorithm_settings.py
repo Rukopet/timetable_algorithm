@@ -65,7 +65,7 @@ class AlgorithmSettings:
 
     @staticmethod
     def __gen_group_list_from_df(df: pd.DataFrame) -> list:
-        return [[row["number"], RUSSIAN_ALPHABET[count]]
+        return [tuple([row["number"], RUSSIAN_ALPHABET[count]])
                 for index, row in df.iterrows()
                 for count in range(row["count"])]
 
@@ -142,3 +142,28 @@ class AlgorithmSettings:
             print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
             raise e
+
+    def getPedagogName(self, group: tuple, discipline: str):
+        if group not in self.GROUPS_LIST:
+            return None
+        ret = self.main_data.get(group).get(discipline)
+        return None if ret is None else ret["pedagog"]
+
+    def getPedagogLoad(self, group: tuple, discipline: str):
+        if group not in self.GROUPS_LIST:
+            return None
+        ret = self.main_data.get(group).get(discipline)
+        return None if ret is None else ret["load"]
+
+    def getPedagogNameAndLoad(self, group: tuple, discipline: str):
+        """
+        if main_data have needed group and discipline:
+        ret == tuple[2] ==> ret[0] == dep_name, ret[1] == load value
+        group found in self.GROUPS_LIST !
+        else return None
+        """
+
+        if group not in self.GROUPS_LIST:
+            return None
+        ret = self.main_data.get(group).get(discipline)
+        return None if ret is None else ret["pedagog"], ret["load"]
