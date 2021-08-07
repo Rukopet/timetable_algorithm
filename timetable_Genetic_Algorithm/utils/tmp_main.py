@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 
+from timetable_Genetic_Algorithm.utils.GeneratorLessons import GeneratorLessons
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 
@@ -25,6 +26,7 @@ def main():
         wow.audiencesJSON.valueDF.to_csv("../data_for_test/audiences.csv")
 
     table_settings = AlgorithmSettings(wow)
+    gen = GeneratorLessons()
 
     # kek_test = wow.groupsJSON.valueDF
     # kek_test = kek_test[kek_test["count"] == 3]
