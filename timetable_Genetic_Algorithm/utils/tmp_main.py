@@ -26,17 +26,10 @@ def main():
         wow.audiencesJSON.valueDF.to_csv("../data_for_test/audiences.csv")
 
     table_settings = AlgorithmSettings(wow)
-    gen = GeneratorLessons()
-
-    # kek_test = wow.groupsJSON.valueDF
-    # kek_test = kek_test[kek_test["count"] == 3]
-    # print(kek_test)
-    # print(table_settings.GROUPS_RANGE,
-    #       table_settings.main_data,
-    #       table_settings.PEDAGOGS_LIST,
-    #       table_settings.DISCIPLINES_LIST,
-    #       table_settings.DISCIPLINES_LIST_WITH_PAIR,
-    #       table_settings.GROUPS_LIST, sep="\n")
+    main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
+    if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
+        raise ValueError("cheto ne cxodutcya brat")
+    gen = GeneratorLessons(table_settings, main_tuple)
 
 
 if __name__ == "__main__":
