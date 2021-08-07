@@ -23,6 +23,10 @@ class AlgorithmSettings:
     DISCIPLINES_LIST_WITH_PAIR = []
 
     # sum all working hours for all groups
+    """
+    keys:
+        "whole_time"
+    """
     OTHER_DATA = {}
 
     # whole pedagogs
@@ -85,8 +89,6 @@ class AlgorithmSettings:
     def __get_disc_group_fill_data(main_data: dict, teacher: str, discipline: str, groups: list):
         try:
             for group in groups:
-                if tuple(group.values()) == (7, 'Г'):
-                    pass
                 main_data[tuple(group.values())] = main_data.get(tuple(group.values()), {})
                 main_data[tuple(group.values())][discipline] = {
                     "pedagog": teacher,
@@ -98,10 +100,18 @@ class AlgorithmSettings:
             raise e
 
     @staticmethod
+    def __validateMainData(main_data: dict):
+        for key, value in main_data.items():
+            for disc, val in value.items():
+                if val["load"] is None:
+                    raise ValueError(
+                        f'This discipline {disc} probably not implemented in pedagog model'
+                        f'Group is - {key}'
+                    )
+
+    @staticmethod
     def __fill_main_data_load_for_group(main_data: dict, keys: tuple, discipline: str,
                                         load: int, pedagogs_load: dict, OTHER_DATA: dict):
-        if discipline in []:
-            return
         group = main_data.get(keys)
         if group is None:
             raise ValueError(f"Uncreated groups in main data")
@@ -138,6 +148,7 @@ class AlgorithmSettings:
                 [AlgorithmSettings.__fill_main_data_load_for_group(self.main_data, key, row[0], row[1],
                                                                    self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
+            AlgorithmSettings.__validateMainData(self.main_data)
             print(self.main_data)
             print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
@@ -167,3 +178,7 @@ class AlgorithmSettings:
             return None
         ret = self.main_data.get(group).get(discipline)
         return None if ret is None else ret["pedagog"], ret["load"]
+
+    def getGroupData(self, group: tuple):
+        ret = self.main_data.get(group)
+        return self.main_data.get(group)
