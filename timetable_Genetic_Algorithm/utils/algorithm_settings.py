@@ -86,11 +86,11 @@ class AlgorithmSettings:
         return df["ped_name"].unique()
 
     @staticmethod
-    def __gen_all_disciplines(df: pd.DataFrame):
+    def __gen_all_disciplines(df: pd.DataFrame) -> list:
         return df["discipline"].unique()
 
     @staticmethod
-    def __gen_disciplines_with_pairs(df: pd.DataFrame):
+    def __gen_disciplines_with_pairs(df: pd.DataFrame) -> list:
         return df.dropna()["discipline"].unique()
 
     @staticmethod
@@ -111,10 +111,14 @@ class AlgorithmSettings:
     def __get_audience_list(audiencesDF: pd.DataFrame):
         return audiencesDF["number_audience"].unique()
 
+    # def __get_params_from_audience(self, audience_tuple: tuple) -> list:
+    #     df = self.data_from_front.audiencesJSON.valueDF
+    #     return df[""]
+
     def getAudienceForGeneration(self):
         df = self.data_from_front.audiencesJSON.valueDF
         # check value of link_flag if != 0 ret tuple
-        return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
+        return list(map(lambda x: x[0] if x[1] == 0 else tuple([x, ]),
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
