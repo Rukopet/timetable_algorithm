@@ -35,7 +35,13 @@ class AlgorithmSettings:
     # for validate data
     __pedagogs_load = {}
 
+    # list auditories
+    AUDIENCE_LIST = []
+
+    TOTAL_POPULATION = 400
+
     def __init__(self, data_front: DataFromFront):
+        self.data_from_front = data_front
         self._validationSetMainData(data_front)
 
     def _validationSetMainData(self, data_front: DataFromFront):
@@ -61,6 +67,8 @@ class AlgorithmSettings:
             self.DISCIPLINES_LIST = AlgorithmSettings.__gen_all_disciplines(data_front.disciplinesJSON.valueDF)
             self.DISCIPLINES_LIST_WITH_PAIR = AlgorithmSettings.__gen_disciplines_with_pairs(
                 data_front.disciplinesJSON.valueDF)
+
+            self.AUDIENCE_LIST = AlgorithmSettings.__get_audience_list(data_front.audiencesJSON.valueDF)
 
             # call generate main data struct
             self.__gen_main_data_and_validate(data_front)
@@ -98,6 +106,16 @@ class AlgorithmSettings:
                 }
         except Exception as e:
             raise e
+
+    @staticmethod
+    def __get_audience_list(audiencesDF: pd.DataFrame):
+        return audiencesDF["number_audience"].unique()
+
+    def getAudienceForGeneration(self):
+        df = self.data_from_front.audiencesJSON.valueDF
+        # check value of link_flag if != 0 ret tuple
+        return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
+                        df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
     def __validateMainData(main_data: dict):
