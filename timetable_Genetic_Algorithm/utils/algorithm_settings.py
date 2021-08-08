@@ -11,7 +11,9 @@ class AlgorithmSettings:
 
     GROUPS_RANGE = {"min": 1, "max": 11}
 
-    # dict with min and max num of groups
+    """
+    GROUPS_LIST = ("num", "letter") ==> (1, "А")
+    """
     GROUPS_LIST = []
 
     # [["num", "letter"]]
@@ -45,10 +47,17 @@ class AlgorithmSettings:
     """
     AUDIENCE_PARAMS = {}
 
+    IS_GROUP_STUDY_SATURDAY = {}
+    IS_GROUP_STUDY_IN_SECOND_SHIFT = {}
+    bool_SCHOOL_STUDY_SATURDAY = True
+    bool_SCHOOL_SECOND_SHIFT = False
+
     TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
     P_CROSSOVER = settings_generations.P_CROSSOVER
     P_MUTATION = settings_generations.P_MUTATION
     AMOUNT_TIMELINES_IN_DAY = settings_generations.AMOUNT_TIMELINES_IN_DAY
+    TIME_FIRST_LESSON_SECOND_SHIFT = settings_generations.TIME_FIRST_LESSON_SECOND_SHIFT
+    MAX_DAYS_FROM_JSON = 5
 
     def __init__(self, data_front: DataFromFront):
         self.data_from_front = data_front
@@ -84,6 +93,16 @@ class AlgorithmSettings:
 
             # call generate main data struct
             self.__gen_main_data_and_validate(data_front)
+            self.MAX_DAYS_FROM_JSON = self.data_from_front.groupsJSON.__valueJSON__.get("max_days", 5)
+            if self.MAX_DAYS_FROM_JSON == 6:
+                self.IS_GROUP_STUDY_SATURDAY = self.__gen_IS_GROUP_STUDY_SATURDAY()
+            else:
+                self.bool_SCHOOL_STUDY_SATURDAY = False
+
+            if self.data_from_front.groupsJSON.__valueJSON__.get("second_shift", False):
+                self.bool_SCHOOL_SECOND_SHIFT = True
+                self.IS_GROUP_STUDY_IN_SECOND_SHIFT = self.__gen_IS_GROUP_STUDY_IN_SECOND_SHIFT()
+
         except Exception as e:
             raise e
 
@@ -96,6 +115,18 @@ class AlgorithmSettings:
     @staticmethod
     def __gen_pedagogs_list_from_df(df: pd.DataFrame) -> list:
         return df["ped_name"].unique()
+
+    def __gen_IS_GROUP_STUDY_SATURDAY(self) -> dict:
+        df = self.data_from_front.groupsJSON.valueDF
+        p = df.loc[(df["number"] == 1)]["saturday_not_study"].values[0]
+        print(p)
+        return {group: True if df.loc[(df["number"] == group[0])]["saturday_not_study"].values[0] else False
+                for group in self.GROUPS_LIST}
+
+    def __gen_IS_GROUP_STUDY_IN_SECOND_SHIFT(self) -> dict:
+        df = self.data_from_front.groupsJSON.valueDF
+        return {group: df[(df["number"] == group[0])]["second_shift"].values[0]
+                for group in self.GROUPS_LIST}
 
     @staticmethod
     def __gen_all_disciplines(df: pd.DataFrame) -> list:
@@ -219,5 +250,4 @@ class AlgorithmSettings:
         return None if ret is None else ret["pedagog"], ret["load"]
 
     def getGroupData(self, group: tuple):
-        ret = self.main_data.get(group)
         return self.main_data.get(group)

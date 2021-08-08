@@ -31,8 +31,19 @@ def main():
     kek = table_settings.getAudienceForGeneration()
     if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
         raise ValueError("cheto ne cxodutcya brat")
-    print(len(kek))
 
+    # pop = {
+    #     timeline: {
+    #         audience:
+    #     }
+    #     for timeline in range(table_settings.AMOUNT_TIMELINES_IN_DAY * table_settings.MAX_DAYS_FROM_JSON)
+    #     for audience in table_settings.AUDIENCE_LIST
+    # }
+    pop = {}
+    for timeline in range(table_settings.AMOUNT_TIMELINES_IN_DAY * table_settings.MAX_DAYS_FROM_JSON):
+        for audience in table_settings.AUDIENCE_LIST:
+            tmp = {audience: """random -> shear, days """}
+            pop[timeline] = tmp[audience]
 
 
 
