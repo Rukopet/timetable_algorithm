@@ -2,6 +2,7 @@ import pandas as pd
 
 from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
+from timetable_Genetic_Algorithm.utils import settings_generations
 
 
 class AlgorithmSettings:
@@ -38,7 +39,16 @@ class AlgorithmSettings:
     # list auditories
     AUDIENCE_LIST = []
 
-    TOTAL_POPULATION = 400
+    """
+    keys:
+        num_audience: int --> params
+    """
+    AUDIENCE_PARAMS = {}
+
+    TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
+    P_CROSSOVER = settings_generations.P_CROSSOVER
+    P_MUTATION = settings_generations.P_MUTATION
+    AMOUNT_TIMELINES_IN_DAY = settings_generations.AMOUNT_TIMELINES_IN_DAY
 
     def __init__(self, data_front: DataFromFront):
         self.data_from_front = data_front
@@ -69,6 +79,8 @@ class AlgorithmSettings:
                 data_front.disciplinesJSON.valueDF)
 
             self.AUDIENCE_LIST = AlgorithmSettings.__get_audience_list(data_front.audiencesJSON.valueDF)
+            self.AUDIENCE_PARAMS = AlgorithmSettings.__gen_audience_params(data_front.audiencesJSON.valueDF,
+                                                                           self.AUDIENCE_LIST)
 
             # call generate main data struct
             self.__gen_main_data_and_validate(data_front)
@@ -108,21 +120,28 @@ class AlgorithmSettings:
             raise e
 
     @staticmethod
-    def __get_audience_list(audiencesDF: pd.DataFrame):
+    def __get_audience_list(audiencesDF: pd.DataFrame) -> list:
         return audiencesDF["number_audience"].unique()
 
-    # def __get_params_from_audience(self, audience_tuple: tuple) -> list:
-    #     df = self.data_from_front.audiencesJSON.valueDF
-    #     return df[""]
+    @staticmethod
+    def __gen_audience_params(audiencesDF: pd.DataFrame, all_audiences: list) -> dict:
+        return {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
+                for audience in all_audiences}
+        # for audience in all_audiences:
+        #     if audience[1] > 0
+        #
+        # pass
 
     def getAudienceForGeneration(self):
         df = self.data_from_front.audiencesJSON.valueDF
         # check value of link_flag if != 0 ret tuple
-        return list(map(lambda x: x[0] if x[1] == 0 else tuple([x, ]),
+        # return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
+        #                 df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
+        return list(map(lambda x: tuple(x),
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
-    def __validateMainData(main_data: dict):
+    def __validateMainData(main_data: dict) -> None:
         for key, value in main_data.items():
             for disc, val in value.items():
                 if val["load"] is None:
@@ -171,8 +190,6 @@ class AlgorithmSettings:
                                                                    self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
             AlgorithmSettings.__validateMainData(self.main_data)
-            print(self.main_data)
-            print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
             raise e
 
