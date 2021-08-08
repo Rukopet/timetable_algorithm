@@ -38,6 +38,12 @@ class AlgorithmSettings:
     # list auditories
     AUDIENCE_LIST = []
 
+    """
+    keys:
+        num_audience --> params
+    """
+    AUDIENCE_PARAMS = {}
+
     TOTAL_POPULATION = 400
 
     def __init__(self, data_front: DataFromFront):
@@ -69,6 +75,8 @@ class AlgorithmSettings:
                 data_front.disciplinesJSON.valueDF)
 
             self.AUDIENCE_LIST = AlgorithmSettings.__get_audience_list(data_front.audiencesJSON.valueDF)
+            self.AUDIENCE_PARAMS = AlgorithmSettings.__gen_audience_params(data_front.audiencesJSON.valueDF,
+                                                                           self.AUDIENCE_LIST)
 
             # call generate main data struct
             self.__gen_main_data_and_validate(data_front)
@@ -108,17 +116,28 @@ class AlgorithmSettings:
             raise e
 
     @staticmethod
-    def __get_audience_list(audiencesDF: pd.DataFrame):
+    def __get_audience_list(audiencesDF: pd.DataFrame) -> list:
         return audiencesDF["number_audience"].unique()
+
+    @staticmethod
+    def __gen_audience_params(audiencesDF: pd.DataFrame, all_audiences: list) -> dict:
+        return {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
+                for audience in all_audiences}
+        # for audience in all_audiences:
+        #     if audience[1] > 0
+        #
+        # pass
 
     def getAudienceForGeneration(self):
         df = self.data_from_front.audiencesJSON.valueDF
         # check value of link_flag if != 0 ret tuple
-        return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
+        # return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
+        #                 df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
+        return list(map(lambda x: tuple(x),
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
-    def __validateMainData(main_data: dict):
+    def __validateMainData(main_data: dict) -> None:
         for key, value in main_data.items():
             for disc, val in value.items():
                 if val["load"] is None:
@@ -167,8 +186,6 @@ class AlgorithmSettings:
                                                                    self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
             AlgorithmSettings.__validateMainData(self.main_data)
-            print(self.main_data)
-            print(self.OTHER_DATA.get("whole_time"))
         except Exception as e:
             raise e
 

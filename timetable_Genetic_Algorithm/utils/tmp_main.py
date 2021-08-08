@@ -29,10 +29,8 @@ def main():
     print(table_settings.AUDIENCE_LIST)
     main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
     kek = table_settings.getAudienceForGeneration()
-    print(kek)
     if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
         raise ValueError("cheto ne cxodutcya brat")
-
 
 
 
