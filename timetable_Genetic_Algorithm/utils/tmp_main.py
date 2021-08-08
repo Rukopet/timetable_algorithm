@@ -2,6 +2,8 @@ import json
 import pandas as pd
 
 from timetable_Genetic_Algorithm.utils.GeneratorLessons import GeneratorLessons
+from timetable_Genetic_Algorithm.utils.RandomizerGenerationExcluded import RandomizerGenerationExcluded, \
+    RandomizerGenerationIncluded
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 
@@ -28,7 +30,7 @@ def main():
     table_settings = AlgorithmSettings(wow)
     print(table_settings.AUDIENCE_LIST)
     main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
-    kek = table_settings.getAudienceForGeneration()
+    audience_tuple = table_settings.getAudienceForGeneration()
     if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
         raise ValueError("cheto ne cxodutcya brat")
 
@@ -40,10 +42,19 @@ def main():
     #     for audience in table_settings.AUDIENCE_LIST
     # }
     pop = {}
+    cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple), 0)
     for timeline in range(table_settings.AMOUNT_TIMELINES_IN_DAY * table_settings.MAX_DAYS_FROM_JSON):
         for audience in table_settings.AUDIENCE_LIST:
-            tmp = {audience: """random -> shear, days """}
+            if cur.included_list_main_tuple.__len__() == 0:
+                break
+            tmp = {audience: [cur.getTupleIncludedRandomForAudienceTuple(audience_tuple),
+                              cur.getTupleIncludedRandomForMainTuple(main_tuple)]}
             pop[timeline] = tmp[audience]
+        cur.dropIncludedAudienceTuple()
+        if cur.included_list_main_tuple.__len__() == 0:
+            break
+
+    print(pop)
 
 
 
