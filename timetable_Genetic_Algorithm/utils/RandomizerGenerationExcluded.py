@@ -44,12 +44,11 @@ class RandomizerGenerationExcluded:
 class RandomizerGenerationIncluded:
     """ Simple randomizer for generate populations """
 
-    def __init__(self, len_main_tuple: int, len_audience_tuple: int, timeline: int):
+    def __init__(self, len_main_tuple: int, len_audience_tuple: int):
         self.included_list_main_tuple = list(range(0, len_main_tuple))
         self.included_list_audiences_tuple = list(range(0, len_audience_tuple))
         self.len_main_tuple = len_main_tuple
         self.len_audience_tuple = len_audience_tuple
-        self.timeline = timeline
 
     def getNumIncludedRandomForMainTuple(self) -> int:
         ret = choice(self.included_list_main_tuple)
