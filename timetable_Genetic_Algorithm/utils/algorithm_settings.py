@@ -94,11 +94,11 @@ class AlgorithmSettings:
         return df["ped_name"].unique()
 
     @staticmethod
-    def __gen_all_disciplines(df: pd.DataFrame):
+    def __gen_all_disciplines(df: pd.DataFrame) -> list:
         return df["discipline"].unique()
 
     @staticmethod
-    def __gen_disciplines_with_pairs(df: pd.DataFrame):
+    def __gen_disciplines_with_pairs(df: pd.DataFrame) -> list:
         return df.dropna()["discipline"].unique()
 
     @staticmethod

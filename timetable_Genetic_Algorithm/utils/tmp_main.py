@@ -31,6 +31,7 @@ def main():
     kek = table_settings.getAudienceForGeneration()
     if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
         raise ValueError("cheto ne cxodutcya brat")
+    print(len(kek))
 
 
 
