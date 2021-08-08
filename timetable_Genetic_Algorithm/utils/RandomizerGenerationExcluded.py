@@ -1,4 +1,6 @@
-from random import choice
+from random import choice, shuffle
+
+from timetable_Genetic_Algorithm.utils.constants import MAX_LESSONS_IN_DAY
 
 
 class RandomizerGenerationExcluded:
@@ -69,8 +71,29 @@ class RandomizerGenerationIncluded:
         self.included_list_audiences_tuple.remove(ret)
         return audience_tuple[ret]
 
+    def getTrueListTimelineSearch(self, main_tuple: list, timeline: int, amount_timelines_in_day: int) -> list:
+        """ need MOD big timeline on AMOUNT_TIMELINES_IN_DAY in settings+generations.py -> 53 % 14 """
+        timemode = timeline % amount_timelines_in_day
+        return [
+            index for index in self.included_list_main_tuple
+            if MAX_LESSONS_IN_DAY.get(main_tuple[index][0][0], 7) > timemode - main_tuple[index][4] >= 0
+            and timeline <= main_tuple[index][3] * amount_timelines_in_day
+        ]
+
+    def getTupleIncludeWithTrust(self, trust_list: list, main_tuple: list) -> tuple or None:
+        if trust_list.__len__() == 0:
+            return None
+        ret = choice(trust_list)
+        self.included_list_main_tuple.remove(ret)
+        return main_tuple[ret]
+
     def dropIncludedMainTuple(self) -> None:
         self.included_list_main_tuple = list(range(0, self.len_main_tuple))
 
     def dropIncludedAudienceTuple(self) -> None:
         self.included_list_audiences_tuple = list(range(0, self.len_audience_tuple))
+
+    def getShuffledAudiences(self) -> list:
+        """ random list shuffle """
+        shuffle(self.included_list_audiences_tuple)
+        return self.included_list_audiences_tuple

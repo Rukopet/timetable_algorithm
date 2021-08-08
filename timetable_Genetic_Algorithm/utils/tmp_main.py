@@ -39,22 +39,28 @@ def main():
     #         audience:
     #     }
     #     for timeline in range(table_settings.AMOUNT_TIMELINES_IN_DAY * table_settings.MAX_DAYS_FROM_JSON)
-    #     for audience in table_settings.AUDIENCE_LIST
+    #     for audience in table_settings.AUDIENCE_LIST§
     # }
     pop = {}
     cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple), 0)
     for timeline in range(table_settings.AMOUNT_TIMELINES_IN_DAY * table_settings.MAX_DAYS_FROM_JSON):
-        for audience in table_settings.AUDIENCE_LIST:
+        delll = []
+        tmp = {}
+        for audience in cur.getShuffledAudiences():
             if cur.included_list_main_tuple.__len__() == 0:
                 break
-            tmp = {audience: [cur.getTupleIncludedRandomForAudienceTuple(audience_tuple),
-                              cur.getTupleIncludedRandomForMainTuple(main_tuple)]}
-            pop[timeline] = tmp[audience]
-        cur.dropIncludedAudienceTuple()
+            trust_list = cur.getTrueListTimelineSearch(main_tuple, timeline, table_settings.AMOUNT_TIMELINES_IN_DAY)
+            delll = trust_list
+            tmp[audience_tuple[audience]] = cur.getTupleIncludeWithTrust(trust_list, main_tuple)
+        pop[timeline] = tmp
         if cur.included_list_main_tuple.__len__() == 0:
             break
-
-    print(pop)
+        cur.dropIncludedAudienceTuple()
+        # cur.dropIncludedMainTuple()
+        # print(timeline % 14)
+        # print(delll)
+    print(*[(key, i) for key, i in pop.items()], sep='\n')
+    print(cur.included_list_main_tuple)
 
 
 
