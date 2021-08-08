@@ -4,6 +4,20 @@ from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettin
 from timetable_Genetic_Algorithm.utils.constants import MAX_LESSONS_IN_DAY
 
 
+def checkin_discipline(dict_list: list, sought: str) -> bool:
+    for val in dict_list:
+        if sought in val.values():
+            return True
+    return False
+
+
+def checkin_group(dict_list: list, sought: tuple) -> bool:
+    for val in dict_list:
+        if sought == tuple(val.values()):
+            return True
+    return False
+
+
 class RandomizerGenerationIncluded:
     """ Simple randomizer for generate populations """
 
@@ -42,11 +56,29 @@ class RandomizerGenerationIncluded:
                and timeline <= main_tuple[index][3] * amount_timelines_in_day
         ]
 
-    def getTrueListAudienceSearch(self, audience_tuple: tuple, table_settings: AlgorithmSettings) -> list:
+    @staticmethod
+    def getTrueListAudienceDisc(trust_list: list, main_tuple: tuple, audience: int,
+                                table_settings: AlgorithmSettings) -> list:
         return [
-            index for index in self.included_list_main_tuple
-            if audience_tuple[1] != 0  in table_settings.AUDIENCE_PARAMS
-               and table_settings.AUDIENCE_PARAMS.get() != None
+            index for index in trust_list
+            if checkin_discipline(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][1])
+        ]
+
+    @staticmethod
+    def getTrueListAudienceGroup(trust_list: list, main_tuple: tuple, audience: int,
+                                 table_settings: AlgorithmSettings) -> list:
+        return [
+            index for index in trust_list
+            if checkin_group(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][0])
+        ]
+
+    @staticmethod
+    def getTrueListAudienceMix(trust_list: list, main_tuple: tuple, audience: int,
+                                 table_settings: AlgorithmSettings) -> list:
+        return [
+            index for index in trust_list
+            if checkin_group(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][0])
+            and checkin_discipline(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][1])
         ]
 
     def getTupleIncludeWithTrust(self, trust_list: list, main_tuple: list) -> tuple or None:
