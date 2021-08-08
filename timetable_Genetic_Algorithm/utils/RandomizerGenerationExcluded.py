@@ -1,5 +1,6 @@
 from random import choice, shuffle
 
+from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.constants import MAX_LESSONS_IN_DAY
 
 
@@ -77,6 +78,13 @@ class RandomizerGenerationIncluded:
             index for index in self.included_list_main_tuple
             if MAX_LESSONS_IN_DAY.get(main_tuple[index][0][0], 7) > timemode - main_tuple[index][4] >= 0
                and timeline <= main_tuple[index][3] * amount_timelines_in_day
+        ]
+
+    def getTrueListAudienceSearch(self, audience_tuple: tuple, table_settings: AlgorithmSettings) -> list:
+        return [
+            index for index in self.included_list_main_tuple
+            if audience_tuple[1] != 0  in table_settings.AUDIENCE_PARAMS
+               and table_settings.AUDIENCE_PARAMS.get() != None
         ]
 
     def getTupleIncludeWithTrust(self, trust_list: list, main_tuple: list) -> tuple or None:

@@ -1,9 +1,7 @@
 import json
 import pandas as pd
 
-from timetable_Genetic_Algorithm.utils.GeneratorLessons import GeneratorLessons
-from timetable_Genetic_Algorithm.utils.RandomizerGenerationExcluded import RandomizerGenerationExcluded, \
-    RandomizerGenerationIncluded
+
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 from timetable_Genetic_Algorithm.utils.generate_population import generateIndivid
@@ -30,19 +28,12 @@ def getDataFromFront() -> DataFromFront:
     return ret
 
 
-def getTimeLineSequence(table_settings: AlgorithmSettings) -> list:
-    sequence = [1, 2, 3, 0, 4, 5] if table_settings.bool_SCHOOL_STUDY_SATURDAY else [1, 2, 3, 0, 4]
-    timeline_list = [i * table_settings.AMOUNT_TIMELINES_IN_DAY + lesson
-                     for lesson in range(table_settings.AMOUNT_TIMELINES_IN_DAY)
-                     for i in sequence]
-    return timeline_list
-
-
 def main():
     front_data = getDataFromFront()
 
     table_settings = AlgorithmSettings(front_data)
     individ = generateIndivid(table_settings)
+    print(table_settings.AUDIENCE_PARAMS)
 
 if __name__ == "__main__":
     main()
