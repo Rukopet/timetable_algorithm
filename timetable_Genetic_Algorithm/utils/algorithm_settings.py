@@ -2,6 +2,7 @@ import pandas as pd
 
 from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
+from timetable_Genetic_Algorithm.utils import settings_generations
 
 
 class AlgorithmSettings:
@@ -40,11 +41,14 @@ class AlgorithmSettings:
 
     """
     keys:
-        num_audience --> params
+        num_audience: int --> params
     """
     AUDIENCE_PARAMS = {}
 
-    TOTAL_POPULATION = 400
+    TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
+    P_CROSSOVER = settings_generations.P_CROSSOVER
+    P_MUTATION = settings_generations.P_MUTATION
+    AMOUNT_TIMELINES_IN_DAY = settings_generations.AMOUNT_TIMELINES_IN_DAY
 
     def __init__(self, data_front: DataFromFront):
         self.data_from_front = data_front
