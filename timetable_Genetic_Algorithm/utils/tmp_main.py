@@ -28,12 +28,24 @@ def get_data_from_front() -> DataFromFront:
     return ret
 
 
+def print_group(individ: dict) -> dict:
+    individ_sort = dict(sorted(individ.items()))
+    print(*[(key, i) for key, i in individ_sort.items()], sep='\n')
+    #group = {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
+    #            for audience in all_audiences}
+    return individ_sort
+
+
 def main():
     front_data = get_data_from_front()
 
     table_settings = AlgorithmSettings(front_data)
     individ = generate_individ(table_settings)
-    print(table_settings.AUDIENCE_PARAMS)
+    #print(table_settings.AUDIENCE_PARAMS)
+    print(*[(key, i) for key, i in individ.items()], sep='\n')
+    groups = print_group(individ)
+    print(groups)
+
 
 
 if __name__ == "__main__":
