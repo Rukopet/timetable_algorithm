@@ -3,7 +3,7 @@ from timetable_Genetic_Algorithm.utils.RandomizerGenerationExcluded import Rando
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 
 
-def getTimeLineSequence(table_settings: AlgorithmSettings) -> list:
+def get_time_line_sequence(table_settings: AlgorithmSettings) -> list:
     sequence = [1, 2, 3, 0, 4, 5] if table_settings.bool_SCHOOL_STUDY_SATURDAY else [1, 2, 3, 0, 4]
     timeline_list = [i * table_settings.AMOUNT_TIMELINES_IN_DAY + lesson
                      for lesson in range(table_settings.AMOUNT_TIMELINES_IN_DAY)
@@ -11,9 +11,9 @@ def getTimeLineSequence(table_settings: AlgorithmSettings) -> list:
     return timeline_list
 
 
-def generateIndivid(table_settings: AlgorithmSettings):
+def generate_individ(table_settings: AlgorithmSettings):
     main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
-    audience_tuple = table_settings.getAudienceForGeneration()
+    audience_tuple = table_settings.get_audience_for_generation()
 
     if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
         raise ValueError("cheto ne cxodutcya brat")
@@ -21,13 +21,14 @@ def generateIndivid(table_settings: AlgorithmSettings):
     print(audience_tuple)
     pop = {}
     cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple))
-    for timeline in getTimeLineSequence(table_settings):
+    for timeline in get_time_line_sequence(table_settings):
         delll = []
         tmp = {}
-        for audience in cur.getShuffledAudiences():
+        for audience in cur.get_shuffled_audiences():
             if cur.included_list_main_tuple.__len__() == 0:
                 break
-            trust_list = cur.getTrueListTimelineSearch(main_tuple, timeline, table_settings.AMOUNT_TIMELINES_IN_DAY)
+            trust_list = cur.get_true_list_time_line_search(main_tuple, timeline,
+                                                            table_settings.AMOUNT_TIMELINES_IN_DAY)
             delll = trust_list
             """
             if main -> audience -> 1 if 0 ->
@@ -38,30 +39,28 @@ def generateIndivid(table_settings: AlgorithmSettings):
             elif auidinect -> 1 if 3 -> 
             """
             if audience_tuple[audience][1] == 0:
-                tmp[audience_tuple[audience]] = cur.getTupleIncludeWithTrust(trust_list, main_tuple)
+                tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
             elif audience_tuple[audience][1] == 1:
-                trust_disciplines = RandomizerGenerationIncluded.getTrueListAudienceDisc(trust_list, main_tuple,
-                                                                                         audience_tuple[audience][0],
-                                                                                         table_settings)
+                trust_disciplines = RandomizerGenerationIncluded.get_true_list_audience_disc(trust_list, main_tuple,
+                                                                                             audience_tuple[audience][
+                                                                                                 0], table_settings)
             #     TODO check all trust list on empty value
             elif audience_tuple[audience][1] == 2:
-                trust_group = RandomizerGenerationIncluded.getTrueListAudienceGroup(trust_list, main_tuple,
-                                                                                    audience_tuple[audience][0],
-                                                                                    table_settings)
-                # print(trust_group)
-                # print(*[main_tuple[i] for i in trust_group])
-                # p = 1
+                trust_group = RandomizerGenerationIncluded.get_true_list_audience_group(trust_list, main_tuple,
+                                                                                        audience_tuple[audience][0],
+                                                                                        table_settings)
+
             elif audience_tuple[audience][1] == 3:
-                trust_mixed = RandomizerGenerationIncluded.getTrueListAudienceMix(trust_list, main_tuple,
-                                                                                    audience_tuple[audience][0],
-                                                                                    table_settings)
+                trust_mixed = RandomizerGenerationIncluded.get_true_list_audience_mix(trust_list, main_tuple,
+                                                                                      audience_tuple[audience][0],
+                                                                                      table_settings)
                 print(trust_mixed)
                 print(*[main_tuple[i] for i in trust_mixed])
                 p = 1
         pop[timeline] = tmp
         if cur.included_list_main_tuple.__len__() == 0:
             break
-        cur.dropIncludedAudienceTuple()
+        cur.drop_included_audience_tuple()
         # cur.dropIncludedMainTuple()
         # print(timeline % 14)
         # print(delll)
