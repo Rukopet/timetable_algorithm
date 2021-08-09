@@ -45,6 +45,7 @@ def main():
     print(*[(key, i) for key, i in individ.items()], sep='\n')
     groups = print_group(individ)
     print(groups)
+    print(table_settings.GROUPS_LIST)
 
 
 
