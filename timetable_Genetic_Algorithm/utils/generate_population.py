@@ -54,9 +54,9 @@ def generate_individ(table_settings: AlgorithmSettings):
                 trust_mixed = RandomizerGenerationIncluded.get_true_list_audience_mix(trust_list, main_tuple,
                                                                                       audience_tuple[audience][0],
                                                                                       table_settings)
-                print(trust_mixed)
-                print(*[main_tuple[i] for i in trust_mixed])
-                p = 1
+                #print(trust_mixed)
+                #print(*[main_tuple[i] for i in trust_mixed])
+                #p = 1
         pop[timeline] = tmp
         if cur.included_list_main_tuple.__len__() == 0:
             break
@@ -64,7 +64,7 @@ def generate_individ(table_settings: AlgorithmSettings):
         # cur.dropIncludedMainTuple()
         # print(timeline % 14)
         # print(delll)
-    print(*[(key, i) for key, i in pop.items()], sep='\n')
-    print(cur.included_list_main_tuple)
+    #print(*[(key, i) for key, i in pop.items()], sep='\n')
+    #print(cur.included_list_main_tuple)
 
     return pop
