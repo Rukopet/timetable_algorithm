@@ -61,9 +61,9 @@ class AlgorithmSettings:
 
     def __init__(self, data_front: DataFromFront):
         self.data_from_front = data_front
-        self._validationSetMainData(data_front)
+        self._validation_set_main_data(data_front)
 
-    def _validationSetMainData(self, data_front: DataFromFront):
+    def _validation_set_main_data(self, data_front: DataFromFront):
         try:
             if list(data_front.__dict__.values()).count(None) != 0:
                 err_msg = ""
@@ -95,13 +95,13 @@ class AlgorithmSettings:
             self.__gen_main_data_and_validate(data_front)
             self.MAX_DAYS_FROM_JSON = self.data_from_front.groupsJSON.__valueJSON__.get("max_days", 5)
             if self.MAX_DAYS_FROM_JSON == 6:
-                self.IS_GROUP_STUDY_SATURDAY = self.__gen_IS_GROUP_STUDY_SATURDAY()
+                self.IS_GROUP_STUDY_SATURDAY = self.__gen_is_group_study_saturday()
             else:
                 self.bool_SCHOOL_STUDY_SATURDAY = False
 
             if self.data_from_front.groupsJSON.__valueJSON__.get("second_shift", False):
                 self.bool_SCHOOL_SECOND_SHIFT = True
-                self.IS_GROUP_STUDY_IN_SECOND_SHIFT = self.__gen_IS_GROUP_STUDY_IN_SECOND_SHIFT()
+                self.IS_GROUP_STUDY_IN_SECOND_SHIFT = self.__gen_is_group_study_in_second_shift()
 
         except Exception as e:
             raise e
@@ -116,14 +116,14 @@ class AlgorithmSettings:
     def __gen_pedagogs_list_from_df(df: pd.DataFrame) -> list:
         return df["ped_name"].unique()
 
-    def __gen_IS_GROUP_STUDY_SATURDAY(self) -> dict:
+    def __gen_is_group_study_saturday(self) -> dict:
         df = self.data_from_front.groupsJSON.valueDF
         p = df.loc[(df["number"] == 1)]["saturday_not_study"].values[0]
         print(p)
         return {group: True if df.loc[(df["number"] == group[0])]["saturday_not_study"].values[0] else False
                 for group in self.GROUPS_LIST}
 
-    def __gen_IS_GROUP_STUDY_IN_SECOND_SHIFT(self) -> dict:
+    def __gen_is_group_study_in_second_shift(self) -> dict:
         df = self.data_from_front.groupsJSON.valueDF
         return {group: df[(df["number"] == group[0])]["second_shift"].values[0]
                 for group in self.GROUPS_LIST}
@@ -163,7 +163,7 @@ class AlgorithmSettings:
         #
         # pass
 
-    def getAudienceForGeneration(self):
+    def get_audience_for_generation(self):
         df = self.data_from_front.audiencesJSON.valueDF
         # check value of link_flag if != 0 ret tuple
         # return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
@@ -172,7 +172,7 @@ class AlgorithmSettings:
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 
     @staticmethod
-    def __validateMainData(main_data: dict) -> None:
+    def __validate_main_data(main_data: dict) -> None:
         for key, value in main_data.items():
             for disc, val in value.items():
                 if val["load"] is None:
@@ -220,23 +220,23 @@ class AlgorithmSettings:
                 [AlgorithmSettings.__fill_main_data_load_for_group(self.main_data, key, row[0], row[1],
                                                                    self.__pedagogs_load, self.OTHER_DATA)
                  for row in zip(groupDF['discipline'], groupDF['load'])]
-            AlgorithmSettings.__validateMainData(self.main_data)
+            AlgorithmSettings.__validate_main_data(self.main_data)
         except Exception as e:
             raise e
 
-    def getPedagogName(self, group: tuple, discipline: str):
+    def get_pedagog_name(self, group: tuple, discipline: str):
         if group not in self.GROUPS_LIST:
             return None
         ret = self.main_data.get(group).get(discipline)
         return None if ret is None else ret["pedagog"]
 
-    def getPedagogLoad(self, group: tuple, discipline: str):
+    def get_pedagog_load(self, group: tuple, discipline: str):
         if group not in self.GROUPS_LIST:
             return None
         ret = self.main_data.get(group).get(discipline)
         return None if ret is None else ret["load"]
 
-    def getPedagogNameAndLoad(self, group: tuple, discipline: str):
+    def get_pedagog_name_and_load(self, group: tuple, discipline: str):
         """
         if main_data have needed group and discipline:
         ret == tuple[2] ==> ret[0] == dep_name, ret[1] == load value
@@ -249,5 +249,5 @@ class AlgorithmSettings:
         ret = self.main_data.get(group).get(discipline)
         return None if ret is None else ret["pedagog"], ret["load"]
 
-    def getGroupData(self, group: tuple):
+    def get_group_data(self, group: tuple):
         return self.main_data.get(group)

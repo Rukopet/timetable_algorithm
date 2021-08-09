@@ -60,5 +60,5 @@ class GeneratorLessons:
                        settings.TIME_FIRST_LESSON_SECOND_SHIFT
                        if df.loc[df["number"] == group[0]]["second_shift_study"].values[0] else 0])
                 for group in settings.GROUPS_LIST
-                for key, value in settings.getGroupData(group).items()
+                for key, value in settings.get_group_data(group).items()
                 for _ in range(value["load"])]
