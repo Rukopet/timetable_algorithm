@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 
-
+from timetable_Genetic_Algorithm.utils.GeneratorLessons import Individ
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
@@ -41,6 +41,8 @@ def main():
 
     table_settings = AlgorithmSettings(front_data)
     individ = generate_individ(table_settings)
+    pop = Individ(individ, table_settings)
+    pop.into_excel_file()
     #print(table_settings.AUDIENCE_PARAMS)
     print(*[(key, i) for key, i in individ.items()], sep='\n')
     groups = print_group(individ)
