@@ -51,26 +51,47 @@ class Individ:
         if u have x and y take dict from self.settings.GROUPS_LIST nad coordinates
         """
 
-        def __init__(self, settings: AlgorithmSettings, groups_dict_with_xy: dict = None, x: int = None, y: int = None):
+        def __init__(self, settings: AlgorithmSettings, row_begin: int, row_end: int, column_begin: int):
             self.settings = settings
-            self.groups_dict_with_xy = groups_dict_with_xy
-            if x and y:
-                self.__take_coordinates(x, y)
-                self.max_row = self.settings.AMOUNT_TIMELINES_IN_DAY + y
+            self.row_begin = row_begin
+            self.row_end = row_end
+            self.columns_begin = column_begin
+            self.group_lesson = {}
 
-        def __take_coordinates(self, x: int, y: int):
-            self.groups_dict_with_xy = {
-                group: [x, y_tmp]
-                for group, y_tmp in zip(self.settings.GROUPS_LIST,
-                                        range(y + 1, len(self.settings.GROUPS_LIST) + 1))
-            }
+        def adding_lesson_to_group(self, timeline_begin: int, timeline_end: int, dict_lessons: dict):
+            for timeline in range(timeline_begin, timeline_end):
+                timeline_lessons = dict_lessons.get(timeline)
+                for audience, lesson in timeline_lessons.items():
+                    if lesson is None:
+                        continue
+                    tmp_list = [lesson[i] for i in range(1, len(lesson))].append(audience)
+                    self.group_lesson[lesson[0]] = self.group_lesson.get(lesson[0], [])\
+                        .append(tuple(tmp_list))
 
-        def get_next_group_lesson_coordinates(self, group: tuple) -> tuple:
-            ret = self.groups_dict_with_xy.get(group)
-            value = [ret[0] + 1, ret[1]] if ret[0] < self.max_row else None
-            self.groups_dict_with_xy[group] = value
-            return tuple(ret)
 
+
+
+
+
+
+        def __take_value_from_lesson_tuple(self, lesson: tuple or None):
+            if self.settings.DEBUG == 1:
+                return "-" if lesson is None else f'{}'
+            if lesson
+
+        def print_into_excel_groups_columns(self, ws: Worksheet):
+            for y, group in enumerate(self.settings.GROUPS_LIST):
+                for x in range(self.row_begin + 1, self.row_end + 1):
+                    val =
+                    ws.cell(x, y)
+
+
+    #     """
+    #      util class for Individ
+    #      if u have x and y take dict from self.settings.GROUPS_LIST nad coordinates
+    #     """
+    #
+    #     def __init__(self, settings: AlgorithmSettings, x: int, y: int):
 
 class Lesson:
     """ intersection of main many; timeline unit """
