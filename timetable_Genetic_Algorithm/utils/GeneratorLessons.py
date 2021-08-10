@@ -64,27 +64,21 @@ class Individ:
                 for audience, lesson in timeline_lessons.items():
                     if lesson is None:
                         continue
-                    tmp_list = [lesson[i] for i in range(1, len(lesson))].append(audience)
-                    self.group_lesson[lesson[0]] = self.group_lesson.get(lesson[0], [])\
+                    tmp_list = [lesson[i] for i in range(1, len(lesson))]
+                    tmp_list.append(audience)
+                    self.group_lesson[lesson[0]] = self.group_lesson.get(lesson[0], []) \
                         .append(tuple(tmp_list))
-
-
-
-
-
-
 
         def __take_value_from_lesson_tuple(self, lesson: tuple or None):
             if self.settings.DEBUG == 1:
-                return "-" if lesson is None else f'{}'
-            if lesson
+                return "-" if lesson is None else f''
+            # if lesson
 
         def print_into_excel_groups_columns(self, ws: Worksheet):
             for y, group in enumerate(self.settings.GROUPS_LIST):
                 for x in range(self.row_begin + 1, self.row_end + 1):
-                    val =
+                    # val =
                     ws.cell(x, y)
-
 
     #     """
     #      util class for Individ
@@ -92,6 +86,7 @@ class Individ:
     #     """
     #
     #     def __init__(self, settings: AlgorithmSettings, x: int, y: int):
+
 
 class Lesson:
     """ intersection of main many; timeline unit """
