@@ -43,6 +43,43 @@ discipline.forEach((item, i, discipline) => {
     $('#discipline-teach12').append('<option value="discipline-teach12">' + discipline[i] + '</option>');
 });
 
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc1').append('<option value="auditory-disc1">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc2').append('<option value="auditory-disc2">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc3').append('<option value="auditory-disc3">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc4').append('<option value="auditory-disc4">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc5').append('<option value="auditory-disc5">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc6').append('<option value="auditory-disc6">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc7').append('<option value="auditory-disc7">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc8').append('<option value="auditory-disc8">' + discipline[i] + '</option>');
+});
+
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc9').append('<option value="auditory-disc9">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc10').append('<option value="auditory-disc10">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc11').append('<option value="auditory-disc11">' + discipline[i] + '</option>');
+});
+discipline.forEach((item, i, discipline) => {
+    $('#auditory-disc12').append('<option value="auditory-disc12">' + discipline[i] + '</option>');
+});
 // let classnum = document.getElementsById('classnum.number[i] + classnum.letter[i]');
 // classnum.forEach((item, i, classnum) => {
 //     $('#class-teach1').append('<option value="class-teach1">' + classnum.number[i] + classnum.letter[i] + '</option>');
