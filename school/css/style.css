@@ -204,6 +204,13 @@ li {
     display: none;
 }
 
+.next {
+    width: 75px;
+    background-color: #0fe2ad;
+    border-radius: 5px;
+    margin: 25px;
+}
+
 .discipline-info {
     display: flex;
 }
@@ -229,6 +236,10 @@ li {
     justify-content: space-between;
 }
 
+.pair {
+    display: none;
+}
+
 .school-discipline input {
     margin: 6px 60px;
 }
@@ -236,4 +247,81 @@ li {
 hr {
     max-width: 800px;
     border: 2px solid #0fe2ad;
+}
+
+table,
+th,
+td {
+    margin: 10px 0;
+    border: solid 1px #333;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+.table {
+    margin: 50px;
+}
+
+.table input {
+    width: 50px;
+    text-align: center;
+}
+
+.table-teacher {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.teacher-discipline caption {
+    padding-bottom: 25px;
+}
+
+.auditory-title {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.auditory-title p {
+    width: 210px;
+}
+
+.auditory-box {
+    background-color: #e0d9d9;
+}
+
+.auditory-1,
+.auditory-2,
+.auditory-3,
+.auditory-4,
+.auditory-5,
+.auditory-6,
+.auditory-7,
+.auditory-8,
+.auditory-9,
+.auditory-10,
+.auditory-11,
+.auditory-12 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.auditory-btn {
+    width: 150px;
+    height: 55px;
+    background-color: #0fe2ad;
+    margin: 15px;
+}
+
+.result {
+    width: 150px;
+    height: 55px;
+    background-color: #0fe2ad;
+    margin-left: 715px;
 }
