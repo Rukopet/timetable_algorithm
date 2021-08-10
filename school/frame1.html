@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>School timetable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header__title">
+            <h1>Составление расписания</h1>
+        </div>
+        <div class="container">
+            <div class="header__text">
+                Количество класов школы
+            </div>
+            <div class="header__secondshift">
+                <p class="header__secondshift-title">Отметьте, если есть вторая смена в школе?</p>
+                <p><input type="checkbox" name="second_shift" value="second_shift">Есть вторая смена</p>
+            </div>
+        </div>
+    </header>
+    <section class="parallel">
+        <div class="container">
+            <div class="parallel__days">
+                <p>Укажите количесвто учебных дней в неделю:</p>
+                <div>
+                    <label><input type="radio" id="max_days" name="max_days" value="5_days" checked="checked">5 дней</label>
+                    <label><input type="radio" id="max_days" name="max_days" value="6_days">6 дней</label>
+                </div>
+            </div>
+            <div class="parallel__groups">
+                <p>Отметьте количество классов в параллели?</p>
+                <select class="max_par" id="max_par" name="max_par">
+          <option value="-">-</option>
+          <option value="max_par-1">1 класс в параллели</option>
+          <option value="max_par-2">2 класса в параллели</option>
+          <option value="max_par-3">3 класса в параллели</option>
+        </select>
+                <div class="parallel__groups-sat">
+                    <h2>Отметьте классы, котрые не учатся по субботам</h2>
+                    <div class="max_par-1" id="max_par-1">
+                        <ul>
+
+                            <li class="class1">
+                                <select class="class1_par" id="class1_par" name="class1_par">
+                  <option value="-">-</option>
+                  <option value="class1_par-1">1</option>
+                  <option value="class1_par-2">2</option>
+                  <option value="class1_par-3">3</option>
+                  <option value="class1_par-4">4</option>
+                  <option value="class1_par-5">5</option>
+                </select>
+                                <p>1</p><input class="a" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-2" id="class1_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-23" id="class1_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-3" id="class1_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-4" id="class1_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-24" id="class1_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-34" id="class1_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-5" id="class1_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-25" id="class1_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-35" id="class1_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-45" id="class1_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class2">
+                                <select class="class2_par" id="class2_par" name="class2_par">
+                  <option value="-">-</option>
+                  <option value="class2_par-1">1</option>
+                  <option value="class2_par-2">2</option>
+                  <option value="class2_par-3">3</option>
+                  <option value="class2_par-4">4</option>
+                  <option value="class2_par-5">5</option>
+                </select>
+                                <p>2</p><input type="checkbox" name="second_shift2-a" value="second_shift2-a">
+                                <input class="class2_par-2" id="class2_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-23" id="class2_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-3" id="class2_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-4" id="class2_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-24" id="class2_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-34" id="class2_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-5" id="class2_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-25" id="class2_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-35" id="class2_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-45" id="class2_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class3">
+                                <select class="class3_par" id="class3_par" name="class3_par">
+                  <option value="-">-</option>
+                  <option value="class3_par-1">1</option>
+                  <option value="class3_par-2">2</option>
+                  <option value="class3_par-3">3</option>
+                  <option value="class3_par-4">4</option>
+                  <option value="class3_par-5">5</option>
+                </select>
+                                <p>3</p><input type="checkbox" name="second_shift3-a" value="second_shift3-a">
+                                <input class="class3_par-2" id="class3_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-23" id="class3_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-3" id="class3_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-4" id="class3_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-24" id="class3_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-34" id="class3_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-5" id="class3_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-25" id="class3_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-35" id="class3_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-45" id="class3_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class4">
+                                <select class="class4_par" id="class4_par" name="class4_par">
+                  <option value="-">-</option>
+                  <option value="class4_par-1">1</option>
+                  <option value="class4_par-2">2</option>
+                  <option value="class4_par-3">3</option>
+                  <option value="class4_par-4">4</option>
+                  <option value="class4_par-5">5</option>
+                </select>
+                                <p>4</p><input type="checkbox" name="second_shift4-a" value="second_shift4-a">
+                                <input class="class4_par-2" id="class4_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-23" id="class4_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-3" id="class4_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-4" id="class4_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-24" id="class4_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-34" id="class4_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-5" id="class4_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-25" id="class4_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-35" id="class4_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-45" id="class4_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class5">
+                                <select class="class5_par" id="class5_par" name="class5_par">
+                  <option value="-">-</option>
+                  <option value="class5_par-1">1</option>
+                  <option value="class5_par-2">2</option>
+                  <option value="class5_par-3">3</option>
+                  <option value="class5_par-4">4</option>
+                  <option value="class5_par-5">5</option>
+                </select>
+                                <p>5</p><input type="checkbox" name="second_shift5-a" value="second_shift5-a">
+                                <input class="class5_par-2" id="class5_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-23" id="class5_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-3" id="class5_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-4" id="class5_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-24" id="class5_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-34" id="class5_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-5" id="class5_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-25" id="class5_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-35" id="class5_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-45" id="class5_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class6">
+                                <select class="class6_par" id="class6_par" name="class6_par">
+                  <option value="-">-</option>
+                  <option value="class6_par-1">1</option>
+                  <option value="class6_par-2">2</option>
+                  <option value="class6_par-3">3</option>
+                  <option value="class6_par-4">4</option>
+                  <option value="class6_par-5">5</option>
+                </select>
+                                <p>6</p><input type="checkbox" name="second_shift6-a" value="second_shift6-a">
+                                <input class="class6_par-2" id="class6_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-23" id="class6_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-3" id="class6_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-4" id="class6_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-24" id="class6_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-34" id="class6_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-5" id="class6_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-25" id="class6_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-35" id="class6_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-45" id="class6_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class7">
+                                <select class="class7_par" id="class7_par" name="class7_par">
+                  <option value="-">-</option>
+                  <option value="class7_par-1">1</option>
+                  <option value="class7_par-2">2</option>
+                  <option value="class7_par-3">3</option>
+                  <option value="class7_par-4">4</option>
+                  <option value="class7_par-5">5</option>
+                </select>
+                                <p>7</p><input type="checkbox" name="second_shift7-a" value="second_shift7-a">
+                                <input class="class7_par-2" id="class7_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-23" id="class7_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-3" id="class7_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-4" id="class7_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-24" id="class7_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-34" id="class7_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-5" id="class7_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-25" id="class7_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-35" id="class7_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-45" id="class7_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class8">
+                                <select class="class8_par" id="class8_par" name="class8_par">
+                  <option value="-">-</option>
+                  <option value="class8_par-1">1</option>
+                  <option value="class8_par-2">2</option>
+                  <option value="class8_par-3">3</option>
+                  <option value="class8_par-4">4</option>
+                  <option value="class8_par-5">5</option>
+                </select>
+                                <p>8</p><input type="checkbox" name="second_shift8-a" value="second_shift8-a">
+                                <input class="class8_par-2" id="class8_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-23" id="class8_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-3" id="class8_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-4" id="class8_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-24" id="class8_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-34" id="class8_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-5" id="class8_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-25" id="class8_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-35" id="class8_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-45" id="class8_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class9">
+                                <select class="class9_par" id="class9_par" name="class9_par">
+                  <option value="-">-</option>
+                  <option value="class9_par-1">1</option>
+                  <option value="class9_par-2">2</option>
+                  <option value="class9_par-3">3</option>
+                  <option value="class9_par-4">4</option>
+                  <option value="class9_par-5">5</option>
+                </select>
+                                <p>9</p><input type="checkbox" name="second_shift9-a" value="second_shift9-a">
+                                <input class="class9_par-2" id="class9_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-23" id="class9_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-3" id="class9_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-4" id="class9_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-24" id="class9_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-34" id="class9_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-5" id="class9_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-25" id="class9_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-35" id="class9_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-45" id="class9_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class10">
+                                <select class="class10_par" id="class10_par" name="class10_par">
+                  <option value="-">-</option>
+                  <option value="class10_par-1">1</option>
+                  <option value="class10_par-2">2</option>
+                  <option value="class10_par-3">3</option>
+                  <option value="class10_par-4">4</option>
+                  <option value="class10_par-5">5</option>
+                </select>
+                                <p>10</p><input type="checkbox" name="second_shift10-a" value="second_shift10-a">
+                                <input class="class10_par-2" id="class10_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-23" id="class10_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-3" id="class10_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-4" id="class10_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-24" id="class10_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-34" id="class10_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-5" id="class10_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-25" id="class10_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-35" id="class10_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-45" id="class10_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class11">
+                                <select class="class11_par" id="class11_par" name="class11_par">
+                  <option value="-">-</option>
+                  <option value="class11_par-1">1</option>
+                  <option value="class11_par-2">2</option>
+                  <option value="class11_par-3">3</option>
+                  <option value="class11_par-4">4</option>
+                  <option value="class11_par-5">5</option>
+                </select>
+                                <p>11</p><input type="checkbox" name="second_shift11-a" value="second_shift11-a">
+                                <input class="class11_par-2" id="class11_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-23" id="class11_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-3" id="class11_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-4" id="class11_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-24" id="class11_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-34" id="class11_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-5" id="class11_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-25" id="class11_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-35" id="class11_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-45" id="class11_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="max_par-2" id="max_par-2">
+                        <ul>
+
+                            <li class="class1">
+                                <select class="class1_par" id="class1_par" name="class1_par">
+                  <option value="-">-</option>
+                  <option value="class1_par-1">1</option>
+                  <option value="class1_par-2">2</option>
+                  <option value="class1_par-3">3</option>
+                  <option value="class1_par-4">4</option>
+                  <option value="class1_par-5">5</option>
+                </select>
+                                <p>1</p><input class="a" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-2" id="class1_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-23" id="class1_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-3" id="class1_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-4" id="class1_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-24" id="class1_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-34" id="class1_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-5" id="class1_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-25" id="class1_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-35" id="class1_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class1_par-45" id="class1_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class2">
+                                <select class="class2_par" id="class2_par" name="clas2_par">
+                  <option value="-">-</option>
+                  <option value="class2_par-1">1</option>
+                  <option value="class2_par-2">2</option>
+                  <option value="class2_par-3">3</option>
+                  <option value="class2_par-4">4</option>
+                  <option value="class2_par-5">5</option>
+                </select>
+                                <p>2</p><input type="checkbox" name="second_shift2-a" value="second_shift2-a">
+                                <input class="class2_par-2" id="class2_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-23" id="class2_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-3" id="class2_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-4" id="class2_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-24" id="class2_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-34" id="class2_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-5" id="class2_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-25" id="class2_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-35" id="class2_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class2_par-45" id="class2_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class3">
+                                <select class="class3_par" id="class3_par" name="clas3_par">
+                  <option value="-">-</option>
+                  <option value="class3_par-1">1</option>
+                  <option value="class3_par-2">2</option>
+                  <option value="class3_par-3">3</option>
+                  <option value="class3_par-4">4</option>
+                  <option value="class3_par-5">5</option>
+                </select>
+                                <p>3</p><input type="checkbox" name="second_shift3-a" value="second_shift3-a">
+                                <input class="class3_par-2" id="class3_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-23" id="class3_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-3" id="class3_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-4" id="class3_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-24" id="class3_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-34" id="class3_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-5" id="class3_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-25" id="class3_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-35" id="class3_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class3_par-45" id="class3_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class4">
+                                <select class="class4_par" id="class4_par" name="clas4_par">
+                  <option value="-">-</option>
+                  <option value="class4_par-1">1</option>
+                  <option value="class4_par-2">2</option>
+                  <option value="class4_par-3">3</option>
+                  <option value="class4_par-4">4</option>
+                  <option value="class4_par-5">5</option>
+                </select>
+                                <p>4</p><input type="checkbox" name="second_shift4-a" value="second_shift4-a">
+                                <input class="class4_par-2" id="class4_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-23" id="class4_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-3" id="class4_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-4" id="class4_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-24" id="class4_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-34" id="class4_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-5" id="class4_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-25" id="class4_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-35" id="class4_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class4_par-45" id="class4_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class5">
+                                <select class="class5_par" id="class5_par" name="clas5_par">
+                  <option value="-">-</option>
+                  <option value="class5_par-1">1</option>
+                  <option value="class5_par-2">2</option>
+                  <option value="class5_par-3">3</option>
+                  <option value="class5_par-4">4</option>
+                  <option value="class5_par-5">5</option>
+                </select>
+                                <p>5</p><input type="checkbox" name="second_shift5-a" value="second_shift5-a">
+                                <input class="class5_par-2" id="class5_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-23" id="class5_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-3" id="class5_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-4" id="class5_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-24" id="class5_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-34" id="class5_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-5" id="class5_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-25" id="class5_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-35" id="class5_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class5_par-45" id="class5_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class6">
+                                <select class="class6_par" id="class6_par" name="clas6_par">
+                  <option value="-">-</option>
+                  <option value="class6_par-1">1</option>
+                  <option value="class6_par-2">2</option>
+                  <option value="class6_par-3">3</option>
+                  <option value="class6_par-4">4</option>
+                  <option value="class6_par-5">5</option>
+                </select>
+                                <p>6</p><input type="checkbox" name="second_shift6-a" value="second_shift6-a">
+                                <input class="class6_par-2" id="class6_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-23" id="class6_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-3" id="class6_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-4" id="class6_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-24" id="class6_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-34" id="class6_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-5" id="class6_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-25" id="class6_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-35" id="class6_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class6_par-45" id="class6_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a"> </li>
+                            <li class="class7">
+                                <select class="class7_par" id="class7_par" name="clas7_par">
+                  <option value="-">-</option>
+                  <option value="class7_par-1">1</option>
+                  <option value="class7_par-2">2</option>
+                  <option value="class7_par-3">3</option>
+                  <option value="class7_par-4">4</option>
+                  <option value="class7_par-5">5</option>
+                </select>
+                                <p>7</p><input type="checkbox" name="second_shift7-a" value="second_shift7-a">
+                                <input class="class7_par-2" id="class7_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-23" id="class7_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-3" id="class7_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-4" id="class7_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-24" id="class7_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-34" id="class7_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-5" id="class7_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-25" id="class7_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-35" id="class7_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class7_par-45" id="class7_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class8">
+                                <select class="class8_par" id="class8_par" name="clas8_par">
+                  <option value="-">-</option>
+                  <option value="class8_par-1">1</option>
+                  <option value="class8_par-2">2</option>
+                  <option value="class8_par-3">3</option>
+                  <option value="class8_par-4">4</option>
+                  <option value="class8_par-5">5</option>
+                </select>
+                                <p>8</p><input type="checkbox" name="second_shift8-a" value="second_shift8-a">
+                                <input class="class8_par-2" id="class8_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-23" id="class8_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-3" id="class8_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-4" id="class8_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-24" id="class8_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-34" id="class8_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-5" id="class8_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-25" id="class8_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-35" id="class8_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class8_par-45" id="class8_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class9">
+                                <select class="class9_par" id="class9_par" name="clas9_par">
+                  <option value="-">-</option>
+                  <option value="class9_par-1">1</option>
+                  <option value="class9_par-2">2</option>
+                  <option value="class9_par-3">3</option>
+                  <option value="class9_par-4">4</option>
+                  <option value="class9_par-5">5</option>
+                </select>
+                                <p>9</p><input type="checkbox" name="second_shift9-a" value="second_shift9-a">
+                                <input class="class9_par-2" id="class9_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-23" id="class9_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-3" id="class9_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-4" id="class9_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-24" id="class9_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-34" id="class9_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-5" id="class9_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-25" id="class9_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-35" id="class9_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class9_par-45" id="class9_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class10">
+                                <select class="class10_par" id="class10_par" name="clas10_par">
+                  <option value="-">-</option>
+                  <option value="class10_par-1">1</option>
+                  <option value="class10_par-2">2</option>
+                  <option value="class10_par-3">3</option>
+                  <option value="class10_par-4">4</option>
+                  <option value="class10_par-5">5</option>
+                </select>
+                                <p>10</p><input type="checkbox" name="second_shift10-a" value="second_shift10-a">
+                                <input class="class10_par-2" id="class10_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-23" id="class10_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-3" id="class10_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-4" id="class10_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-24" id="class10_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-34" id="class10_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-5" id="class10_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-25" id="class10_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-35" id="class10_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class10_par-45" id="class10_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <li class="class11">
+                                <select class="class11_par" id="class11_par" name="clas11_par">
+                  <option value="-">-</option>
+                  <option value="class11_par-1">1</option>
+                  <option value="class11_par-2">2</option>
+                  <option value="class11_par-3">3</option>
+                  <option value="class11_par-4">4</option>
+                  <option value="class11_par-5">5</option>
+                </select>
+                                <p>11</p><input type="checkbox" name="second_shift11-a" value="second_shift11-a">
+                                <input class="class11_par-2" id="class11_par-2" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-23" id="class11_par-23" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-3" id="class11_par-3" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-4" id="class11_par-4" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-24" id="class11_par-24" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-34" id="class11_par-34" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-5" id="class11_par-5" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-25" id="class11_par-25" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-35" id="class11_par-35" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="class11_par-45" id="class11_par-45" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                            </li>
+                            <!-- <li class="class1">
+                <p>1</p>
+                <input class="a" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                <input class="b" type="checkbox" name="second_shift1-b" value="second_shift1-b">
+              </li>
+              <li class="class2">
+                <p>2</p>
+                <input type="checkbox" name="second_shift2-a" value="second_shift2-a">
+                <input type="checkbox" name="second_shift2-b" value="second_shift2-b">
+              </li>
+              <li class="class3">
+                <p>3</p>
+                <input type="checkbox" name="second_shift3-a" value="second_shift3-a">
+                <input type="checkbox" name="second_shift3-b" value="second_shift3-b">
+              </li>
+              <li class="class4">
+                <p>4</p>
+                <input type="checkbox" name="second_shift4-a" value="second_shift4-a">
+                <input type="checkbox" name="second_shift4-b" value="second_shift4-b">
+              </li>
+              <li class="class5">
+                <p>5</p>
+                <input type="checkbox" name="second_shift5-a" value="second_shift5-a">
+                <input type="checkbox" name="second_shift5-b" value="second_shift5-b">
+              </li>
+              <li class="class6">
+                <p>6</p>
+                <input type="checkbox" name="second_shift6-a" value="second_shift6-a">
+                <input type="checkbox" name="second_shift6-b" value="second_shift6-b">
+              </li>
+              <li class="class7">
+                <p>7</p>
+                <input type="checkbox" name="second_shift7-a" value="second_shift7-a">
+                <input type="checkbox" name="second_shift7-b" value="second_shift7-b">
+              </li>
+              <li class="class8">
+                <p>8</p>
+                <input type="checkbox" name="second_shift8-a" value="second_shift8-a">
+                <input type="checkbox" name="second_shift8-b" value="second_shift8-b">
+              </li>
+              <li class="class9">
+                <p>9</p>
+                <input type="checkbox" name="second_shift9-a" value="second_shift9-a">
+                <input type="checkbox" name="second_shift9-b" value="second_shift9-b">
+              </li>
+              <li class="class10">
+                <p>10</p>
+                <input type="checkbox" name="second_shift10-a" value="second_shift10-a">
+                <input type="checkbox" name="second_shift10-b" value="second_shift10-b">
+              </li>
+              <li class="class11">
+                <p>11</p>
+                <input type="checkbox" name="second_shift11-a" value="second_shift11-a">
+                <input type="checkbox" name="second_shift11-b" value="second_shift11-b">
+              </li> -->
+
+                        </ul>
+                    </div>
+
+                    <div class="max_par-3" id="max_par-3">
+                        <ul>
+
+                            <li class="class1">
+                                <p>1</p>
+                                <input class="a" type="checkbox" name="second_shift1-a" value="second_shift1-a">
+                                <input class="b" type="checkbox" name="second_shift1-b" value="second_shift1-b">
+                                <input class="c" type="checkbox" name="second_shift1-c" value="second_shift1-c">
+                            </li>
+                            <li class="class2">
+                                <p>2</p>
+                                <input type="checkbox" name="second_shift2-a" value="second_shift2-a">
+                                <input type="checkbox" name="second_shift2-b" value="second_shift2-b">
+                                <input type="checkbox" name="second_shift2-c" value="second_shift2-c">
+                            </li>
+                            <li class="class3">
+                                <p>3</p>
+                                <input type="checkbox" name="second_shift3-a" value="second_shift3-a">
+                                <input type="checkbox" name="second_shift3-b" value="second_shift3-b">
+                                <input type="checkbox" name="second_shift3-c" value="second_shift3-c">
+                            </li>
+                            <li class="class4">
+                                <p>4</p>
+                                <input type="checkbox" name="second_shift4-a" value="second_shift4-a">
+                                <input type="checkbox" name="second_shift4-b" value="second_shift4-b">
+                                <input type="checkbox" name="second_shift4-c" value="second_shift4-c">
+                            </li>
+                            <li class="class5">
+                                <p>5</p>
+                                <input type="checkbox" name="second_shift5-a" value="second_shift5-a">
+                                <input type="checkbox" name="second_shift5-b" value="second_shift5-b">
+                                <input type="checkbox" name="second_shift5-c" value="second_shift5-c">
+                            </li>
+                            <li class="class6">
+                                <p>6</p>
+                                <input type="checkbox" name="second_shift6-a" value="second_shift6-a">
+                                <input type="checkbox" name="second_shift6-b" value="second_shift6-b">
+                                <input type="checkbox" name="second_shift6-c" value="second_shift6-c">
+                            </li>
+                            <li class="class7">
+                                <p>7</p>
+                                <input type="checkbox" name="second_shift7-a" value="second_shift7-a">
+                                <input type="checkbox" name="second_shift7-b" value="second_shift7-b">
+                                <input type="checkbox" name="second_shift7-c" value="second_shift7-c">
+                            </li>
+                            <li class="class8">
+                                <p>8</p>
+                                <input type="checkbox" name="second_shift8-a" value="second_shift8-a">
+                                <input type="checkbox" name="second_shift8-b" value="second_shift8-b">
+                                <input type="checkbox" name="second_shift8-c" value="second_shift8-c">
+                            </li>
+                            <li class="class9">
+                                <p>9</p>
+                                <input type="checkbox" name="second_shift9-a" value="second_shift9-a">
+                                <input type="checkbox" name="second_shift9-b" value="second_shift9-b">
+                                <input type="checkbox" name="second_shift9-c" value="second_shift9-c">
+                            </li>
+                            <li class="class10">
+                                <p>10</p>
+                                <input type="checkbox" name="second_shift10-a" value="second_shift10-a">
+                                <input type="checkbox" name="second_shift10-b" value="second_shift10-b">
+                                <input type="checkbox" name="second_shift10-c" value="second_shift10-c">
+                            </li>
+                            <li class="class11">
+                                <p>11</p>
+                                <input type="checkbox" name="second_shift11-a" value="second_shift11-a">
+                                <input type="checkbox" name="second_shift11-b" value="second_shift11-b">
+                                <input type="checkbox" name="second_shift11-c" value="second_shift11-c">
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
