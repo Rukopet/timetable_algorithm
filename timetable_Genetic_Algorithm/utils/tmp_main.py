@@ -63,6 +63,5 @@ def main():
     print(cur.included_list_main_tuple)
 
 
-
 if __name__ == "__main__":
     main()

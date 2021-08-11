@@ -1,14 +1,16 @@
 import time
 
+a = [1, 2]
+b = (1, 2)
+
 start_time = time.time()
+for _ in range(1000000):
+    if tuple(a) == b:
+        pass
+print("--- %s seconds ---" % (time.time() - start_time))
 
-
-def suuum(a, b): return a + b
-
-
-test = {1: None, 3: None}
-# for _ in range(1000000):
-[suuum(i, i + 1) for i in range(10000000)]
-# for i in range(10000000):
-#     suuum(i, i + 1)
+start_time = time.time()
+for _ in range(1000000):
+    if a == list(b):
+        pass
 print("--- %s seconds ---" % (time.time() - start_time))
