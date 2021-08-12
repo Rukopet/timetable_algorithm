@@ -21,7 +21,7 @@ class Individ:
         self.dict_individ = dict_ind
         self.settings = settings
 
-    def into_excel_file(self, path: str = "", file_name: str = "default.xls"):
+    def into_excel_file(self, path: str = "", file_name: str = "default.xlsx"):
         wb = openpyxl.Workbook()
         ws = wb.active
 
