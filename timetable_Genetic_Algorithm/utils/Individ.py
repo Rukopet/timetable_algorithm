@@ -71,6 +71,8 @@ class Individ:
         def __take_value_from_lesson_tuple(self, lesson: tuple or None):
             if self.settings.DEBUG == 1:
                 return "-" if lesson is None else f''
+            elif self.settings.DEBUG == 0:
+                return "-" if lesson is None else f''
             # if lesson
 
         def print_into_excel_groups_columns(self, ws: Worksheet):
