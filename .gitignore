@@ -132,4 +132,3 @@ dmypy.json
 .deps/**
 .deps/*/*
 .deps
-/timetable_Genetic_Algorithm/

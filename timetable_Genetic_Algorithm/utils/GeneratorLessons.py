@@ -1,13 +1,5 @@
-import pandas as pd
-import openpyxl
-from openpyxl.worksheet.worksheet import Worksheet
-
 from timetable_Genetic_Algorithm.utils.Individ import util_diff_tuples
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
-from timetable_Genetic_Algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
-
-
-
 
 
 class Lesson:

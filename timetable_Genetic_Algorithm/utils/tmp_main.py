@@ -43,7 +43,6 @@ def main():
     individ = generate_individ(table_settings)
     pop = Individ(individ, table_settings)
     pop.into_excel_file()
-    #print(table_settings.AUDIENCE_PARAMS)
     print(*[(key, i) for key, i in individ.items()], sep='\n')
     groups = print_group(individ)
     print(groups)
