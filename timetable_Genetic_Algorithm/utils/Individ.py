@@ -26,12 +26,10 @@ class Individ:
         ws = wb.active
 
         lessons_in_day = self.settings.AMOUNT_TIMELINES_IN_DAY
+        Individ.__print_markdown_into_excel(ws)
 
-        ws.cell(1, 1).value = "Дни недели"
-        ws.cell(2, 1).value = "Классы"
-        ws.cell(2, 2).value = "Классы и предметы"
+        ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=2+self.settings.GROUPS_LIST.__len__())
 
-        ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=35)
         print_groups_in_excel(self.settings.GROUPS_LIST, 2, 2, ws)
         for i in range(6 if self.settings.bool_SCHOOL_STUDY_SATURDAY else 5):
             day = DAYS_OF_WEEK_RUSSIAN[i]
@@ -43,6 +41,12 @@ class Individ:
             for index_y, (k, val) in enumerate(value.items()):
                 y = index_y + 2
         wb.save(path + file_name)
+
+    @staticmethod
+    def __print_markdown_into_excel(ws: Worksheet) -> None:
+        ws.cell(1, 1).value = "Дни недели"
+        ws.cell(2, 1).value = "Классы"
+        ws.cell(1, 2).value = "Классы и предметы"
 
     class MarkdownGroupsInExcel:
         """
@@ -70,6 +74,8 @@ class Individ:
 
         def __take_value_from_lesson_tuple(self, lesson: tuple or None):
             if self.settings.DEBUG == 1:
+                return "-" if lesson is None else f''
+            elif self.settings.DEBUG == 0:
                 return "-" if lesson is None else f''
             # if lesson
 
