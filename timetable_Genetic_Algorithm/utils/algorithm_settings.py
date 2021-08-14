@@ -14,6 +14,7 @@ class AlgorithmSettings:
     """
     GROUPS_LIST = ("num", "letter") ==> (1, "А")
     """
+
     GROUPS_LIST = []
 
     # [["num", "letter"]]
@@ -119,7 +120,6 @@ class AlgorithmSettings:
     def __gen_is_group_study_saturday(self) -> dict:
         df = self.data_from_front.groupsJSON.valueDF
         p = df.loc[(df["number"] == 1)]["saturday_not_study"].values[0]
-        #print(p)
         return {group: True if df.loc[(df["number"] == group[0])]["saturday_not_study"].values[0] else False
                 for group in self.GROUPS_LIST}
 
