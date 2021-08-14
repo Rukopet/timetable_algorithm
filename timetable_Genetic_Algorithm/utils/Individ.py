@@ -49,23 +49,23 @@ class Individ:
         dict_of_generators = self.__get_dict_of_generators()
 
         print_groups_in_excel(self.settings.GROUPS_LIST, 2, 2, ws)
-        for key, value in self.dict_individ.items():
-            whole_groups = deepcopy(self.settings.GROUPS_LIST)
+        for time in range(self.settings.AMOUNT_TIMELINES_IN_DAY * 6 if self.settings.bool_SCHOOL_STUDY_SATURDAY else 5):
+            value = self.dict_individ.get(time)
+            # whole_groups = deepcopy(self.settings.GROUPS_LIST)
+            whole_groups = []
             output = {}
             for k, val in value.items():
-                try:
-                    whole_groups.remove(val[0])
-                except ValueError:
-                    logging.debug(f"in excel print {val[0]}")
-                except Exception as e:
-                    logging.debug(f"in excel print {val[0]}")
+                if not val:
+                    continue
                 output[val[0]] = self.__get_str_from_tuple(val, output.get(val[0]))
-            Individ.__print_out(output, whole_groups, ws, dict_of_generators)
+                whole_groups.append(val[0])
+            not_in_timetable = [group for group in self.settings.GROUPS_LIST if group not in whole_groups]
+            Individ.__print_out(output, not_in_timetable, ws, dict_of_generators)
         wb.save(path + file_name)
 
     def __get_str_from_tuple(self, lesson_tuple: tuple, current_value: Optional[str]) -> str:
         if self.settings.DEBUG == 0:
-            return f'{current_value}\n{lesson_tuple[2]}' if current_value else lesson_tuple[2]
+            return f'{current_value}\n{lesson_tuple[1]}' if current_value else lesson_tuple[1]
         elif self.settings.DEBUG == 1:
             return current_value + ' ' + ', '.join(lesson_tuple) if current_value else ', '.join(lesson_tuple)
 
@@ -115,10 +115,11 @@ class Individ:
         if not axis:
             try:
                 index = self.settings.GROUPS_LIST.index(tuple(*args))
-                return 2, 2 + self.moderation_amount_blank_rows_between_day_of_week + index
+                return 3, 2 + self.moderation_amount_blank_rows_between_day_of_week + index
             except Exception as e:
                 logging.debug(f"need check group {args}", exc_info=e)
                 return 0, 0
+        #     TODO else need fix
         else:
             try:
                 index = self.settings.GROUPS_LIST.index(args)
@@ -135,6 +136,6 @@ class Individ:
         begin_row = args[0]
         for row in range(args[0], self.moderation_absolute_maximum_rows):
             yield row + blank_val, args[1]
-            if (row - begin_row) % self.settings.AMOUNT_TIMELINES_IN_DAY == 0\
-                    and self.moderation_amount_blank_rows_between_day_of_week > 0:
-                blank_val += 1
+            # if (row - begin_row) % self.settings.AMOUNT_TIMELINES_IN_DAY == 0\
+            #         and self.moderation_amount_blank_rows_between_day_of_week > 0:
+            #     blank_val += 1
