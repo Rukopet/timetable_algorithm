@@ -1,11 +1,12 @@
-from typing import List, Generator, Tuple, Dict
+from typing import List, Generator, Tuple, Dict, Optional
+from timetable_Genetic_Algorithm.utils.our_typing import Group
 
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 
 import openpyxl
 from openpyxl.worksheet.worksheet import Worksheet
 from timetable_Genetic_Algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
-from timetable_Genetic_Algorithm.utils.our_typing import Group
+from copy import deepcopy
 import logging
 
 
@@ -45,14 +46,41 @@ class Individ:
         key -> tuple(group): value -> generator(tuple(x, y))
         u can call next for use this generators
         """
-        # dict_of_generators =
+        dict_of_generators = self.__get_dict_of_generators()
 
         print_groups_in_excel(self.settings.GROUPS_LIST, 2, 2, ws)
-        for index_x, (key, value) in enumerate(self.dict_individ.items()):
-            x = index_x + 3
-            for index_y, (k, val) in enumerate(value.items()):
-                y = index_y + 2
+        for key, value in self.dict_individ.items():
+            whole_groups = deepcopy(self.settings.GROUPS_LIST)
+            output = {}
+            for k, val in value.items():
+                try:
+                    whole_groups.remove(val[0])
+                except ValueError:
+                    logging.debug(f"in excel print {val[0]}")
+                except Exception as e:
+                    logging.debug(f"in excel print {val[0]}")
+                output[val[0]] = self.__get_str_from_tuple(val, output.get(val[0]))
+            Individ.__print_out(output, whole_groups, ws, dict_of_generators)
         wb.save(path + file_name)
+
+    def __get_str_from_tuple(self, lesson_tuple: tuple, current_value: Optional[str]) -> str:
+        if self.settings.DEBUG == 0:
+            return f'{current_value}\n{lesson_tuple[2]}' if current_value else lesson_tuple[2]
+        elif self.settings.DEBUG == 1:
+            return current_value + ' ' + ', '.join(lesson_tuple) if current_value else ', '.join(lesson_tuple)
+
+    @staticmethod
+    def __print_out(out_dict: Dict[Group, str], groups: List[Group], ws: Worksheet,
+                    generator_dict: Dict[Group, Generator[Tuple[int, int], None, None]]) -> None:
+        for key, value in out_dict.items():
+            current_gen = generator_dict.get(key)
+            x, y = next(current_gen)
+            ws.cell(x, y).value = value
+        for empty_group in groups:
+            current_gen = generator_dict.get(empty_group)
+            x, y = next(current_gen)
+            ws.cell(x, y).value = "--"
+
 
     @staticmethod
     def __print_markdown_into_excel(ws: Worksheet) -> None:
@@ -75,8 +103,9 @@ class Individ:
 
     def __get_dict_of_generators(self) -> Dict[Group, Generator[Tuple[int, int], None, None]]:
         """ gen dict generators for useful getting next groups coordinate in excel table """
+
         return {
-            group: self.__get_generator_for_group(self.__get_group_first_coordinates(group))
+            group: self.__get_generator_for_group(*self.__get_group_first_coordinates(group))
             for group in self.settings.GROUPS_LIST
         }
 
@@ -85,7 +114,7 @@ class Individ:
 
         if not axis:
             try:
-                index = self.settings.GROUPS_LIST.index(args)
+                index = self.settings.GROUPS_LIST.index(tuple(*args))
                 return 2, 2 + self.moderation_amount_blank_rows_between_day_of_week + index
             except Exception as e:
                 logging.debug(f"need check group {args}", exc_info=e)
@@ -98,44 +127,14 @@ class Individ:
                 logging.debug(f"need check group in 2 {args}", exc_info=e)
                 return 0, 0
 
-    def __get_generator_for_group(self, *args: [int, int],
+    # TODO axis not usable
+    # TODO fix Generator annotations
+    def __get_generator_for_group(self, *args: int,
                                   axis: bool = False) -> Generator[Tuple[int, int], None, None]:
+        blank_val = 0
+        begin_row = args[0]
         for row in range(args[0], self.moderation_absolute_maximum_rows):
-            yield row, args[1]
-
-    class MarkdownGroupsInExcel:
-        """
-        util class for Individ
-        if u have x and y take dict from self.settings.GROUPS_LIST nad coordinates
-        """
-
-        def __init__(self, settings: AlgorithmSettings, row_begin: int, row_end: int, column_begin: int):
-            self.settings = settings
-            self.row_begin = row_begin
-            self.row_end = row_end
-            self.columns_begin = column_begin
-            self.group_lesson = {}
-
-        def adding_lesson_to_group(self, timeline_begin: int, timeline_end: int, dict_lessons: dict):
-            for timeline in range(timeline_begin, timeline_end):
-                timeline_lessons = dict_lessons.get(timeline)
-                for audience, lesson in timeline_lessons.items():
-                    if lesson is None:
-                        continue
-                    tmp_list = [lesson[i] for i in range(1, len(lesson))]
-                    tmp_list.append(audience)
-                    self.group_lesson[lesson[0]] = self.group_lesson.get(lesson[0], []) \
-                        .append(tuple(tmp_list))
-
-        def __take_value_from_lesson_tuple(self, lesson: tuple or None):
-            if self.settings.DEBUG == 1:
-                return "-" if lesson is None else f''
-            elif self.settings.DEBUG == 0:
-                return "-" if lesson is None else f''
-            # if lesson
-
-        def print_into_excel_groups_columns(self, ws: Worksheet):
-            for y, group in enumerate(self.settings.GROUPS_LIST):
-                for x in range(self.row_begin + 1, self.row_end + 1):
-                    # val =
-                    ws.cell(x, y)
+            yield row + blank_val, args[1]
+            if (row - begin_row) % self.settings.AMOUNT_TIMELINES_IN_DAY == 0\
+                    and self.moderation_amount_blank_rows_between_day_of_week > 0:
+                blank_val += 1
