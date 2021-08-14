@@ -30,14 +30,15 @@ def generate_individ(table_settings: AlgorithmSettings):
             trust_list = cur.get_true_list_time_line_search(main_tuple, timeline,
                                                             table_settings.AMOUNT_TIMELINES_IN_DAY)
             delll = trust_list
+
             """
             if main -> audience -> 1 if 0 ->
             includetrust
             elif auidinect -> 1 if 1 -> main_tuple[index][1] pizdushanya fucnya True -> 
-            
             elif auidinect -> 1 if 2 -> found num letter -> checkin maintuple True | false
             elif auidinect -> 1 if 3 -> 
             """
+
             if audience_tuple[audience][1] == 0:
                 tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
             elif audience_tuple[audience][1] == 1:
@@ -66,5 +67,6 @@ def generate_individ(table_settings: AlgorithmSettings):
         # print(delll)
     #print(*[(key, i) for key, i in pop.items()], sep='\n')
     #print(cur.included_list_main_tuple)
-
+    j = 0
+    cur.included_list_main_tuple
     return pop

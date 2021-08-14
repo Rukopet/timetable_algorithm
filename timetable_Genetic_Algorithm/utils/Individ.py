@@ -47,11 +47,10 @@ class Individ:
         u can call next for use this generators
         """
         dict_of_generators = self.__get_dict_of_generators()
-
         print_groups_in_excel(self.settings.GROUPS_LIST, 2, 2, ws)
-        for time in range(self.settings.AMOUNT_TIMELINES_IN_DAY * 6 if self.settings.bool_SCHOOL_STUDY_SATURDAY else 5):
+        tmp = 6 if self.settings.bool_SCHOOL_STUDY_SATURDAY else 5
+        for time in range(self.settings.AMOUNT_TIMELINES_IN_DAY * tmp):
             value = self.dict_individ.get(time)
-            # whole_groups = deepcopy(self.settings.GROUPS_LIST)
             whole_groups = []
             output = {}
             for k, val in value.items():
@@ -81,7 +80,6 @@ class Individ:
             x, y = next(current_gen)
             ws.cell(x, y).value = "--"
 
-
     @staticmethod
     def __print_markdown_into_excel(ws: Worksheet) -> None:
         ws.cell(1, 1).value = "Дни недели"
@@ -89,7 +87,7 @@ class Individ:
         ws.cell(1, 2).value = "Классы и предметы"
 
     def __merge_cells(self, ws: Worksheet) -> None:
-        ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=1 + self.settings.GROUPS_LIST.__len__())
+        # ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=1 + self.settings.GROUPS_LIST.__len__())
 
         lessons_in_day = self.settings.AMOUNT_TIMELINES_IN_DAY
 
