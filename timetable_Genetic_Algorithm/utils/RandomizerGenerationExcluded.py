@@ -63,6 +63,12 @@ class RandomizerGenerationIncluded:
         return ret
 
     def get_tuple_included_random_for_main_tuple(self, main_tuple: list) -> tuple:
+        """
+        not use now
+
+        :param main_tuple:
+        :return:
+        """
         ret = choice(self.included_list_main_tuple)
         self.included_list_main_tuple.remove(ret)
         self.__add_group_to_have_lesson_already(main_tuple[ret][0])
@@ -85,6 +91,7 @@ class RandomizerGenerationIncluded:
         if index is None:
             logging.debug(f'group={group}')
             raise ValueError
+        p = self.bool_group_matrix[index]
         return self.bool_group_matrix[index]
 
     def __add_group_to_have_lesson_already(self, group: Group) -> None:
@@ -100,6 +107,7 @@ class RandomizerGenerationIncluded:
             logging.debug(f'group={group}')
             raise ValueError
         self.bool_group_matrix[index] = True
+        p = 1
 
     def get_true_list_time_line_search(self,
                                        main_tuple: list,
@@ -129,7 +137,6 @@ class RandomizerGenerationIncluded:
         return [
             index for index in trust_list
             if checking_discipline(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][1])
-            and not self.__check_is_group_have_lesson_already(main_tuple[index][0])
         ]
 
     def get_true_list_audience_group(self, trust_list: List[int], main_tuple: tuple, audience: int,
@@ -137,7 +144,6 @@ class RandomizerGenerationIncluded:
         return [
             index for index in trust_list
             if checking_group(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][0])
-            and not self.__check_is_group_have_lesson_already(main_tuple[index][0])
         ]
 
     def get_true_list_audience_mix(self, trust_list: List[int], main_tuple: tuple, audience: int,
@@ -146,7 +152,6 @@ class RandomizerGenerationIncluded:
             index for index in trust_list
             if checking_group(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][0])
             and checking_discipline(table_settings.AUDIENCE_PARAMS[audience], main_tuple[index][1])
-            and not self.__check_is_group_have_lesson_already(main_tuple[index][0])
         ]
 
     def get_tuple_include_with_trust(self, trust_list: List[int], main_tuple: list) -> tuple or None:
@@ -154,6 +159,7 @@ class RandomizerGenerationIncluded:
             return None
         ret = choice(trust_list)
         self.included_list_main_tuple.remove(ret)
+        self.__add_group_to_have_lesson_already(main_tuple[ret][0])
         return main_tuple[ret]
 
     def drop_included_main_tuple(self) -> None:

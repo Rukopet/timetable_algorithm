@@ -23,7 +23,6 @@ def generate_individ(table_settings: AlgorithmSettings):
     cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple),
                                        table_settings.GROUPS_LIST)
     for timeline in get_time_line_sequence(table_settings):
-        delll = []
         tmp = {}
         for audience in cur.get_shuffled_audiences():
             if cur.included_list_main_tuple.__len__() == 0:
@@ -56,19 +55,7 @@ def generate_individ(table_settings: AlgorithmSettings):
                                                              table_settings)
             tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
 
-            # print(trust_mixed)
-            # print(*[main_tuple[i] for i in trust_mixed])
-            # p = 1
         pop[timeline] = tmp
-        # if cur.included_list_main_tuple.__len__() == 0:
-        #     break
         cur.drop_included_audience_tuple()
         cur.drop_bool_copy_matrix()
-        # cur.dropIncludedMainTuple()
-        # print(timeline % 14)
-        # print(delll)
-    # print(*[(key, i) for key, i in pop.items()], sep='\n')
-    # print(cur.included_list_main_tuple)
-    j = 0
-    cur.included_list_main_tuple
     return pop
