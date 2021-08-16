@@ -40,35 +40,35 @@ def generate_individ(table_settings: AlgorithmSettings):
             elif auidinect -> 1 if 3 -> 
             """
 
-            if audience_tuple[audience][1] == 0:
-                tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
-            elif audience_tuple[audience][1] == 1:
-                trust_disciplines = RandomizerGenerationIncluded.get_true_list_audience_disc(trust_list, main_tuple,
-                                                                                             audience_tuple[audience][
-                                                                                                 0], table_settings)
+            if audience_tuple[audience][1] == 1:
+                trust_disciplines = cur.get_true_list_audience_disc(trust_list, main_tuple,
+                                                                    audience_tuple[audience][
+                                                                        0], table_settings)
             #     TODO check all trust list on empty value
             elif audience_tuple[audience][1] == 2:
-                trust_group = RandomizerGenerationIncluded.get_true_list_audience_group(trust_list, main_tuple,
-                                                                                        audience_tuple[audience][0],
-                                                                                        table_settings)
+                trust_group = cur.get_true_list_audience_group(trust_list, main_tuple,
+                                                               audience_tuple[audience][0],
+                                                               table_settings)
 
             elif audience_tuple[audience][1] == 3:
-                trust_mixed = RandomizerGenerationIncluded.get_true_list_audience_mix(trust_list, main_tuple,
-                                                                                      audience_tuple[audience][0],
-                                                                                      table_settings)
-                #print(trust_mixed)
-                #print(*[main_tuple[i] for i in trust_mixed])
-                #p = 1
+                trust_mixed = cur.get_true_list_audience_mix(trust_list, main_tuple,
+                                                             audience_tuple[audience][0],
+                                                             table_settings)
+            tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
+
+            # print(trust_mixed)
+            # print(*[main_tuple[i] for i in trust_mixed])
+            # p = 1
         pop[timeline] = tmp
-        if cur.included_list_main_tuple.__len__() == 0:
-            break
+        # if cur.included_list_main_tuple.__len__() == 0:
+        #     break
         cur.drop_included_audience_tuple()
         cur.drop_bool_copy_matrix()
         # cur.dropIncludedMainTuple()
         # print(timeline % 14)
         # print(delll)
-    #print(*[(key, i) for key, i in pop.items()], sep='\n')
-    #print(cur.included_list_main_tuple)
+    # print(*[(key, i) for key, i in pop.items()], sep='\n')
+    # print(cur.included_list_main_tuple)
     j = 0
     cur.included_list_main_tuple
     return pop

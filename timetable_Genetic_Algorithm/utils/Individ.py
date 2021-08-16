@@ -53,6 +53,7 @@ class Individ:
             value = self.dict_individ.get(time)
             whole_groups = []
             output = {}
+            logging.error(f'time={time}')
             for k, val in value.items():
                 if not val:
                     continue
