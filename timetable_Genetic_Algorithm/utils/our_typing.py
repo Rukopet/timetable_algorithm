@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, List
 
 """
 
@@ -7,6 +7,18 @@ from typing import Tuple
         (1, "А")
         (11, "Г")
         ...
+        
+    Groups this same like group, but many in list
     
 """
 Group = Tuple[int, str]
+Groups = List[Group]
+
+Audience = Tuple[int, int]
+Audiences = List[Audience]
+
+"""
+    
+    alias for list tuples
+
+"""
