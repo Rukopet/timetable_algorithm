@@ -26,3 +26,4 @@ class TestDataFromFront(TestCase):
 
     def test_whole_class(self):
         pass
+
