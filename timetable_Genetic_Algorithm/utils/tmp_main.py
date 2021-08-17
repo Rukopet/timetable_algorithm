@@ -50,6 +50,7 @@ def main():
     pop2 = Individ(groups, table_settings)
     pop2.into_excel_file(file_name="pop2.xls")
 
+
     #print(groups)
     #print(table_settings.GROUPS_LIST)
     #print(table_settings.GROUPS_RANGE)
