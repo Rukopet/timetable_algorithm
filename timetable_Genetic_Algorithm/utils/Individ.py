@@ -53,21 +53,22 @@ class Individ:
             value = self.dict_individ.get(time)
             whole_groups = []
             output = {}
-            logging.error(f'time={time}')
+            # logging.error(f'time={time}')
             for k, val in value.items():
                 if not val:
                     continue
-                output[val[0]] = self.__get_str_from_tuple(val, output.get(val[0]))
+                output[val[0]] = self.__get_str_from_tuple(val, output.get(val[0]), str(k))
                 whole_groups.append(val[0])
             not_in_timetable = [group for group in self.settings.GROUPS_LIST if group not in whole_groups]
             Individ.__print_out(output, not_in_timetable, ws, dict_of_generators)
         wb.save(path + file_name)
 
-    def __get_str_from_tuple(self, lesson_tuple: tuple, current_value: Optional[str]) -> str:
+    def __get_str_from_tuple(self, lesson_tuple: tuple, current_value: Optional[str], audience_number: str) -> str:
         if self.settings.DEBUG == 0:
             return f'{current_value}\n{lesson_tuple[1]}' if current_value else lesson_tuple[1]
         elif self.settings.DEBUG == 1:
-            return current_value + ' ' + ', '.join(lesson_tuple) if current_value else ', '.join(lesson_tuple)
+            return current_value + audience_number + ' ' + ', '.join(map(str, lesson_tuple))\
+                if current_value else audience_number + ' ' + ', '.join(map(str, lesson_tuple))
 
     @staticmethod
     def __print_out(out_dict: Dict[Group, str], groups: List[Group], ws: Worksheet,
