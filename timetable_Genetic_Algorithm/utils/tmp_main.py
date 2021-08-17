@@ -1,10 +1,11 @@
 import json
 import pandas as pd
 
+from timetable_Genetic_Algorithm.fitness_func.ModuleRegistrationDecorator import ModuleRegistrationDecorator
 from timetable_Genetic_Algorithm.utils.Individ import Individ
+from timetable_Genetic_Algorithm.utils.SingletonBaseClassLock import SingletonBaseClassLock, A
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
-from timetable_Genetic_Algorithm.utils.fitness import Fitness
 from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
 
 
@@ -48,6 +49,7 @@ def main():
     groups = print_group(individ)
     pop2 = Individ(groups, table_settings)
     pop2.into_excel_file(file_name="pop2.xls")
+
     #print(groups)
     #print(table_settings.GROUPS_LIST)
     #print(table_settings.GROUPS_RANGE)
