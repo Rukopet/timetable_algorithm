@@ -4,7 +4,7 @@ from abc import abstractmethod, ABCMeta
 class IModuleForFitnessFunction:
     __metaclass__ = ABCMeta
 
-    def __init__(self, settings:):
+    def __init__(self, settings):
         self.__data_class = None
 
     @property

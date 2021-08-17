@@ -2,16 +2,13 @@ from timetable_Genetic_Algorithm.utils.SingletonBaseClass import SingletonBaseCl
 
 
 class ModuleRegistrationDecorator(metaclass=SingletonBaseClass):
-    def __init__(self):
-        self.__list_names = []
+    __list_of_registered_classes = []
+
+    def __init__(self, class_for_registration, *args, **kwargs):
+        self.__list_of_registered_classes.append(class_for_registration)
 
     def __call__(self, *args, **kwargs):
         print("k")
 
-    def register_module(self, *args, **kwargs):
-        p = 1
-        aasd = 3
-        # self.__list_names.append(cls.__name__)
-
     def get_list_names(self):
-        return self.__list_names
+        return self.__list_of_registered_classes

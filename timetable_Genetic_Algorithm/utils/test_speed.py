@@ -21,4 +21,9 @@ from timetable_Genetic_Algorithm.fitness_func.ModuleRegistrationDecorator import
 class One:
     pass
 
+
+class Two:
+    pass
+
+
 ModuleRegistrationDecorator.get_list_names()
