@@ -2,8 +2,9 @@ import json
 import pandas as pd
 
 from timetable_Genetic_Algorithm.fitness_func.ModuleRegistrationDecorator import ModuleRegistrationDecorator
+from timetable_Genetic_Algorithm.utils.DraftFitness import FitnessSettingData
 from timetable_Genetic_Algorithm.utils.Individ import Individ
-from timetable_Genetic_Algorithm.utils.SingletonBaseClassLock import SingletonBaseClassLock, A
+from timetable_Genetic_Algorithm.utils.SingletonBaseClassLock import SingletonBaseClassLock
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
@@ -32,7 +33,7 @@ def get_data_from_front() -> DataFromFront:
 
 def print_group(individ: dict) -> dict:
     individ_sort = dict(sorted(individ.items()))
-    print(*[(key, i) for key, i in individ_sort.items()], sep='\n')
+    #print(*[(key, i) for key, i in individ_sort.items()], sep='\n')
     #group = {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
     #            for audience in all_audiences}
     return individ_sort
@@ -43,12 +44,12 @@ def main():
 
     table_settings = AlgorithmSettings(front_data)
     individ = generate_individ(table_settings)
-    pop = Individ(individ, table_settings)
-    pop.into_excel_file()
+    #pop = Individ(individ, table_settings)
+    #pop.into_excel_file()
     #print(*[(key, i) for key, i in individ.items()], sep='\n')
     groups = print_group(individ)
-    pop2 = Individ(groups, table_settings)
-    pop2.into_excel_file(file_name="pop2.xls")
+    #pop2 = Individ(groups, table_settings)
+    #pop2.into_excel_file(file_name="pop2.xls")
 
 
     #print(groups)
@@ -56,6 +57,17 @@ def main():
     #print(table_settings.GROUPS_RANGE)
     #fit = Fitness(table_settings, groups)
     #print(fit.get_one_group())
+    draft = FitnessSettingData(table_settings, groups)
+    draft.main_loop()
+    print(draft.dict_count_pedago_nosingle)
+    print("Pedagog error (No single):", draft.count_pedag_error_nosingle)
+    print(draft.dict_count_pedago_windows)
+    print("Pedagog error (windows):", draft.count_pedag_error_window)
+    print(draft.dict_count_group_nosingle)
+    print("Group error (No single):", draft.count_group_error_nosingle)
+    print("Group error (first lesson):", draft.count_group_error_first_lesson)
+    print(draft.dict_count_group_windows)
+    print("Group error (windows):", draft.count_group_error_window)
 
 
 if __name__ == "__main__":
