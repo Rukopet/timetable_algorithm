@@ -1,10 +1,7 @@
 from dataclasses import dataclass
-from typing import List, Dict, Type, Union
+from typing import List, Dict
 
-from timetable_Genetic_Algorithm.fitness_func.module_for_fitness_function_base import ModuleForFitnessFunctionBase
-
-Rule = str
-ModuleName = Union[Type[ModuleForFitnessFunctionBase], str]
+from timetable_Genetic_Algorithm.fitness_func.our_typing import Rule, ModuleName
 
 
 @dataclass
@@ -14,6 +11,7 @@ class SharedData:
 
     """
 
+    # Rule = str
     all_rules: List[Rule]
     global_rules_matrix: Dict[Rule, bool]
     current_rules_matrix: Dict[Rule, bool]
@@ -38,14 +36,15 @@ class SharedData:
             raise TypeError(err_msg)
         return self.current_rules_matrix[rule_name]
 
+
 # TODO remove debug code =>>
 # dell = ["asd", "zxc"]
 #
 #
-# class asd(IModuleForFitnessFunction):
+# class asd(ModuleForFitnessFunctionBase):
 #     pass
 #
 #
 # a = SharedData(dell, {i: True for i in dell}, {i: True for i in dell})
-# print(a.is_current_module_need_check("asd"))
+# print(a.is_current_module_need_check(asd))
 # print(a)
