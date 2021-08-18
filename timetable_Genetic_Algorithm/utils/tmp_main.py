@@ -1,10 +1,7 @@
 import json
 import pandas as pd
 
-from timetable_Genetic_Algorithm.fitness_func.ModuleRegistrationDecorator import ModuleRegistrationDecorator
 from timetable_Genetic_Algorithm.utils.DraftFitness import FitnessSettingData
-from timetable_Genetic_Algorithm.utils.Individ import Individ
-from timetable_Genetic_Algorithm.utils.SingletonBaseClassLock import SingletonBaseClassLock
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
