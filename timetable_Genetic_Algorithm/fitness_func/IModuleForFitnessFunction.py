@@ -8,10 +8,6 @@ class IModuleForFitnessFunction:
         self.__data_class = None
 
     @property
-    def is_work(self):
-        pass
-
-    @property
     def settings_fitness(self):
         if self.__data_class is None:
             return None
