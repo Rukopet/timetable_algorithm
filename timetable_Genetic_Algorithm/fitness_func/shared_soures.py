@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import List, Dict, Type, Union
 
-from timetable_Genetic_Algorithm.fitness_func.IModuleForFitnessFunction import IModuleForFitnessFunction
+from timetable_Genetic_Algorithm.fitness_func.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 
 Rule = str
-ModuleName = Union[Type[IModuleForFitnessFunction], str]
+ModuleName = Union[Type[ModuleForFitnessFunctionBase], str]
 
 
 @dataclass

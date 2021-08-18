@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABCMeta
 
 
-class IModuleForFitnessFunction:
+class ModuleForFitnessFunctionBase:
     __metaclass__ = ABCMeta
 
     def __init__(self, settings):
@@ -29,3 +29,7 @@ class IModuleForFitnessFunction:
     @settings_fitness.deleter
     def settings_fitness(self):
         self.__data_class = None
+
+    @abstractmethod
+    def get_fitness_penalty(self):
+        pass
