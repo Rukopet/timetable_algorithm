@@ -13,7 +13,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
     @reg_module.setter
     def reg_module(self, value):
         if issubclass(value, ModuleForFitnessFunctionBase) and value.__name__ not in vars(__builtins__):
-            self.__list_of_registered_modules.append(value.__name__)
+            self.__list_of_registered_modules.append(value)
         else:
             raise TypeError(f"ModuleRegistration cant register this object, |in class reg| {value}")
 
