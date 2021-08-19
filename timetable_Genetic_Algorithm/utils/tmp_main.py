@@ -2,6 +2,7 @@ import json
 import pandas as pd
 
 from timetable_Genetic_Algorithm.utils.DraftFitness import FitnessSettingData
+from timetable_Genetic_Algorithm.utils.Individ import Individ
 from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
 from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
@@ -45,15 +46,11 @@ def main():
     #pop.into_excel_file()
     #print(*[(key, i) for key, i in individ.items()], sep='\n')
     groups = print_group(individ)
-    #pop2 = Individ(groups, table_settings)
-    #pop2.into_excel_file(file_name="pop2.xls")
+    pop2 = Individ(groups, table_settings)
+    pop2.into_excel_file(file_name="pop2.xls")
 
 
     #print(groups)
-    #print(table_settings.GROUPS_LIST)
-    #print(table_settings.GROUPS_RANGE)
-    #fit = Fitness(table_settings, groups)
-    #print(fit.get_one_group())
     draft = FitnessSettingData(table_settings, groups)
     draft.main_loop()
     print(draft.dict_count_pedago_nosingle)
@@ -65,7 +62,10 @@ def main():
     print("Group error (first lesson):", draft.count_group_error_first_lesson)
     print(draft.dict_count_group_windows)
     print("Group error (windows):", draft.count_group_error_window)
-    print(table_settings.AUDIENCE_PARAMS)
+    print(draft.dict_count_disc_name)
+    print("Discipline error (equal names):", draft.count_disc_error_name)
+    print(draft.dict_count_disc_type)
+    print("Discipline error (equal types):", draft.count_disc_error_type)
 
 
 if __name__ == "__main__":

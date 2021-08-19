@@ -1,4 +1,4 @@
-from timetable_Genetic_Algorithm.utils import AlgorithmSettings, MAX_LESSONS_IN_DAY
+from timetable_Genetic_Algorithm.utils import AlgorithmSettings, MAX_LESSONS_IN_DAY, TYPE_DISCIPLINES
 from timetable_Genetic_Algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
 
 NO_SINGLE_PEDAGOG = 1000
@@ -10,6 +10,10 @@ WINDOWS_PEDAGOG = 100
 WINDOWS_GROUP = 1000
 
 FIRST_LESSON_GROUP = 1000
+
+DISCIPLINES_NAME = 100
+
+DISCIPLINES_TYPE = 100
 
 
 class FitnessSettingData:
@@ -28,11 +32,15 @@ class FitnessSettingData:
         self.dict_count_group_nosingle = {}
         self.dict_count_pedago_windows = {}
         self.dict_count_group_windows = {}
+        self.dict_count_disc_name = {}
+        self.dict_count_disc_type = {}
         self.count_pedag_error_nosingle = 0
         self.count_group_error_nosingle = 0
         self.count_group_error_first_lesson = 0
         self.count_pedag_error_window = 0
         self.count_group_error_window = 0
+        self.count_disc_error_name = 0
+        self.count_disc_error_type = 0
 
     def count_pedago_no_single(self, lesson: tuple, timeline: int):
         """
@@ -140,11 +148,59 @@ class FitnessSettingData:
     def count_audience_spec(self, lesson: tuple, timeline: int):
         """
         Check audience specialization (disciplines and groups)
-        :param lesson:
-        :param timeline:
+        TODO: make hard link for group and disciplines with audience (settings)
+        :param lesson: tuple
+        :param timeline: int
         :return: None
         """
         pass
+
+    def count_disc_name(self, lesson: tuple, timeline: int):
+        """
+        Check pair some close disciplines with equal names
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
+        time = timeline % AMOUNT_TIMELINES_IN_DAY
+        day = timeline // AMOUNT_TIMELINES_IN_DAY
+        if lesson:
+            if day not in self.dict_count_disc_name:
+                self.dict_count_disc_name[day] = {}
+            if time == lesson[4] or lesson[0] not in self.dict_count_disc_name[day]:
+                self.dict_count_disc_name[day][lesson[0]] = lesson[1]
+            else:
+                if self.dict_count_disc_name[day][lesson[0]] == lesson[1]:
+                    self.count_disc_error_name += DISCIPLINES_NAME
+                else:
+                    self.dict_count_disc_name[day][lesson[0]] = lesson[1]
+
+    def count_disc_type(self, lesson: tuple, timeline: int):
+        """
+        Check pair some close disciplines with equal types
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
+        time = timeline % AMOUNT_TIMELINES_IN_DAY
+        day = timeline // AMOUNT_TIMELINES_IN_DAY
+        if lesson:
+            if day not in self.dict_count_disc_type:
+                self.dict_count_disc_type[day] = {}
+            if time == lesson[4] or lesson[0] not in self.dict_count_disc_type[day]:
+                if lesson[1] in TYPE_DISCIPLINES:
+                    self.dict_count_disc_type[day][lesson[0]] = TYPE_DISCIPLINES[lesson[1]]
+                else:
+                    self.dict_count_disc_type[day][lesson[0]] = None
+            else:
+                if lesson[1] in TYPE_DISCIPLINES and \
+                        self.dict_count_disc_type[day][lesson[0]] == TYPE_DISCIPLINES[lesson[1]]:
+                    self.count_disc_error_type += DISCIPLINES_TYPE
+                else:
+                    if lesson[1] in TYPE_DISCIPLINES:
+                        self.dict_count_disc_type[day][lesson[0]] = TYPE_DISCIPLINES[lesson[1]]
+                    else:
+                        self.dict_count_disc_type[day][lesson[0]] = None
 
     def main_loop(self):
         """
@@ -159,3 +215,5 @@ class FitnessSettingData:
                 self.count_group_no_single(lesson, timeline)
                 self.count_group_first_lesson(lesson, timeline % AMOUNT_TIMELINES_IN_DAY)
                 self.count_group_windows(lesson, timeline)
+                self.count_disc_name(lesson, timeline)
+                self.count_disc_type(lesson, timeline)
