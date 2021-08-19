@@ -49,14 +49,14 @@
 47,Окружающий мир,"[{'num': 2, 'letter': 'Г'}]",Учитель7
 48,ИЗО,"[{'num': 2, 'letter': 'Г'}]",Учитель7
 49,Технология,"[{'num': 2, 'letter': 'Г'}]",Учитель7
-50,ОРКиСЭ,"[{'num': 2, 'letter': 'В'}]",Учитель8
-51,Русский язык,"[{'num': 2, 'letter': 'В'}]",Учитель8
-52,Литература,"[{'num': 2, 'letter': 'В'}]",Учитель8
-53,Родной язык,"[{'num': 2, 'letter': 'В'}]",Учитель8
-54,Математика,"[{'num': 2, 'letter': 'В'}]",Учитель8
-55,Окружающий мир,"[{'num': 2, 'letter': 'В'}]",Учитель8
-56,ИЗО,"[{'num': 2, 'letter': 'В'}]",Учитель8
-57,Технология,"[{'num': 2, 'letter': 'В'}]",Учитель8
+50,ОРКиСЭ,"[{'num': 2, 'letter': 'Г'}]",Учитель7
+51,Русский язык,"[{'num': 2, 'letter': 'А'}]",Учитель8
+52,Литература,"[{'num': 2, 'letter': 'А'}]",Учитель8
+53,Родной язык,"[{'num': 2, 'letter': 'А'}]",Учитель8
+54,Математика,"[{'num': 2, 'letter': 'А'}]",Учитель8
+55,Окружающий мир,"[{'num': 2, 'letter': 'А'}]",Учитель8
+56,ИЗО,"[{'num': 2, 'letter': 'А'}]",Учитель8
+57,Технология,"[{'num': 2, 'letter': 'А'}]",Учитель8
 58,Русский язык,"[{'num': 3, 'letter': 'А'}]",Учитель9
 59,Литература,"[{'num': 3, 'letter': 'А'}]",Учитель9
 60,Родной язык,"[{'num': 3, 'letter': 'А'}]",Учитель9
@@ -117,22 +117,22 @@
 115,Окружающий мир,"[{'num': 4, 'letter': 'Г'}]",Учитель16
 116,ИЗО,"[{'num': 4, 'letter': 'Г'}]",Учитель16
 117,Технология,"[{'num': 4, 'letter': 'Г'}]",Учитель16
-118,Технология (мал),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Д.В.А
-119,Технология (дев),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Ч.Ж.Г.
+118,Технология (мал),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Д.В.А
+119,Технология (дев),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Ч.Ж.Г.
 120,Технология (мал),"[{'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}]",С.Н.П.
 121,Черчение,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",С.Н.П.
-122,ИЗО,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}]",С.Н.П.
-123,Музыка,"[{'num': 1, 'letter': 'А'}, {'num': 1, 'letter': 'Б'}, {'num': 1, 'letter': 'В'}, {'num': 1, 'letter': 'Г'}, {'num': 4, 'letter': 'А'}, {'num': 4, 'letter': 'Б'}, {'num': 4, 'letter': 'В'}, {'num': 4, 'letter': 'Г'}, {'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}]",Ф.Г.Т
+122,ИЗО,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}]",С.Н.П.
+123,Музыка,"[{'num': 1, 'letter': 'А'}, {'num': 1, 'letter': 'Б'}, {'num': 1, 'letter': 'В'}, {'num': 1, 'letter': 'Г'}, {'num': 4, 'letter': 'А'}, {'num': 4, 'letter': 'Б'}, {'num': 4, 'letter': 'В'}, {'num': 4, 'letter': 'Г'}, {'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Ф.Г.Т
 124,Музыка,"[{'num': 2, 'letter': 'А'}, {'num': 2, 'letter': 'Б'}, {'num': 2, 'letter': 'В'}, {'num': 2, 'letter': 'Г'}, {'num': 3, 'letter': 'А'}, {'num': 3, 'letter': 'Б'}, {'num': 3, 'letter': 'В'}, {'num': 3, 'letter': 'Г'}]",Б.А.Ф.
-125,Физкультура,"[{'num': 2, 'letter': 'А'}, {'num': 2, 'letter': 'Б'}, {'num': 3, 'letter': 'А'}, {'num': 3, 'letter': 'Б'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 8, 'letter': 'А'}]",А.М.Р.
+125,Физкультура,"[{'num': 2, 'letter': 'А'}, {'num': 2, 'letter': 'Б'}, {'num': 3, 'letter': 'А'}, {'num': 3, 'letter': 'Б'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}]",А.М.Р.
 126,Физкультура,"[{'num': 2, 'letter': 'В'}, {'num': 2, 'letter': 'Г'}, {'num': 4, 'letter': 'А'}, {'num': 4, 'letter': 'Б'}, {'num': 4, 'letter': 'В'}, {'num': 4, 'letter': 'Г'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",А.А.В.
 127,Физкультура,"[{'num': 1, 'letter': 'В'}, {'num': 1, 'letter': 'Г'}, {'num': 3, 'letter': 'В'}, {'num': 3, 'letter': 'Г'}, {'num': 7, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}]",К.И.В.
 128,Физкультура (дев),"[{'num': 11, 'letter': 'А'}]",К.А.В.
 129,Физкультура,"[{'num': 1, 'letter': 'А'}, {'num': 1, 'letter': 'Б'}, {'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}]",С.А.А.
 130,ОБЖ,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Б.С.П.
 131,Физкультура (мал),"[{'num': 11, 'letter': 'А'}]",Б.С.П.
-132,Русский язык,"[{'num': 5, 'letter': 'А'}, {'num': 6, 'letter': 'В'}]",Ж.И.А.
-133,Литература,"[{'num': 6, 'letter': 'В'}]",Ж.И.А.
+132,Русский язык,"[{'num': 5, 'letter': 'А'}, {'num': 6, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}]",Ж.И.А.
+133,Литература,"[{'num': 6, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}]",Ж.И.А.
 134,Русский язык,"[{'num': 6, 'letter': 'Г'}, {'num': 9, 'letter': 'В'}]",Т.И.П.
 135,Литература,"[{'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'В'}, {'num': 9, 'letter': 'В'}]",Т.И.П.
 136,Русский язык,"[{'num': 5, 'letter': 'Б'}, {'num': 7, 'letter': 'Б'}, {'num': 9, 'letter': 'А'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",А.Е.В.
@@ -152,37 +152,29 @@
 150,Геометрия,"[{'num': 7, 'letter': 'Б'}, {'num': 11, 'letter': 'А'}]",К.Л.И.
 151,Математика,"[{'num': 5, 'letter': 'Б'}, {'num': 6, 'letter': 'Б'}]",К.А.М.
 152,Математика,"[{'num': 6, 'letter': 'Г'}]",Ф.Н.Г.
-153,Алгебра,"[{'num': 8, 'letter': 'А'}, {'num': 9, 'letter': 'В'}]",Ф.Н.Г.
-154,Геометрия,"[{'num': 8, 'letter': 'А'}, {'num': 9, 'letter': 'В'}]",Ф.Н.Г.
+153,Алгебра,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Г'}, {'num': 9, 'letter': 'В'}]",Ф.Н.Г.
+154,Геометрия,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Г'}, {'num': 9, 'letter': 'В'}]",Ф.Н.Г.
 155,Алгебра,"[{'num': 7, 'letter': 'В'}]",Ф.Л.В.
 156,Геометрия,"[{'num': 7, 'letter': 'В'}]",Ф.Л.В.
 157,Математика,"[{'num': 6, 'letter': 'А'}]",Щ.А.В.
 158,Математика,"[{'num': 5, 'letter': 'А'}, {'num': 6, 'letter': 'В'}]",Щ.С.И.
 159,Алгебра,"[{'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Щ.С.И.
 160,Геометрия,"[{'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Щ.С.И.
-161,Информатика (гр1),"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",И.А.А.
-162,Информатика (гр2),"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",И.А.А.
-163,Информатика (гр1),"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}]",П.Е.А.
-164,Информатика (гр2),"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}]",П.Е.А.
-165,История,"[{'num': 8, 'letter': 'А'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",П.О.А.
-166,Обществознание,"[{'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 11, 'letter': 'А'}]",П.О.А.
-167,История,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}]",В.Е.А.
-168,Обществознание,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",В.Е.А.
-169,История,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Ш.О.Ю.
-170,Обществознание,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",Ш.О.Ю.
-171,Биология,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Ф.Т.М.
-172,Биология,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",У.А.Х.
-173,Химия,"[{'num': 10, 'letter': 'А'}]",У.А.Х.
-174,Химия,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 11, 'letter': 'А'}]",Ч.И.В.
-175,Физика,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",К.М.В.
-176,Астрономия,"[{'num': 10, 'letter': 'А'}]",К.М.В.
-177,Физика,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",Р.В.П.
-178,География,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",К.Н.О.
-179,География,"[{'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",К.Л.Х.
-180,Иностранный язык (гр1),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}]",A
-181,Иностранный язык (гр2),"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}]",Б
-182,Иностранный язык (гр1),"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",В
-183,Иностранный язык (гр2),"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",Г
-184,Иностранный язык (гр1),"[{'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Д
-185,Иностранный язык,"[{'num': 6, 'letter': 'Г'}]",Д
-186,Иностранный язык (гр2),"[{'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Е
+161,Информатика,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",И.А.А.
+162,Информатика,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}]",П.Е.А.
+163,Информатика,"[{'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Я.Н.М.
+164,История,"[{'num': 7, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",П.О.А.
+165,Обществознание,"[{'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 11, 'letter': 'А'}]",П.О.А.
+166,История,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}]",В.Е.А.
+167,Обществознание,"[{'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",В.Е.А.
+168,История,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Ш.О.Ю.
+169,Обществознание,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",Ш.О.Ю.
+170,Биология,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",Ф.Т.М.
+171,Биология,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",У.А.Х.
+172,Химия,"[{'num': 10, 'letter': 'А'}]",У.А.Х.
+173,Химия,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}, {'num': 11, 'letter': 'А'}]",Ч.И.В.
+174,Физика,"[{'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 10, 'letter': 'А'}, {'num': 11, 'letter': 'А'}]",К.М.В.
+175,Астрономия,"[{'num': 10, 'letter': 'А'}]",К.М.В.
+176,Физика,"[{'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}, {'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",Р.В.П.
+177,География,"[{'num': 5, 'letter': 'А'}, {'num': 5, 'letter': 'Б'}, {'num': 5, 'letter': 'В'}, {'num': 6, 'letter': 'А'}, {'num': 6, 'letter': 'Б'}, {'num': 6, 'letter': 'В'}, {'num': 6, 'letter': 'Г'}, {'num': 7, 'letter': 'А'}, {'num': 7, 'letter': 'Б'}, {'num': 7, 'letter': 'В'}, {'num': 7, 'letter': 'Г'}, {'num': 8, 'letter': 'А'}, {'num': 8, 'letter': 'Б'}, {'num': 8, 'letter': 'В'}]",К.Н.О.
+178,География,"[{'num': 9, 'letter': 'А'}, {'num': 9, 'letter': 'Б'}, {'num': 9, 'letter': 'В'}]",К.Л.Х.

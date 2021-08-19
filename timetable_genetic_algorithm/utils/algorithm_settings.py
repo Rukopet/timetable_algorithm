@@ -1,8 +1,8 @@
 import pandas as pd
 
-from timetable_Genetic_Algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
-from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
-from timetable_Genetic_Algorithm.utils import settings_generations
+from timetable_genetic_algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
+from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
+from timetable_genetic_algorithm.utils import settings_generations
 
 
 class AlgorithmSettings:
