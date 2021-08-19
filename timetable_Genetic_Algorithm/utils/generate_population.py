@@ -1,6 +1,6 @@
-from timetable_genetic_algorithm.utils.GeneratorLessons import GeneratorLessons
-from timetable_genetic_algorithm.utils.RandomizerGenerationExcluded import RandomizerGenerationIncluded
-from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
+from timetable_Genetic_Algorithm.utils.GeneratorLessons import GeneratorLessons
+from timetable_Genetic_Algorithm.utils.RandomizerGenerationExcluded import RandomizerGenerationIncluded
+from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 
 
 def get_time_line_sequence(table_settings: AlgorithmSettings) -> list:

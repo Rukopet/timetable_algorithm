@@ -1,5 +1,5 @@
-from timetable_genetic_algorithm.utils.Individ import util_diff_tuples
-from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
+from timetable_Genetic_Algorithm.utils.Individ import util_diff_tuples
+from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
 
 
 class Lesson:
