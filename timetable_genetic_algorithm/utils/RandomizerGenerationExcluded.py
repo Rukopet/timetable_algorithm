@@ -8,9 +8,9 @@ try:
 except ImportError:
     from typing_extensions import Final
 
-from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
-from timetable_Genetic_Algorithm.utils.constants import MAX_LESSONS_IN_DAY
-from timetable_Genetic_Algorithm.utils.our_typing import Groups, Audiences, Group
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
+from timetable_genetic_algorithm.utils.constants import MAX_LESSONS_IN_DAY
+from timetable_genetic_algorithm.utils.our_typing import Groups, Audiences, Group
 
 
 def checking_discipline(dict_list: list, sought: str) -> bool:

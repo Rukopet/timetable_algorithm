@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Dict
 
-from timetable_Genetic_Algorithm.fitness_func.our_typing import Rule, ModuleName
+from timetable_genetic_algorithm.fitness_utils.our_typing import Rule, ModuleName
 
 
 @dataclass

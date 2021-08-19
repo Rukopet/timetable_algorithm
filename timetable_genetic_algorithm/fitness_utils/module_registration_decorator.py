@@ -1,5 +1,5 @@
-from timetable_Genetic_Algorithm.fitness_func.module_for_fitness_function_base import ModuleForFitnessFunctionBase
-from timetable_Genetic_Algorithm.utils.SingletonBaseClass import SingletonBaseClass
+from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
+from timetable_genetic_algorithm.utils.SingletonBaseClass import SingletonBaseClass
 
 
 class ModuleRegistration(metaclass=SingletonBaseClass):

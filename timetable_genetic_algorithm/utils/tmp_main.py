@@ -1,10 +1,10 @@
 import json
 import pandas as pd
 
-from timetable_Genetic_Algorithm.utils.DraftFitness import FitnessSettingData
-from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
-from timetable_Genetic_Algorithm.utils.custom_settings import DataFromFront
-from timetable_Genetic_Algorithm.utils.generate_population import generate_individ
+from timetable_genetic_algorithm.utils.DraftFitness import FitnessSettingData
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
+from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
+from timetable_genetic_algorithm.utils.generate_population import generate_individ
 
 
 def get_data_from_front() -> DataFromFront:
