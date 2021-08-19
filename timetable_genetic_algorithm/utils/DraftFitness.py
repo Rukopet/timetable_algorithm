@@ -1,5 +1,5 @@
-from timetable_Genetic_Algorithm.utils import AlgorithmSettings, MAX_LESSONS_IN_DAY
-from timetable_Genetic_Algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
+from timetable_genetic_algorithm.utils import AlgorithmSettings, MAX_LESSONS_IN_DAY
+from timetable_genetic_algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
 
 NO_SINGLE_PEDAGOG = 1000
 

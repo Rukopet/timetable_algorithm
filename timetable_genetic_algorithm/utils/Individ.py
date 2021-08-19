@@ -1,11 +1,11 @@
 from typing import List, Generator, Tuple, Dict, Optional
-from timetable_Genetic_Algorithm.utils.our_typing import Group
+from timetable_genetic_algorithm.utils.our_typing import Group
 
-from timetable_Genetic_Algorithm.utils.algorithm_settings import AlgorithmSettings
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 
 import openpyxl
 from openpyxl.worksheet.worksheet import Worksheet
-from timetable_Genetic_Algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
+from timetable_genetic_algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
 from copy import deepcopy
 import logging
 
