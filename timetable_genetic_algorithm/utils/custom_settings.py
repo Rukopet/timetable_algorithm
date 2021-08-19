@@ -9,12 +9,12 @@ class OurJsonClass:
         self.__valueJSON__ = value
         self.valueDF = None
 
-    def intoDataFrame(self):
+    def into_data_frame(self):
         """ change, when data format changes """
         if self.valueDF:
             return self.valueDF
 
-    def setValueDF(self, valueDF):
+    def set_value_df(self, valueDF):
         self.valueDF = valueDF
     #
     # def intoDict(self):
@@ -26,23 +26,23 @@ class IDataFromFront:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def setGroupsJSON(self, JSON):
+    def set_groups_json(self, JSON):
         pass
 
     @abstractmethod
-    def setDisciplinesJSON(self, JSON):
+    def set_disciplines_json(self, JSON):
         pass
 
     @abstractmethod
-    def setLoadPlanJSON(self, JSON):
+    def set_load_plan_json(self, JSON):
         pass
 
     @abstractmethod
-    def setPedagogsJSON(self, JSON):
+    def set_pedagogs_json(self, JSON):
         pass
 
     @abstractmethod
-    def setAudiencesJSON(self, JSON):
+    def set_audiences_json(self, JSON):
         pass
 
 
@@ -56,34 +56,36 @@ class DataFromFront(IDataFromFront):
         self.pedagogsJSON = OurJsonClass(pedagogsJSON)
         self.audiencesJSON = OurJsonClass(audiencesJSON)
 
-    def setGroupsJSON(self, groupsJSON):
+    def set_groups_json(self, groupsJSON):
         self.groupsJSON = OurJsonClass(groupsJSON)
         df = pd.json_normalize(groupsJSON, record_path=['groups'],
                                meta=['second_shift',
                                      'max_days'])
-        self.groupsJSON.setValueDF(df)
+        self.groupsJSON.set_value_df(df)
 
-    def setDisciplinesJSON(self, disciplinesJSON):
+    def set_disciplines_json(self, disciplinesJSON):
         self.disciplinesJSON = OurJsonClass(disciplinesJSON)
         df = pd.DataFrame(data=disciplinesJSON)
-        self.disciplinesJSON.setValueDF(df)
+        self.disciplinesJSON.set_value_df(df)
 
-    def setLoadPlanJSON(self, loadPlanJSON):
+    def set_load_plan_json(self, loadPlanJSON):
         self.loadPlanJSON = OurJsonClass(loadPlanJSON)
         df = pd.json_normalize(loadPlanJSON, record_path=['discipline'],
                                meta=['num',
                                      'letter'])
-        self.loadPlanJSON.setValueDF(df)
+        self.loadPlanJSON.set_value_df(df)
 
-    def setPedagogsJSON(self, pedagogsJSON):
+    def set_pedagogs_json(self, pedagogsJSON):
         self.pedagogsJSON = OurJsonClass(pedagogsJSON)
         df = pd.json_normalize(pedagogsJSON, record_path=['disciplines'],
                                meta=["ped_name"])
-        self.pedagogsJSON.setValueDF(df)
+        self.pedagogsJSON.set_value_df(df)
 
-    def setAudiencesJSON(self, audiencesJSON):
+    def set_audiences_json(self, audiencesJSON):
         self.audiencesJSON = OurJsonClass(audiencesJSON)
-        df = pd.json_normalize(audiencesJSON, record_path=['params'],
-                               meta=["number_audience",
-                                     "link_flags"])
-        self.audiencesJSON.setValueDF(df)
+        # df = pd.json_normalize(audiencesJSON, record_path=['params'],
+        #                        meta=["number_audience",
+        #                              "link_flags"])
+        df = pd.DataFrame(data=audiencesJSON)
+        self.audiencesJSON.set_value_df(df)
+
