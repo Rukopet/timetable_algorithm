@@ -6,7 +6,6 @@ from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettin
 import openpyxl
 from openpyxl.worksheet.worksheet import Worksheet
 from timetable_genetic_algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
-from copy import deepcopy
 import logging
 
 

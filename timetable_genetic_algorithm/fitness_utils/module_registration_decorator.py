@@ -1,3 +1,5 @@
+from typing import Type
+
 from timetable_genetic_algorithm.utils.SingletonBaseClass import SingletonBaseClass
 from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBase, SharedData
 from timetable_genetic_algorithm.utils import AlgorithmSettings
@@ -12,7 +14,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
         return self.__list_of_registered_modules
 
     @reg_module.setter
-    def reg_module(self, value):
+    def reg_module(self, value: Type[ModuleForFitnessFunctionBase]):
         if issubclass(value, ModuleForFitnessFunctionBase) and value.__name__ not in vars(__builtins__):
             self.__list_of_registered_modules.append(value)
         else:
@@ -24,6 +26,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
     @staticmethod
     def get_modules_object_list(settings: AlgorithmSettings, shared_data: SharedData):
         """
+        generate list of instances registered classes
 
         :param settings:
         :param shared_data:
@@ -33,7 +36,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
         return [module(settings, shared_data) for module in ModuleRegistration().reg_module]
 
 
-def module_register(cls):
+def module_register(cls: Type[ModuleForFitnessFunctionBase]):
     """
     Can register only IModuleForFitnessFunction child classes, other undefined
     Use like decorator @
