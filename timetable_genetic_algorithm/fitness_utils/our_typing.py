@@ -10,4 +10,6 @@ Discipline = str
 TypeDiscipline = str
 Pedagog = str
 Rule = str
+
+# don't know work it OR not =)
 ModuleName = Type[ModuleForFitnessFunctionBase] or str
