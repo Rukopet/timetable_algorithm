@@ -5,10 +5,16 @@ classnum = {
     "letter": ["а", "б", "в", "г", "д"]
 }
 
+var groupsArray = []
+
+
+
 $("#class1_par").change(function() {
 
+    console.log("hello 1");
     if ($(this).val() == 'class1_par-1') {
         //выполняем код при выборе "Пункт 2"
+
         var groups = {
             "group1": {
                 "number": 1,
@@ -16,21 +22,32 @@ $("#class1_par").change(function() {
                 "saturday_not_study": Boolean
             }
         }
+
+        console.log("hello 2");
+        groupsArray.push(groups)
+
+        console.log(groupsArray);
+
+
+
+        
     } else {
+
+        console.log("hello 3");
         if ($(this).val() == 'class1_par-2') {
             //выполняем код при выборе "Пункт 2"
-            function groups() {
-                group1: {
-                    "number": 1,
-                    "count": "a",
-                    "saturday_not_study": Boolean
-                }
-                "group2": {
-                    "number": 1,
-                    "count": "б",
-                    "saturday_not_study": Boolean
-                }
-            }
+            // function groups() {
+            //     group1: {
+            //         "number": 1,
+            //         "count": "a",
+            //         "saturday_not_study": Boolean
+            //     }
+            //     "group2": {
+            //         "number": 1,
+            //         "count": "б",
+            //         "saturday_not_study": Boolean
+            //     }
+            // }
 
         }
     }
