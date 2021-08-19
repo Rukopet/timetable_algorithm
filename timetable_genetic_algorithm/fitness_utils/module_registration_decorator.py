@@ -1,5 +1,6 @@
-from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.utils.SingletonBaseClass import SingletonBaseClass
+from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBase, SharedData
+from timetable_genetic_algorithm.utils import AlgorithmSettings
 
 
 class ModuleRegistration(metaclass=SingletonBaseClass):
@@ -19,6 +20,17 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
 
     def unregister(self, value):
         self.__list_of_registered_modules.remove(value)
+
+    @staticmethod
+    def get_modules_object_list(settings: AlgorithmSettings, shared_data: SharedData):
+        """
+
+        :param settings:
+        :param shared_data:
+        :return: list of fitness module instances
+        """
+
+        return [module(settings, shared_data) for module in ModuleRegistration().reg_module]
 
 
 def module_register(cls):
