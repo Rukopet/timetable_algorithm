@@ -5,7 +5,36 @@ classnum = {
     "letter": ["а", "б", "в", "г", "д"]
 }
 
+$("#class1_par").change(function() {
 
+    if ($(this).val() == 'class1_par-1') {
+        //выполняем код при выборе "Пункт 2"
+        var groups = {
+            "group1": {
+                "number": 1,
+                "count": "a",
+                "saturday_not_study": Boolean
+            }
+        }
+    } else {
+        if ($(this).val() == 'class1_par-2') {
+            //выполняем код при выборе "Пункт 2"
+            function groups() {
+                group1: {
+                    "number": 1,
+                    "count": "a",
+                    "saturday_not_study": Boolean
+                }
+                "group2": {
+                    "number": 1,
+                    "count": "б",
+                    "saturday_not_study": Boolean
+                }
+            }
+
+        }
+    }
+});
 discipline.forEach((item, i, discipline) => {
     $('#pair').append('<option value="pair1">' + discipline[i] + '</option>');
 });
