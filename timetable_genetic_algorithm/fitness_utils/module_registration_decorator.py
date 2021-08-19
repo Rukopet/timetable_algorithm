@@ -8,6 +8,7 @@ from timetable_genetic_algorithm.utils import AlgorithmSettings
 class ModuleRegistration(metaclass=SingletonBaseClass):
     def __init__(self):
         self.__list_of_registered_modules = []
+        self.__modules_object_list = []
 
     @property
     def reg_module(self):
@@ -23,17 +24,18 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
     def unregister(self, value):
         self.__list_of_registered_modules.remove(value)
 
-    @staticmethod
-    def get_modules_object_list(settings: AlgorithmSettings, shared_data: SharedData):
+    def generate_modules_object_list(self, settings: AlgorithmSettings, shared_data: SharedData):
         """
         generate list of instances registered classes
 
         :param settings:
         :param shared_data:
-        :return: list of fitness module instances
         """
 
-        return [module(settings, shared_data) for module in ModuleRegistration().reg_module]
+        self.__modules_object_list = [module(settings, shared_data) for module in ModuleRegistration().reg_module]
+
+    def get_modules_object_list(self):
+        return self.__modules_object_list
 
 
 def module_register(cls: Type[ModuleForFitnessFunctionBase]):
