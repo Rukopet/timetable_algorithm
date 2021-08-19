@@ -65,6 +65,7 @@ def main():
     print("Group error (first lesson):", draft.count_group_error_first_lesson)
     print(draft.dict_count_group_windows)
     print("Group error (windows):", draft.count_group_error_window)
+    print(table_settings.AUDIENCE_PARAMS)
 
 
 if __name__ == "__main__":

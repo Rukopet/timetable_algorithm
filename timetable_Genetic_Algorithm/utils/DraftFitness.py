@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 from timetable_Genetic_Algorithm.utils import AlgorithmSettings, MAX_LESSONS_IN_DAY
 from timetable_Genetic_Algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
 
@@ -19,6 +17,7 @@ class FitnessSettingData:
 
     def __init__(self, settings: AlgorithmSettings, individ: dict):
         """
+        init class object function
 
         :type settings: AlgorithmSettings
         :type individ: dict
@@ -36,6 +35,13 @@ class FitnessSettingData:
         self.count_group_error_window = 0
 
     def count_pedago_no_single(self, lesson: tuple, timeline: int):
+        """
+        Pedagogs fitness function for check of single timeline - single pedagog
+
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
         if lesson:
             if timeline in self.dict_count_pedago_nosingle:
                 if lesson[2] in self.dict_count_pedago_nosingle[timeline]:
@@ -47,6 +53,13 @@ class FitnessSettingData:
                 self.dict_count_pedago_nosingle[timeline] = {lesson[2]: 1}
 
     def count_pedago_windows(self, lesson: tuple, timeline: int):
+        """
+        Pedagogs fitness function for check of no windows in each pedagogs schedule
+
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
         day = timeline // AMOUNT_TIMELINES_IN_DAY
         time = timeline % AMOUNT_TIMELINES_IN_DAY
         if lesson:
@@ -63,6 +76,13 @@ class FitnessSettingData:
                 self.dict_count_pedago_windows[day] = {lesson[2]: [time]}
 
     def count_group_windows(self, lesson: tuple, timeline: int):
+        """
+         Groups fitness function for check of no windows in each Group schedule
+
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
         day = timeline // AMOUNT_TIMELINES_IN_DAY
         time = timeline % AMOUNT_TIMELINES_IN_DAY
         if lesson:
@@ -79,6 +99,14 @@ class FitnessSettingData:
                 self.dict_count_group_windows[day] = {lesson[0]: [time]}
 
     def count_group_no_single(self, lesson: tuple, timeline: int):
+        """
+        Groups fitness function for check of single timeline - single Group
+        except discipline with pair (single timeline - two groups)
+        TODO: check pair disciplines!!!
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
         if lesson:
             if timeline in self.dict_count_group_nosingle:
                 if lesson[0] in self.dict_count_group_nosingle[timeline]:
@@ -87,6 +115,7 @@ class FitnessSettingData:
                             lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and\
                             self.dict_count_group_nosingle[timeline][lesson[0]] > 2:
                         self.count_group_error_nosingle += NO_SINGLE_GROUP
+                        # TODO: туть проверить, совпадают ли дисциплины
                     if lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and\
                             self.dict_count_group_nosingle[timeline][lesson[0]] == 2:
                         self.count_group_error_nosingle -= NO_SINGLE_GROUP
@@ -98,11 +127,31 @@ class FitnessSettingData:
                 self.dict_count_group_nosingle[timeline] = {lesson[0]: 1}
 
     def count_group_first_lesson(self, lesson: tuple, timeline: int):
+        """
+         Groups fitness function for check of start and end lessons in each day for each group
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
         if lesson:
             if lesson[4] > timeline or timeline > lesson[4] + MAX_LESSONS_IN_DAY[lesson[0][0]]:
                 self.count_group_error_first_lesson += FIRST_LESSON_GROUP
 
+    def count_audience_spec(self, lesson: tuple, timeline: int):
+        """
+        Check audience specialization (disciplines and groups)
+        :param lesson:
+        :param timeline:
+        :return: None
+        """
+        pass
+
     def main_loop(self):
+        """
+        main loop for each lesson in school schedule
+
+        :return: None
+        """
         for timeline in self.individ.keys():
             for lesson in self.individ[timeline].values():
                 self.count_pedago_no_single(lesson, timeline)
