@@ -34,6 +34,7 @@ class FitnessSettingData:
         self.dict_count_group_windows = {}
         self.dict_count_disc_name = {}
         self.dict_count_disc_type = {}
+
         self.count_pedag_error_nosingle = 0
         self.count_group_error_nosingle = 0
         self.count_group_error_first_lesson = 0
@@ -209,7 +210,7 @@ class FitnessSettingData:
         :return: None
         """
         for timeline in self.individ.keys():
-            for lesson in self.individ[timeline].values():
+            for auditory, lesson in self.individ[timeline].items():
                 self.count_pedago_no_single(lesson, timeline)
                 self.count_pedago_windows(lesson, timeline)
                 self.count_group_no_single(lesson, timeline)

@@ -34,5 +34,5 @@ def module_register(cls):
     if issubclass(cls, ModuleForFitnessFunctionBase) and cls.__name__ not in vars(__builtins__):
         ModuleRegistration().reg_module = cls
     else:
-        raise TypeError(f"ModuleRegistration cant register this object, |in decorator| {cls}")
+        raise TypeError(f"ModuleRegistration cant register this object, |in decorator| {cls.__name__}")
     return cls

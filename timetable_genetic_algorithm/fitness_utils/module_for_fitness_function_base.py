@@ -19,3 +19,7 @@ class ModuleForFitnessFunctionBase:
     @abstractmethod
     def get_module_naming(self):
         pass
+
+    @abstractmethod
+    def change_shared_data(self):
+        pass
