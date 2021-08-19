@@ -23,7 +23,7 @@
             </div>
             <div class="header__secondshift">
                 <p class="header__secondshift-title">Отметьте, если есть вторая смена в школе?</p>
-                <p><input type="checkbox" name="second_shift" value="second_shift">Есть вторая смена</p>
+                <p><input type="checkbox" name="second_shift" id="second_shift">Есть вторая смена</p>
             </div>
         </div>
     </header>
@@ -37,13 +37,13 @@
                 </div>
             </div>
             <div class="parallel__groups">
-                <p>Отметьте количество классов в параллели?</p>
+                <!-- <p>Отметьте количество классов в параллели?</p>
                 <select class="max_par" id="max_par" name="max_par">
           <option value="-">-</option>
           <option value="max_par-1">1 класс в параллели</option>
           <option value="max_par-2">2 класса в параллели</option>
           <option value="max_par-3">3 класса в параллели</option>
-        </select>
+        </select> -->
                 <div class="parallel__groups-sat">
                     <h2>Отметьте классы, котрые не учатся по субботам</h2>
                     <div class="max_par-1" id="max_par-1">
@@ -281,7 +281,7 @@
                         </ul>
                     </div>
 
-                    <div class="max_par-2" id="max_par-2">
+                    <!-- <div class="max_par-2" id="max_par-2">
                         <ul>
 
                             <li class="class1">
@@ -568,7 +568,7 @@
                 <input type="checkbox" name="second_shift11-b" value="second_shift11-b">
               </li> -->
 
-                        </ul>
+                    <!-- </ul>
                     </div>
 
                     <div class="max_par-3" id="max_par-3">
@@ -642,13 +642,14 @@
                             </li>
 
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/discipline-json.js"></script>
     <script src="js/main.js"></script>
 </body>
 
