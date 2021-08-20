@@ -18,7 +18,7 @@ class SharedData:
     # global_rules_matrix: Dict[Rule, bool]
     # current_rules_matrix: Dict[Rule, bool]
 
-    dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
+    # dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
     # dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]]
     # dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]]
     # dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]]

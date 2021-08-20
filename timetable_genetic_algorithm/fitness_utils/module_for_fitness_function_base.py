@@ -9,7 +9,7 @@ class ModuleForFitnessFunctionBase:
         self._settings = settings
 
     @abstractmethod
-    def get_fitness_penalty(self):
+    def get_fitness_penalty(self) -> int:
         pass
 
     @abstractmethod
@@ -17,7 +17,7 @@ class ModuleForFitnessFunctionBase:
         pass
 
     @abstractmethod
-    def get_module_naming(self):
+    def get_module_naming(self) -> str:
         pass
 
     @abstractmethod

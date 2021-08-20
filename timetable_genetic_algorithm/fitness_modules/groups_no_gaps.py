@@ -3,7 +3,7 @@ from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBa
 
 @module_register
 class GroupsNoGaps(ModuleForFitnessFunctionBase):
-    def get_fitness_penalty(self):
+    def get_fitness_penalty(self) -> int:
         """
          Groups fitness function for check of no windows in each Group schedule
 
@@ -11,7 +11,7 @@ class GroupsNoGaps(ModuleForFitnessFunctionBase):
         :param timeline: int
         :return: None
         """
-        print(1)
+        return 1
         # day =  // AMOUNT_TIMELINES_IN_DAY
         # time = timeline % AMOUNT_TIMELINES_IN_DAY
         #
@@ -31,8 +31,9 @@ class GroupsNoGaps(ModuleForFitnessFunctionBase):
     def get_module_description(self):
         pass
 
-    def get_module_naming(self):
-        pass
+    def get_module_naming(self) -> str:
+        return "Отсутстиве окон у групп"
 
     def change_shared_data(self):
         pass
+

@@ -10,7 +10,7 @@ def get_count_generation():
 
 
 def main_loop(table_settings: AlgorithmSettings, population: List[Dict]):
-    tmp_ind = Individ(population[0], table_settings)
+    tmp_ind = Individ(population[0], table_settings, 0)
     for generation in range(get_count_generation()):
         ...
-    fitness_function(tmp_ind)
+    fitness_function(table_settings, tmp_ind)
