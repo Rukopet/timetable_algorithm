@@ -45,6 +45,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/timetable_genetic_algorithm/data_for_test/disciplines.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/timetable_genetic_algorithm/data_for_test/loadPlan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
