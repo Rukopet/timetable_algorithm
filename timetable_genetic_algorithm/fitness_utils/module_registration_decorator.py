@@ -1,7 +1,8 @@
 from typing import Type
 
+from timetable_genetic_algorithm.fitness_utils.shared_soures import SharedData
+from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.utils.SingletonBaseClass import SingletonBaseClass
-from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBase, SharedData
 from timetable_genetic_algorithm.utils import AlgorithmSettings
 
 
@@ -16,7 +17,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
 
     @reg_module.setter
     def reg_module(self, value: Type[ModuleForFitnessFunctionBase]):
-        if issubclass(value, ModuleForFitnessFunctionBase) and value.__name__ not in vars(__builtins__):
+        if issubclass(value, ModuleForFitnessFunctionBase) and value.__name__ not in dir(__builtins__):
             self.__list_of_registered_modules.append(value)
         else:
             raise TypeError(f"ModuleRegistration cant register this object, |in class reg| {value}")
@@ -48,7 +49,7 @@ def module_register(cls: Type[ModuleForFitnessFunctionBase]):
     :raise: TypeError
     """
 
-    if issubclass(cls, ModuleForFitnessFunctionBase) and cls.__name__ not in vars(__builtins__):
+    if issubclass(cls, ModuleForFitnessFunctionBase) and cls.__name__ not in dir(__builtins__):
         ModuleRegistration().reg_module = cls
     else:
         raise TypeError(f"ModuleRegistration cant register this object, |in decorator| {cls.__name__}")

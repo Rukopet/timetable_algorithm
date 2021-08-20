@@ -74,15 +74,14 @@ class FitnessSettingData:
         if lesson:
             if day in self.dict_count_pedago_windows.keys():
                 if lesson[2] in self.dict_count_pedago_windows[day].keys():
-                    if time > self.dict_count_pedago_windows[day][lesson[2]] \
-                            [len(self.dict_count_pedago_windows[day][lesson[2]]) - 1]:
-                        self.count_pedag_error_window += (time - self.dict_count_pedago_windows[day][lesson[2]] \
-                            [len(self.dict_count_pedago_windows[day][lesson[2]]) - 1] - 1) * WINDOWS_PEDAGOG
-                        self.dict_count_pedago_windows[day][lesson[2]].append(time)
+                    if time > self.dict_count_pedago_windows[day][lesson[2]]:
+                        self.count_pedag_error_window += (time - self.dict_count_pedago_windows[day][lesson[2]] - 1)\
+                                                         * WINDOWS_PEDAGOG
+                        self.dict_count_pedago_windows[day][lesson[2]] = time
                 else:
-                    self.dict_count_pedago_windows[day][lesson[2]] = [time]
+                    self.dict_count_pedago_windows[day][lesson[2]] = time
             else:
-                self.dict_count_pedago_windows[day] = {lesson[2]: [time]}
+                self.dict_count_pedago_windows[day] = {lesson[2]: time}
 
     def count_group_windows(self, lesson: tuple, timeline: int):
         """

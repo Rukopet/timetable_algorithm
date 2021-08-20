@@ -5,8 +5,8 @@ class ModuleForFitnessFunctionBase:
     __metaclass__ = ABCMeta
 
     def __init__(self, shared_data, settings):
-        self.__data_class = shared_data
-        self.__settings = settings
+        self._data_class = shared_data
+        self._settings = settings
 
     @abstractmethod
     def get_fitness_penalty(self):
