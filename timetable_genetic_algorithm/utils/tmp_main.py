@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 
+from timetable_genetic_algorithm.main_algorithm.main_loop_algorithm import main_loop
 from timetable_genetic_algorithm.utils.DraftFitness import FitnessSettingData
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
@@ -28,10 +29,10 @@ def get_data_from_front() -> DataFromFront:
     return ret
 
 
-def print_group(individ: dict) -> dict:
+def group_sort(individ: dict) -> dict:
     individ_sort = dict(sorted(individ.items()))
-    #print(*[(key, i) for key, i in individ_sort.items()], sep='\n')
-    #group = {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
+    # print(*[(key, i) for key, i in individ_sort.items()], sep='\n')
+    # group = {audience: audiencesDF[audiencesDF["number_audience"] == audience]["params"].tolist()[0]
     #            for audience in all_audiences}
     return individ_sort
 
@@ -41,21 +42,20 @@ def main():
 
     table_settings = AlgorithmSettings(front_data)
     individ = generate_individ(table_settings)
-    #pop = Individ(individ, table_settings)
-    #pop.into_excel_file()
-    #print(*[(key, i) for key, i in individ.items()], sep='\n')
-    groups = print_group(individ)
-    #pop2 = Individ(groups, table_settings)
-    #pop2.into_excel_file(file_name="pop2.xls")
+    # pop = Individ(individ, table_settings)
+    # pop.into_excel_file()
+    # print(*[(key, i) for key, i in individ.items()], sep='\n')
+    individ = group_sort(individ)
+    # pop2 = Individ(groups, table_settings)
+    # pop2.into_excel_file(file_name="pop2.xls")
 
+    # print(groups)
+    # print(table_settings.GROUPS_LIST)
+    # print(table_settings.GROUPS_RANGE)
+    # fit = Fitness(table_settings, groups)
+    # print(fit.get_one_group())
 
-    #print(groups)
-    #print(table_settings.GROUPS_LIST)
-    #print(table_settings.GROUPS_RANGE)
-    #fit = Fitness(table_settings, groups)
-    #print(fit.get_one_group())
-
-    draft = FitnessSettingData(table_settings, groups)
+    draft = FitnessSettingData(table_settings, individ)
     draft.main_loop()
     print(draft.dict_count_pedago_nosingle)
     print("Pedagog error (No single):", draft.count_pedag_error_nosingle)
@@ -71,6 +71,7 @@ def main():
     print(draft.dict_count_disc_type)
     print("D error (type):", draft.count_disc_error_type)
 
+    main_loop(table_settings, [individ])
 
 
 if __name__ == "__main__":

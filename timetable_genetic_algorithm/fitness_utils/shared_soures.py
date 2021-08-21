@@ -18,7 +18,7 @@ class SharedData:
     # global_rules_matrix: Dict[Rule, bool]
     # current_rules_matrix: Dict[Rule, bool]
 
-    dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
+    # dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
     # dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]]
     # dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]]
     # dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]]
@@ -44,16 +44,3 @@ class SharedData:
             err_msg = f'This class {rule_name}, not registered, in modules decorator'
             raise TypeError(err_msg)
         return self.current_rules_matrix[rule_name]
-
-
-# TODO remove debug code =>>
-# dell = ["asd", "zxc"]
-#
-#
-# class asd(ModuleForFitnessFunctionBase):
-#     pass
-#
-#
-# a = SharedData(dell, {i: True for i in dell}, {i: True for i in dell})
-# print(a.is_current_module_need_check(asd))
-# print(a)

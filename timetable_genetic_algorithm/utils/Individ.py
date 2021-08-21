@@ -29,7 +29,8 @@ class Individ:
 
     moderation_ident_from_left = 0
 
-    def __init__(self, dict_ind: dict, settings: AlgorithmSettings):
+    def __init__(self, dict_ind: dict, settings: AlgorithmSettings, id: int):
+        self.id_individ = id
         self.dict_individ = dict_ind
         self.settings = settings
 
