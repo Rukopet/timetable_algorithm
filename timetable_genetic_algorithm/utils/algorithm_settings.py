@@ -1,8 +1,11 @@
+from typing import Dict
+
 import pandas as pd
 
 from timetable_genetic_algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils import settings_generations
+from timetable_genetic_algorithm.utils.our_typing import Audience, Group
 
 
 class AlgorithmSettings:
@@ -52,6 +55,8 @@ class AlgorithmSettings:
     IS_GROUP_STUDY_IN_SECOND_SHIFT = {}
     bool_SCHOOL_STUDY_SATURDAY = True
     bool_SCHOOL_SECOND_SHIFT = False
+
+    GROUPS_AUDIENCE_LINK: Dict[Group, Audience]
 
     TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
     P_CROSSOVER = settings_generations.P_CROSSOVER
@@ -104,8 +109,16 @@ class AlgorithmSettings:
                 self.bool_SCHOOL_SECOND_SHIFT = True
                 self.IS_GROUP_STUDY_IN_SECOND_SHIFT = self.__gen_is_group_study_in_second_shift()
 
+            self.GROUPS_AUDIENCE_LINK = self.__gen_groups_audience_link(data_front.audiencesJSON.valueDF)
+
         except Exception as e:
             raise e
+
+    def __gen_groups_audience_link(self, df: pd.DataFrame) -> Dict[Group, Audience]:
+        pass
+        # return {
+        #     df[]
+        # }
 
     @staticmethod
     def __gen_group_list_from_df(df: pd.DataFrame) -> list:
@@ -165,9 +178,6 @@ class AlgorithmSettings:
 
     def get_audience_for_generation(self):
         df = self.data_from_front.audiencesJSON.valueDF
-        # check value of link_flag if != 0 ret tuple
-        # return list(map(lambda x: x[0] if x[1] == 0 else tuple(x),
-        #                 df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
         return list(map(lambda x: tuple(x),
                         df[["number_audience", "link_flags"]].drop_duplicates().values.tolist()))
 

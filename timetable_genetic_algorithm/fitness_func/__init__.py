@@ -1,2 +1,2 @@
-from .main_function import main_function
+from .main_function import fitness_function
 from .generator_rules_matrix import generator_rules_matrix
