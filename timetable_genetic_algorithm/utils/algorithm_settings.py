@@ -114,11 +114,14 @@ class AlgorithmSettings:
         except Exception as e:
             raise e
 
-    def __gen_groups_audience_link(self, df: pd.DataFrame) -> Dict[Group, Audience]:
-        pass
-        # return {
-        #     df[]
-        # }
+    @staticmethod
+    def __gen_groups_audience_link(df: pd.DataFrame) -> Dict[Group, Audience]:
+        tmp_df = df[df["link_flags"] == 2]
+        return {
+            group: audience
+            for list_groups, audience in zip(tmp_df["params"], tmp_df["number_audience"])
+            for group in list_groups
+        }
 
     @staticmethod
     def __gen_group_list_from_df(df: pd.DataFrame) -> list:
