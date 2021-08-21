@@ -72,7 +72,7 @@ def main():
     # print("D error (type):", draft.count_disc_error_type)
 
     main_loop(table_settings, [individ])
-
+    print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
 
 if __name__ == "__main__":
     main()

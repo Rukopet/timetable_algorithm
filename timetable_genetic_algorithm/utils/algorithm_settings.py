@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple, Union, List
 
 import pandas as pd
 
@@ -7,6 +7,13 @@ from timetable_genetic_algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_D
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils import settings_generations
 from timetable_genetic_algorithm.utils.our_typing import Audience, Group
+
+
+def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> List[str]:
+    return [
+        d.get(column, 'Unknown')
+        for d in list_dicts
+    ]
 
 
 class AlgorithmSettings:
@@ -60,6 +67,7 @@ class AlgorithmSettings:
     GROUPS_AUDIENCE_LINK: Dict[Group, Audience] = {}
     DISCIPLINES_AUDIENCE_LINK: Dict[Discipline, Audience] = {}
     DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK: Dict[Union[Group, Discipline], Audience] = {}
+    DISCIPLINE_DICT_WITH_LIST_PAIR: Dict[Discipline, List[Discipline]] = {}
 
     TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
     P_CROSSOVER = settings_generations.P_CROSSOVER
@@ -118,6 +126,9 @@ class AlgorithmSettings:
             self.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK = self.__gen_disciplines_groups_for_audience_link(
                 data_front.audiencesJSON.valueDF
             )
+            self.DISCIPLINE_DICT_WITH_LIST_PAIR = self.__gen_disciplines_list_with_pair(
+                data_front.disciplinesJSON.valueDF
+            )
 
         except Exception as e:
             raise e
@@ -146,6 +157,17 @@ class AlgorithmSettings:
             for list_groups, audience in zip(tmp_df["params"], tmp_df["number_audience"])
             for group in list_groups
         }
+
+    @staticmethod
+    def __gen_disciplines_list_with_pair(df: pd.DataFrame) -> Dict[Discipline, List[Discipline]]:
+        tmp_df = df.dropna(subset=["pair"], inplace=False)
+        ret = {}
+        for discipline, pair_list in zip(tmp_df["discipline"], tmp_df["pair"]):
+            for pair in from_list_of_dicts_to_list_values(pair_list, 'discipline'):
+                val = ret.get(discipline, [])
+                val.append(pair)
+                ret[discipline] = val
+        return ret
 
     @staticmethod
     def __gen_group_list_from_df(df: pd.DataFrame) -> list:
