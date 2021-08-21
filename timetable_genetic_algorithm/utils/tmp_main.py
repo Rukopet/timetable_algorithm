@@ -67,9 +67,13 @@ def main():
     print(draft.dict_count_group_windows)
     print("Group error (windows):", draft.count_group_error_window)
     print(draft.dict_count_disc_name)
-    print("D error (name):", draft.count_disc_error_name)
+    print("Disciplines error (name):", draft.count_disc_error_name)
     print(draft.dict_count_disc_type)
-    print("D error (type):", draft.count_disc_error_type)
+    print("Disciplines error (type):", draft.count_disc_error_type)
+    print(draft.dict_count_disc_weight_day)
+    print("Disciplines error (weight day):", draft.count_disc_error_weight_day)
+    print(draft.dict_count_disc_weight_week)
+    print("Disciplines error (weight week):", draft.count_disc_error_weight_week)
 
     main_loop(table_settings, [individ])
 
