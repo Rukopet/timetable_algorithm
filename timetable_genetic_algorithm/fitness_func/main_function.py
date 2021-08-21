@@ -24,4 +24,3 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
         for auditory, lesson in individ.dict_individ[timeline].items():
             for module in modules:
                 name_dict_log[module.get_module_naming()] = module.get_fitness_penalty()
-    p = 1

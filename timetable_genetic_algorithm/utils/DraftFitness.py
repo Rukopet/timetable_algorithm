@@ -1,4 +1,5 @@
-from timetable_genetic_algorithm.utils import AlgorithmSettings, TYPE_DISCIPLINES, MAX_LESSONS_IN_DAY
+from timetable_genetic_algorithm.utils import AlgorithmSettings, TYPE_DISCIPLINES, MAX_LESSONS_IN_DAY, \
+    WEIGHT_DISCIPLINES
 from timetable_genetic_algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
 
 NO_SINGLE_PEDAGOG = 1000
@@ -15,6 +16,8 @@ DISCIPLINES_NAME = 100
 
 DISCIPLINES_TYPE = 100
 
+DISCIPLINES_WIGHT_DAY = 100
+
 
 class FitnessSettingData:
     """draft fitness class"""
@@ -28,12 +31,14 @@ class FitnessSettingData:
         """
         self.settings = settings
         self.individ = individ
+
         self.dict_count_pedago_nosingle = {}
         self.dict_count_group_nosingle = {}
         self.dict_count_pedago_windows = {}
         self.dict_count_group_windows = {}
         self.dict_count_disc_name = {}
         self.dict_count_disc_type = {}
+        self.dict_count_disc_weight_day = {}
 
         self.count_pedag_error_nosingle = 0
         self.count_group_error_nosingle = 0
@@ -42,6 +47,7 @@ class FitnessSettingData:
         self.count_group_error_window = 0
         self.count_disc_error_name = 0
         self.count_disc_error_type = 0
+        self.count_disc_error_weight_day = 0
 
     def count_pedago_no_single(self, lesson: tuple, timeline: int):
         """
@@ -96,15 +102,14 @@ class FitnessSettingData:
         if lesson:
             if day in self.dict_count_group_windows.keys():
                 if lesson[0] in self.dict_count_group_windows[day].keys():
-                    if time > self.dict_count_group_windows[day][lesson[0]] \
-                            [len(self.dict_count_group_windows[day][lesson[0]]) - 1]:
-                        self.count_group_error_window += (time - self.dict_count_group_windows[day][lesson[0]] \
-                            [len(self.dict_count_group_windows[day][lesson[0]]) - 1] - 1) * WINDOWS_GROUP
-                        self.dict_count_group_windows[day][lesson[0]].append(time)
+                    if time > self.dict_count_group_windows[day][lesson[0]]:
+                        self.count_group_error_window += (time - self.dict_count_group_windows[day][lesson[0]] - 1) \
+                                                         * WINDOWS_GROUP
+                        self.dict_count_group_windows[day][lesson[0]] = time
                 else:
-                    self.dict_count_group_windows[day][lesson[0]] = [time]
+                    self.dict_count_group_windows[day][lesson[0]] = time
             else:
-                self.dict_count_group_windows[day] = {lesson[0]: [time]}
+                self.dict_count_group_windows[day] = {lesson[0]: time}
 
     def count_group_no_single(self, lesson: tuple, timeline: int):
         """
@@ -145,10 +150,11 @@ class FitnessSettingData:
             if lesson[4] > timeline or timeline > lesson[4] + MAX_LESSONS_IN_DAY[lesson[0][0]]:
                 self.count_group_error_first_lesson += FIRST_LESSON_GROUP
 
-    def count_audience_spec(self, lesson: tuple, timeline: int):
+    def count_audience_spec(self, lesson: tuple, timeline: int, audience: tuple):
         """
         Check audience specialization (disciplines and groups)
         TODO: make hard link for group and disciplines with audience (settings)
+        :param audience: tuple
         :param lesson: tuple
         :param timeline: int
         :return: None
@@ -202,6 +208,24 @@ class FitnessSettingData:
                     else:
                         self.dict_count_disc_type[day][lesson[0]] = None
 
+    def count_disc_weight_day(self, lesson: tuple, timeline: int):
+        """
+        Check for each groups discipline's weight in each day
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
+        time = timeline % AMOUNT_TIMELINES_IN_DAY
+        day = timeline // AMOUNT_TIMELINES_IN_DAY
+        if lesson:
+            if day not in self.dict_count_disc_weight_day:
+                self.dict_count_disc_weight_day[day] = {}
+            if lesson[0] not in self.dict_count_disc_weight_day[day]:
+                if lesson[0][0] in WEIGHT_DISCIPLINES and lesson[1] in WEIGHT_DISCIPLINES[lesson[0][0]]:
+                    self.dict_count_disc_weight_day[day][lesson[0]] = {time: WEIGHT_DISCIPLINES[lesson[0][0]][lesson[1]]}
+                else:
+                    self.dict_count_disc_weight_day[day][lesson[0]] = {time: 1}
+
     def main_loop(self):
         """
         main loop for each lesson in school schedule
@@ -217,3 +241,4 @@ class FitnessSettingData:
                 self.count_group_windows(lesson, timeline)
                 self.count_disc_name(lesson, timeline)
                 self.count_disc_type(lesson, timeline)
+                self.count_audience_spec(lesson, timeline, auditory)
