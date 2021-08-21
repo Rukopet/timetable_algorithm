@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Union, List
+from typing import Dict, Tuple, Union, List, Any
 
 import pandas as pd
 
@@ -14,6 +14,12 @@ def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> Li
         d.get(column, 'Unknown')
         for d in list_dicts
     ]
+
+
+def get_appended_default_list(dict_with_list: Dict[List], key: Any, appended_val: Any) -> List[Any]:
+    tmp_val = dict_with_list.get(key, [])
+    tmp_val.append(appended_val)
+    return tmp_val
 
 
 class AlgorithmSettings:
