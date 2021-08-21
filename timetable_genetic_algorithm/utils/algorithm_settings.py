@@ -1,7 +1,8 @@
-from typing import Dict
+from typing import Dict, Tuple, Union
 
 import pandas as pd
 
+from timetable_genetic_algorithm.fitness_utils.our_typing import Discipline
 from timetable_genetic_algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_DISCIPLINES, WEIGHT_DISCIPLINES
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils import settings_generations
@@ -56,7 +57,9 @@ class AlgorithmSettings:
     bool_SCHOOL_STUDY_SATURDAY = True
     bool_SCHOOL_SECOND_SHIFT = False
 
-    GROUPS_AUDIENCE_LINK: Dict[Group, Audience]
+    GROUPS_AUDIENCE_LINK: Dict[Group, Audience] = {}
+    DISCIPLINES_AUDIENCE_LINK: Dict[Discipline, Audience] = {}
+    DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK: Dict[Union[Group, Discipline], Audience] = {}
 
     TOTAL_POPULATION = settings_generations.TOTAL_POPULATION
     P_CROSSOVER = settings_generations.P_CROSSOVER
@@ -109,16 +112,37 @@ class AlgorithmSettings:
                 self.bool_SCHOOL_SECOND_SHIFT = True
                 self.IS_GROUP_STUDY_IN_SECOND_SHIFT = self.__gen_is_group_study_in_second_shift()
 
-            self.GROUPS_AUDIENCE_LINK = self.__gen_groups_audience_link(data_front.audiencesJSON.valueDF)
+            self.GROUPS_AUDIENCE_LINK, self.DISCIPLINES_AUDIENCE_LINK = self.__gen_groups_audience_disciplines_link(
+                data_front.audiencesJSON.valueDF
+            )
+            self.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK = self.__gen_disciplines_groups_for_audience_link(
+                data_front.audiencesJSON.valueDF
+            )
 
         except Exception as e:
             raise e
 
     @staticmethod
-    def __gen_groups_audience_link(df: pd.DataFrame) -> Dict[Group, Audience]:
-        tmp_df = df[df["link_flags"] == 2]
+    def __gen_groups_audience_disciplines_link(df: pd.DataFrame) -> Tuple[Dict[Group, Audience],
+                                                                          Dict[Discipline, Audience]]:
+        tmp_df_for_group = df[df["link_flags"] == 2]
+        tmp_df_for_disciplines = df[df["link_flags"] == 1]
         return {
-            group: audience
+                   tuple(group.values()): audience
+                   for list_groups, audience in zip(tmp_df_for_group["params"], tmp_df_for_group["number_audience"])
+                   for group in list_groups
+               }, {
+                   discipline.get('discipline'): audience
+                   for list_disciplines, audience in zip(tmp_df_for_disciplines["params"],
+                                                         tmp_df_for_disciplines["number_audience"])
+                   for discipline in list_disciplines
+               }
+
+    @staticmethod
+    def __gen_disciplines_groups_for_audience_link(df: pd.DataFrame) -> Dict[Union[Group, Discipline], Audience]:
+        tmp_df = df[df["link_flags"] == 3]
+        return {
+            group.get('discipline', tuple([group.get('num'), group.get('letter')])): audience
             for list_groups, audience in zip(tmp_df["params"], tmp_df["number_audience"])
             for group in list_groups
         }
