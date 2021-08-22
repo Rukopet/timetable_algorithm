@@ -156,7 +156,7 @@ class AlgorithmSettings:
                 elif link_flag == 2:
                     group = tuple(discipline_or_group.values())
                     get_appended_default_list(group_audience, group, audience)
-        return discipline_audience, discipline_audience
+        return group_audience, discipline_audience
 
     @staticmethod
     def __gen_disciplines_groups_for_audience_link(df: pd.DataFrame) -> Dict[Union[Group, Discipline], Audience]:
