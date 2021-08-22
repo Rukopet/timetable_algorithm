@@ -2,7 +2,7 @@ from timetable_genetic_algorithm.fitness_utils import ModuleRegistration
 from timetable_genetic_algorithm.utils import AlgorithmSettings
 
 
-def generator_rules_matrix(settings: AlgorithmSettings):
+def generator_rules_matrix():
     """
     generate rules, temporary generate True like default
 

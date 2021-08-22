@@ -22,5 +22,6 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
     name_dict_log = log.penalty[individ.id_individ]
     for timeline in individ.dict_individ.keys():
         for auditory, lesson in individ.dict_individ[timeline].items():
+
             for module in modules:
                 name_dict_log[module.get_module_naming()] = module.get_fitness_penalty()
