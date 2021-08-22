@@ -136,9 +136,10 @@ class FitnessSettingData:
                             lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
                             self.dict_count_group_nosingle[timeline][lesson[0]] > 2:
                         self.count_group_error_nosingle += NO_SINGLE_GROUP
-                        # TODO: туть проверить, совпадают ли дисциплины
                     if lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
-                            self.dict_count_group_nosingle[timeline][lesson[0]] == 2:
+                            self.dict_count_group_nosingle[timeline][lesson[0]] == 2 and \
+                            self.dict_count_disc_name[timeline // AMOUNT_TIMELINES_IN_DAY][lesson[0]] in \
+                            self.settings.DISCIPLINE_DICT_WITH_LIST_PAIR:
                         self.count_group_error_nosingle -= NO_SINGLE_GROUP
                 else:
                     self.dict_count_group_nosingle[timeline][lesson[0]] = 1
@@ -161,7 +162,6 @@ class FitnessSettingData:
     def count_audience_spec(self, lesson: tuple, timeline: int, audience: tuple):
         """
         Check audience specialization (disciplines)
-        TODO: make hard link for group and disciplines with audience (settings)
         :param audience: tuple
         :param lesson: tuple
         :param timeline: int

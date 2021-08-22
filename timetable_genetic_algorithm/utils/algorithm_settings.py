@@ -16,7 +16,7 @@ def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> Li
     ]
 
 
-def get_appended_default_list(dict_with_list: Dict[List], key: Any, appended_val: Any) -> List[Any]:
+def get_appended_default_list(dict_with_list, key: Any, appended_val: Any) -> List[Any]:
     tmp_val = dict_with_list.get(key, [])
     tmp_val.append(appended_val)
     return tmp_val
