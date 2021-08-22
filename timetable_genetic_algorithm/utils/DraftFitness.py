@@ -57,6 +57,7 @@ class FitnessSettingData:
         self.count_disc_error_weight_day = 0
         self.count_disc_error_weight_week = 0
         self.count_aud_error_spec = 0
+        self.count_aud_error_hard_link = 0
 
     def count_pedago_no_single(self, lesson: tuple, timeline: int):
         """
@@ -178,16 +179,28 @@ class FitnessSettingData:
                 if dict_group not in self.settings.AUDIENCE_PARAMS[audience[0]]:
                     self.count_aud_error_spec += AUDIENCE_SPECIALIZATION
 
-    def count_audience_hard_link(self, lesson: tuple, timeline: int, audience: tuple):
+    def count_audience_hard_link(self, lesson: tuple, audience: tuple):
         """
         Check audience hard link (disciplines and groups)
-        TODO: make hard link for group and disciplines with audience (settings)
         :param audience: tuple
         :param lesson: tuple
-        :param timeline: int
         :return: None
         """
-        pass
+        if lesson:
+            if audience and audience[1] == 3:
+                if lesson[1] not in self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK or \
+                        lesson[0] not in self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK or \
+                        lesson[1] in self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK and \
+                        self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK[lesson[1]] != audience[0] or \
+                        lesson[0] in self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK and \
+                        self.settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK[lesson[0]] != audience[0]:
+                    self.count_aud_error_hard_link += AUDIENCE_HARD_LINK
+            elif lesson[0] in self.settings.GROUPS_AUDIENCE_LINK:
+                if audience[0] not in self.settings.GROUPS_AUDIENCE_LINK[lesson[0]]:
+                    self.count_aud_error_hard_link += AUDIENCE_HARD_LINK
+            elif lesson[1] in self.settings.DISCIPLINES_AUDIENCE_LINK:
+                if audience[0] not in self.settings.DISCIPLINES_AUDIENCE_LINK[lesson[1]]:
+                    self.count_aud_error_hard_link += AUDIENCE_HARD_LINK
 
     def count_disc_name(self, lesson: tuple, timeline: int):
         """
@@ -389,7 +402,7 @@ class FitnessSettingData:
                 self.count_disc_name(lesson, timeline)
                 self.count_disc_type(lesson, timeline)
                 self.count_audience_spec(lesson, auditory)
-                self.count_audience_hard_link(lesson, timeline, auditory)
+                self.count_audience_hard_link(lesson, auditory)
                 self.make_dict_disc_weight_day(lesson, timeline)
         self.count_disc_weight_day()
         self.count_disc_weight_week()

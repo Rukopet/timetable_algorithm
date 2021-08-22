@@ -74,14 +74,10 @@ def main():
     print("Disciplines error (weight day):", draft.count_disc_error_weight_day)
     print(draft.dict_count_disc_weight_week)
     print("Disciplines error (weight week):", draft.count_disc_error_weight_week)
-    print("Audiences error (disciplines):", draft.count_aud_error_spec)
-    print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK, end='\n\n')
-    print(table_settings.DISCIPLINES_AUDIENCE_LINK, end='\n\n')
-    print(table_settings.GROUPS_AUDIENCE_LINK, end='\n\n')
-    print(table_settings.AUDIENCE_PARAMS, end='\n\n')
+    print("Audiences error (specialization):", draft.count_aud_error_spec)
+    print("Audiences error (hard link):", draft.count_aud_error_hard_link)
 
     main_loop(table_settings, [individ])
-    print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
 
 
 if __name__ == "__main__":
