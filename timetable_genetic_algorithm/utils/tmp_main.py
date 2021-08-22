@@ -79,7 +79,7 @@ def main():
     print(table_settings.GROUPS_AUDIENCE_LINK)
 
     main_loop(table_settings, [individ])
-
+    print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
 
 if __name__ == "__main__":
     main()
