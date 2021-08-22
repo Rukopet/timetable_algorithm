@@ -22,7 +22,7 @@ DISCIPLINES_WEIGHT_WEEK = 100
 
 AUDIENCE_HARD_LINK = 1000
 
-AUDIENCE_SPECIALIZATION = 100
+AUDIENCE_SPECIALIZATION = 10
 
 
 class FitnessSettingData:
@@ -56,6 +56,7 @@ class FitnessSettingData:
         self.count_disc_error_type = 0
         self.count_disc_error_weight_day = 0
         self.count_disc_error_weight_week = 0
+        self.count_aud_error_spec = 0
 
     def count_pedago_no_single(self, lesson: tuple, timeline: int):
         """
@@ -159,15 +160,23 @@ class FitnessSettingData:
             if lesson[4] > timeline or timeline > lesson[4] + MAX_LESSONS_IN_DAY[lesson[0][0]]:
                 self.count_group_error_first_lesson += FIRST_LESSON_GROUP
 
-    def count_audience_spec(self, lesson: tuple, timeline: int, audience: tuple):
+    def count_audience_spec(self, lesson: tuple, audience: tuple):
         """
         Check audience specialization (disciplines)
         :param audience: tuple
         :param lesson: tuple
-        :param timeline: int
         :return: None
         """
-        pass
+        if lesson and audience and audience[0] in self.settings.AUDIENCE_PARAMS and \
+                self.settings.AUDIENCE_PARAMS[audience[0]] is not None:
+            dict_disc = {'discipline': lesson[1]}
+            dict_group = {'num': lesson[0][0], 'letter': lesson[0][1]}
+            if audience[1] != 2:
+                if dict_disc not in self.settings.AUDIENCE_PARAMS[audience[0]]:
+                    self.count_aud_error_spec += AUDIENCE_SPECIALIZATION
+            if audience[1] > 1:
+                if dict_group not in self.settings.AUDIENCE_PARAMS[audience[0]]:
+                    self.count_aud_error_spec += AUDIENCE_SPECIALIZATION
 
     def count_audience_hard_link(self, lesson: tuple, timeline: int, audience: tuple):
         """
@@ -379,7 +388,8 @@ class FitnessSettingData:
                 self.count_group_windows(lesson, timeline)
                 self.count_disc_name(lesson, timeline)
                 self.count_disc_type(lesson, timeline)
-                self.count_audience_spec(lesson, timeline, auditory)
+                self.count_audience_spec(lesson, auditory)
+                self.count_audience_hard_link(lesson, timeline, auditory)
                 self.make_dict_disc_weight_day(lesson, timeline)
         self.count_disc_weight_day()
         self.count_disc_weight_week()
