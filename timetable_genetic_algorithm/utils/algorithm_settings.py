@@ -19,6 +19,7 @@ def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> Li
 def get_appended_default_list(dict_with_list, key: Any, appended_val: Any) -> List[Any]:
     tmp_val = dict_with_list.get(key, [])
     tmp_val.append(appended_val)
+    dict_with_list[key] = tmp_val
     return tmp_val
 
 
@@ -142,18 +143,20 @@ class AlgorithmSettings:
     @staticmethod
     def __gen_groups_audience_disciplines_link(df: pd.DataFrame) -> Tuple[Dict[Group, Audience],
                                                                           Dict[Discipline, Audience]]:
-        tmp_df_for_group = df[df["link_flags"] == 2]
-        tmp_df_for_disciplines = df[df["link_flags"] == 1]
-        return {
-                   tuple(group.values()): audience
-                   for list_groups, audience in zip(tmp_df_for_group["params"], tmp_df_for_group["number_audience"])
-                   for group in list_groups
-               }, {
-                   discipline.get('discipline'): audience
-                   for list_disciplines, audience in zip(tmp_df_for_disciplines["params"],
-                                                         tmp_df_for_disciplines["number_audience"])
-                   for discipline in list_disciplines
-               }
+        tmp_df = df[(df["link_flags"] == 1) | (df["link_flags"] == 2)]
+        print(tmp_df)
+        discipline_audience, group_audience = {}, {}
+        for link_flag, audience, list_groups_or_disc in zip(tmp_df["link_flags"],
+                                                            tmp_df["number_audience"],
+                                                            tmp_df["params"]):
+            for discipline_or_group in list_groups_or_disc:
+                if link_flag == 1:
+                    disc = discipline_or_group.get('discipline')
+                    get_appended_default_list(discipline_audience, disc, audience)
+                elif link_flag == 2:
+                    group = tuple(discipline_or_group.values())
+                    get_appended_default_list(group_audience, group, audience)
+        return discipline_audience, discipline_audience
 
     @staticmethod
     def __gen_disciplines_groups_for_audience_link(df: pd.DataFrame) -> Dict[Union[Group, Discipline], Audience]:
@@ -311,7 +314,7 @@ class AlgorithmSettings:
 
         if group not in self.GROUPS_LIST:
             return None
-        ret = self.main_data.get(group).get(discipline)
+        ret = self.main_data.get(group, {}).get(discipline)
         return None if ret is None else ret["pedagog"], ret["load"]
 
     def get_group_data(self, group: tuple):
