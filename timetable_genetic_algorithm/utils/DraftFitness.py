@@ -16,9 +16,13 @@ DISCIPLINES_NAME = 100
 
 DISCIPLINES_TYPE = 100
 
-DISCIPLINES_WIGHT_DAY = 100
+DISCIPLINES_WEIGHT_DAY = 100
 
-DISCIPLINES_WIGHT_WEEK = 100
+DISCIPLINES_WEIGHT_WEEK = 100
+
+AUDIENCE_HARD_LINK = 1000
+
+AUDIENCE_SPECIALIZATION = 100
 
 
 class FitnessSettingData:
@@ -85,7 +89,7 @@ class FitnessSettingData:
             if day in self.dict_count_pedago_windows.keys():
                 if lesson[2] in self.dict_count_pedago_windows[day].keys():
                     if time > self.dict_count_pedago_windows[day][lesson[2]]:
-                        self.count_pedag_error_window += (time - self.dict_count_pedago_windows[day][lesson[2]] - 1)\
+                        self.count_pedag_error_window += (time - self.dict_count_pedago_windows[day][lesson[2]] - 1) \
                                                          * WINDOWS_PEDAGOG
                         self.dict_count_pedago_windows[day][lesson[2]] = time
                 else:
@@ -128,12 +132,12 @@ class FitnessSettingData:
             if timeline in self.dict_count_group_nosingle:
                 if lesson[0] in self.dict_count_group_nosingle[timeline]:
                     self.dict_count_group_nosingle[timeline][lesson[0]] += 1
-                    if lesson[1] not in self.settings.DISCIPLINES_LIST_WITH_PAIR or\
-                            lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and\
+                    if lesson[1] not in self.settings.DISCIPLINES_LIST_WITH_PAIR or \
+                            lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
                             self.dict_count_group_nosingle[timeline][lesson[0]] > 2:
                         self.count_group_error_nosingle += NO_SINGLE_GROUP
                         # TODO: туть проверить, совпадают ли дисциплины
-                    if lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and\
+                    if lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
                             self.dict_count_group_nosingle[timeline][lesson[0]] == 2:
                         self.count_group_error_nosingle -= NO_SINGLE_GROUP
                 else:
@@ -156,7 +160,18 @@ class FitnessSettingData:
 
     def count_audience_spec(self, lesson: tuple, timeline: int, audience: tuple):
         """
-        Check audience specialization (disciplines and groups)
+        Check audience specialization (disciplines)
+        TODO: make hard link for group and disciplines with audience (settings)
+        :param audience: tuple
+        :param lesson: tuple
+        :param timeline: int
+        :return: None
+        """
+        pass
+
+    def count_audience_hard_link(self, lesson: tuple, timeline: int, audience: tuple):
+        """
+        Check audience hard link (disciplines and groups)
         TODO: make hard link for group and disciplines with audience (settings)
         :param audience: tuple
         :param lesson: tuple
@@ -248,68 +263,68 @@ class FitnessSettingData:
                     self.dict_count_disc_weight_week[group].append(sum(list_weight))
                 if length == 4:
                     if list_weight[0] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[3] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[3] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                 if length == 5:
                     if list_weight[0] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[4] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[4] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[4] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                 if length == 6:
                     if list_weight[0] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[4]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[4]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                 if length == 7:
                     if list_weight[0] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[0] > list_weight[4]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[5] > list_weight[4]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[6] > list_weight[1]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[6] > list_weight[2]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[6] > list_weight[3]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
                     if list_weight[6] > list_weight[4]:
-                        self.count_disc_error_weight_day += DISCIPLINES_WIGHT_DAY
+                        self.count_disc_error_weight_day += DISCIPLINES_WEIGHT_DAY
 
     def count_disc_weight_week(self):
         """
@@ -320,34 +335,34 @@ class FitnessSettingData:
             length = len(list_weight)
             if length == 5:
                 if list_weight[0] > list_weight[1]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[0] > list_weight[2]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[0] > list_weight[3]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[4] > list_weight[1]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[4] > list_weight[2]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[4] > list_weight[3]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
             if length == 6:
                 if list_weight[0] > list_weight[1]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[0] > list_weight[2]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[0] > list_weight[3]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[0] > list_weight[4]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[5] > list_weight[1]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[5] > list_weight[2]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[5] > list_weight[3]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
                 if list_weight[5] > list_weight[4]:
-                    self.count_disc_error_weight_week += DISCIPLINES_WIGHT_WEEK
+                    self.count_disc_error_weight_week += DISCIPLINES_WEIGHT_WEEK
 
     def main_loop(self):
         """

@@ -74,6 +74,9 @@ def main():
     print("Disciplines error (weight day):", draft.count_disc_error_weight_day)
     print(draft.dict_count_disc_weight_week)
     print("Disciplines error (weight week):", draft.count_disc_error_weight_week)
+    print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK)
+    print(table_settings.DISCIPLINES_AUDIENCE_LINK)
+    print(table_settings.GROUPS_AUDIENCE_LINK)
 
     main_loop(table_settings, [individ])
 
