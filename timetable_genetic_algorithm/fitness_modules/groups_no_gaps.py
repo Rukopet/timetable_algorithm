@@ -1,7 +1,7 @@
 from typing import Optional
 
 from timetable_genetic_algorithm.fitness_modules.constants_weight import WINDOWS_GROUP
-from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBase, module_register
+from timetable_genetic_algorithm.fitness_utils import module_register, ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.utils.settings_generations import AMOUNT_TIMELINES_IN_DAY
 
 

@@ -1,9 +1,6 @@
 from abc import abstractmethod, ABCMeta
 from typing import Optional
 
-from timetable_genetic_algorithm.fitness_utils.shared_soures import SharedData
-from timetable_genetic_algorithm.utils import AlgorithmSettings
-
 
 class ModuleForFitnessFunctionBase:
     __metaclass__ = ABCMeta
@@ -11,7 +8,7 @@ class ModuleForFitnessFunctionBase:
     # flag for identify needed actions for post cycle actions
     IS_HAVE_FINAL_ACTION = False
 
-    def __init__(self, shared_data: SharedData, settings: AlgorithmSettings):
+    def __init__(self, shared_data, settings):
         self.shared_data = shared_data
         self.settings = settings
 
