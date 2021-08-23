@@ -1,9 +1,7 @@
 from typing import Dict, List
 
-from timetable_genetic_algorithm.fitness_utils import ModuleRegistration
 from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.fitness_utils.our_typing import Rule
-from timetable_genetic_algorithm.utils import AlgorithmSettings
 
 
 def generator_rules_matrix(list_of_instances_modules: List[ModuleForFitnessFunctionBase]) -> Dict[Rule, bool]:
