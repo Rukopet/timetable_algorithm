@@ -1,11 +1,18 @@
 from abc import abstractmethod, ABCMeta
+from typing import Optional
+
+from timetable_genetic_algorithm.fitness_utils.shared_soures import SharedData
+from timetable_genetic_algorithm.utils import AlgorithmSettings
 
 
 class ModuleForFitnessFunctionBase:
     __metaclass__ = ABCMeta
 
-    def __init__(self, shared_data, settings):
-        self.data_class = shared_data
+    # flag for identify needed actions for post cycle actions
+    IS_HAVE_FINAL_ACTION = False
+
+    def __init__(self, shared_data: SharedData, settings: AlgorithmSettings):
+        self.shared_data = shared_data
         self.settings = settings
 
     @abstractmethod
@@ -13,7 +20,7 @@ class ModuleForFitnessFunctionBase:
         pass
 
     @abstractmethod
-    def get_module_description(self):
+    def get_module_description(self) -> str:
         pass
 
     @abstractmethod
@@ -21,5 +28,8 @@ class ModuleForFitnessFunctionBase:
         pass
 
     @abstractmethod
-    def change_shared_data(self):
+    def change_shared_data(self) -> None:
         pass
+
+    def final_action(self) -> int:
+        return 0
