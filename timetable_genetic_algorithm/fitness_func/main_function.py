@@ -1,10 +1,9 @@
 from typing import Type, List
 
 from timetable_genetic_algorithm.fitness_func import generator_rules_matrix
-from timetable_genetic_algorithm.fitness_utils import SharedData
-from timetable_genetic_algorithm.fitness_utils import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.fitness_utils import ModuleRegistration
-from timetable_genetic_algorithm.fitness_utils.shared_soures import Lesson
+from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
+from timetable_genetic_algorithm.fitness_utils.shared_soures import Lesson, SharedData
 from timetable_genetic_algorithm.logger import LoggerUtils
 from timetable_genetic_algorithm.utils.Individ import Individ
 

@@ -32,7 +32,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
         :param settings:
         :param shared_data:
         """
-        self.__modules_object_list = [module(settings, shared_data) for module in ModuleRegistration().reg_module]
+        self.__modules_object_list = [module(shared_data, settings) for module in ModuleRegistration().reg_module]
 
     def get_modules_object_list(self):
         return self.__modules_object_list
