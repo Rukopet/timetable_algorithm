@@ -4,7 +4,7 @@ from timetable_genetic_algorithm.fitness_modules import constants_weight
 
 @module_register
 class PedagogsNoGaps(ModuleForFitnessFunctionBase):
-    PENALTY_WEIGHT = constants_weight.PEDAGOGS_NO_GAPS
+    PENALTY_WEIGHT = constants_weight.WINDOWS_PEDAGOG
 
     def get_fitness_penalty(self) -> int:
         return 123

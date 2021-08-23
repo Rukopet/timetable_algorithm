@@ -25,7 +25,7 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
     # Initialization list of modules
     ModuleRegistration().generate_modules_object_list(table_settings, shared_data)
     modules = get_list_modules_object_list()
-    shared_data.all_rules = generator_rules_matrix(modules)
+    # shared_data.all_rules = generator_rules_matrix(modules)
 
     log = LoggerUtils({individ.id_individ: {}})
     name_dict_log = log.penalty[individ.id_individ]
@@ -35,7 +35,9 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
             shared_data.current_audience = auditory
             shared_data.current_lesson = lesson
             for module in modules:
-                name_dict_log[module.get_module_naming()] += module.get_fitness_penalty()
+                name_dict_log[module.get_module_naming()] = \
+                    name_dict_log.get(module.get_module_naming()) + module.get_fitness_penalty()
 
     for module in modules:
-        name_dict_log[module.get_module_naming()] += module.final_action()
+        name_dict_log[module.get_module_naming()] = \
+            name_dict_log.get(module.get_module_naming()) + module.final_action()
