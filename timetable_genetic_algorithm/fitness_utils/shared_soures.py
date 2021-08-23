@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Dict, Tuple, Any
+from typing import List, Tuple, Any
 
 from timetable_genetic_algorithm.fitness_utils.our_typing import Rule, ModuleName, Timeline, Pedagog, AmountMentions, \
     NumberLessons, DayOfWeek, Discipline, TypeDiscipline
