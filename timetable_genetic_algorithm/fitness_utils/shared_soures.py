@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Tuple, Any
+from typing import List, Tuple, Any, Dict
 
 from timetable_genetic_algorithm.fitness_utils.our_typing import Rule, ModuleName, Timeline, Pedagog, AmountMentions, \
     NumberLessons, DayOfWeek, Discipline, TypeDiscipline
@@ -23,7 +23,7 @@ class SharedData:
     # dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
     # dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]]
     # dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]]
-    # dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]]
+    dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]] = field(default_factory=dict)
     # dict_count_disc_name: Dict[DayOfWeek, Dict[Group, Discipline]]
     # dict_count_disc_type: Dict[DayOfWeek, Dict[Group, TypeDiscipline]]
 

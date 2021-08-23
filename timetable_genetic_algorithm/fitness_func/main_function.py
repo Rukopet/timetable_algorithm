@@ -35,8 +35,8 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
             shared_data.current_lesson = lesson
             for module in modules:
                 name_dict_log[module.get_module_naming()] = \
-                    name_dict_log.get(module.get_module_naming()) + module.get_fitness_penalty()
+                    name_dict_log.get(module.get_module_naming(), 0) + module.get_fitness_penalty()
 
     for module in modules:
         name_dict_log[module.get_module_naming()] = \
-            name_dict_log.get(module.get_module_naming()) + module.final_action()
+            name_dict_log.get(module.get_module_naming(), 0) + module.final_action()
