@@ -144,7 +144,7 @@ class AlgorithmSettings:
     def __gen_groups_audience_disciplines_link(df: pd.DataFrame) -> Tuple[Dict[Group, Audience],
                                                                           Dict[Discipline, Audience]]:
         tmp_df = df[(df["link_flags"] == 1) | (df["link_flags"] == 2)]
-        print(tmp_df)
+        #print(tmp_df)
         discipline_audience, group_audience = {}, {}
         for link_flag, audience, list_groups_or_disc in zip(tmp_df["link_flags"],
                                                             tmp_df["number_audience"],

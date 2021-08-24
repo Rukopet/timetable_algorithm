@@ -20,9 +20,9 @@ class SharedData:
     # global_rules_matrix: Dict[Rule, bool]
     # current_rules_matrix: Dict[Rule, bool]
 
-    # dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]]
-    # dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]]
-    # dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]]
+    dict_count_pedago_nosingle: Dict[Timeline, Dict[Pedagog, AmountMentions]] = field(default_factory=dict)
+    dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]] = field(default_factory=dict)
+    dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]] = field(default_factory=dict)
     dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]] = field(default_factory=dict)
     # dict_count_disc_name: Dict[DayOfWeek, Dict[Group, Discipline]]
     # dict_count_disc_type: Dict[DayOfWeek, Dict[Group, TypeDiscipline]]
