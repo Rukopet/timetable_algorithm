@@ -10,31 +10,27 @@ class GroupsUniqueness(ModuleForFitnessFunctionBase):
     def get_fitness_penalty(self) -> int:
         ret = 0
         if self.shared_data.current_lesson:
-            if self.shared_data.current_timeline in self.shared_data.dict_count_group_nosingle:
-                if self.shared_data.current_lesson[0] in \
-                        self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline]:
-                    self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline]\
-                        [self.shared_data.current_lesson[0]] += 1
-                    if self.shared_data.current_lesson[1] not in self.settings.DISCIPLINES_LIST_WITH_PAIR or \
-                            self.shared_data.current_lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
-                            self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline]\
-                                    [self.shared_data.current_lesson[0]] > 2:
+            time = self.shared_data.current_timeline
+            group = self.shared_data.current_lesson[0]
+            discipline = self.shared_data.current_lesson[1]
+            if time in self.shared_data.dict_count_group_nosingle:
+                if group in self.shared_data.dict_count_group_nosingle[time]:
+                    self.shared_data.dict_count_group_nosingle[time][group] += 1
+                    if discipline not in self.settings.DISCIPLINES_LIST_WITH_PAIR or \
+                            discipline in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
+                            self.shared_data.dict_count_group_nosingle[time][group] > 2:
                         ret += self.PENALTY_WEIGHT
-                    if self.shared_data.current_lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
-                            self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline]\
-                                    [self.shared_data.current_lesson[0]] == 2 and \
-                            self.shared_data.dict_count_disc_name[self.shared_data.current_timeline \
-                                // AMOUNT_TIMELINES_IN_DAY][self.shared_data.current_lesson[0]] in \
+                    if discipline in self.settings.DISCIPLINES_LIST_WITH_PAIR and \
+                            self.shared_data.dict_count_group_nosingle[time][group] == 2 and \
+                            self.shared_data.dict_count_disc_name[time // AMOUNT_TIMELINES_IN_DAY][group] in \
                             self.settings.DISCIPLINE_DICT_WITH_LIST_PAIR:
                         ret -= self.PENALTY_WEIGHT
                 else:
-                    self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline]\
-                        [self.shared_data.current_lesson[0]] = 1
-                    if self.shared_data.current_lesson[1] in self.settings.DISCIPLINES_LIST_WITH_PAIR:
+                    self.shared_data.dict_count_group_nosingle[time][group] = 1
+                    if discipline in self.settings.DISCIPLINES_LIST_WITH_PAIR:
                         ret += self.PENALTY_WEIGHT
             else:
-                self.shared_data.dict_count_group_nosingle[self.shared_data.current_timeline] \
-                    = {self.shared_data.current_lesson[0]: 1}
+                self.shared_data.dict_count_group_nosingle[time] = {group: 1}
         return ret
 
     def get_module_description(self) -> str:

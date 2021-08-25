@@ -9,7 +9,8 @@ from timetable_genetic_algorithm.utils.Individ import Individ
 
 # don`t touch this imports ->>>
 from timetable_genetic_algorithm.fitness_modules import groups_no_gaps, pedagogs_no_gaps, pedagogs_uniqueness, \
-    groups_uniqueness, groups_num_lesson
+    groups_uniqueness, groups_num_lesson, discipline_name, discipline_type, audience_specialization, \
+    audience_hard_link, discipline_weight_day_dict, discipline_weight_day, discipline_weight_week
 
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.our_typing import Audience
@@ -37,8 +38,8 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
             for module in modules:
                 name_dict_log[module.get_module_naming()] = \
                     name_dict_log.get(module.get_module_naming(), 0) + module.get_fitness_penalty()
-                print(module.get_module_naming(), name_dict_log[module.get_module_naming()])
 
     for module in modules:
         name_dict_log[module.get_module_naming()] = \
             name_dict_log.get(module.get_module_naming(), 0) + module.final_action()
+        print(module.get_module_naming(), name_dict_log[module.get_module_naming()])

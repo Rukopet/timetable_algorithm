@@ -9,18 +9,16 @@ class PedagogsUniqueness(ModuleForFitnessFunctionBase):
     def get_fitness_penalty(self) -> int:
         ret = 0
         if self.shared_data.current_lesson:
-            if self.shared_data.current_timeline in self.shared_data.dict_count_pedago_nosingle:
-                if self.shared_data.current_lesson[2] in \
-                        self.shared_data.dict_count_pedago_nosingle[self.shared_data.current_timeline]:
-                    self.shared_data.dict_count_pedago_nosingle[self.shared_data.current_timeline]\
-                        [self.shared_data.current_lesson[2]] += 1
+            time = self.shared_data.current_timeline
+            ped_name = self.shared_data.current_lesson[2]
+            if time in self.shared_data.dict_count_pedago_nosingle:
+                if ped_name in self.shared_data.dict_count_pedago_nosingle[time]:
+                    self.shared_data.dict_count_pedago_nosingle[time][ped_name] += 1
                     ret += self.PENALTY_WEIGHT
                 else:
-                    self.shared_data.dict_count_pedago_nosingle[self.shared_data.current_timeline]\
-                        [self.shared_data.current_lesson[2]] = 1
+                    self.shared_data.dict_count_pedago_nosingle[time][ped_name] = 1
             else:
-                self.shared_data.dict_count_pedago_nosingle[self.shared_data.current_timeline] \
-                    = {self.shared_data.current_lesson[2]: 1}
+                self.shared_data.dict_count_pedago_nosingle[time] = {ped_name: 1}
         return ret
 
     def get_module_description(self) -> str:

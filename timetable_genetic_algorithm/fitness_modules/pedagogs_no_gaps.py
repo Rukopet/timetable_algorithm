@@ -12,16 +12,17 @@ class PedagogsNoGaps(ModuleForFitnessFunctionBase):
         time = self.shared_data.current_timeline % AMOUNT_TIMELINES_IN_DAY
         ret = 0
         if self.shared_data.current_lesson:
+            ped_name = self.shared_data.current_lesson[2]
             if day in self.shared_data.dict_count_pedago_windows.keys():
-                if self.shared_data.current_lesson[2] in self.shared_data.dict_count_pedago_windows[day].keys():
-                    if time > self.shared_data.dict_count_pedago_windows[day][self.shared_data.current_lesson[2]]:
-                        ret += (time - self.shared_data.dict_count_pedago_windows[day]\
-                            [self.shared_data.current_lesson[2]] - 1) * self.PENALTY_WEIGHT
-                        self.shared_data.dict_count_pedago_windows[day][self.shared_data.current_lesson[2]] = time
+                if ped_name in self.shared_data.dict_count_pedago_windows[day].keys():
+                    if time > self.shared_data.dict_count_pedago_windows[day][ped_name]:
+                        ret += (time - self.shared_data.dict_count_pedago_windows[day][ped_name] - 1) \
+                               * self.PENALTY_WEIGHT
+                        self.shared_data.dict_count_pedago_windows[day][ped_name] = time
                 else:
-                    self.shared_data.dict_count_pedago_windows[day][self.shared_data.current_lesson[2]] = time
+                    self.shared_data.dict_count_pedago_windows[day][ped_name] = time
             else:
-                self.shared_data.dict_count_pedago_windows[day] = {self.shared_data.current_lesson[2]: time}
+                self.shared_data.dict_count_pedago_windows[day] = {ped_name: time}
         return ret
 
     def get_module_description(self):

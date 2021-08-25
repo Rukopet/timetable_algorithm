@@ -20,16 +20,17 @@ class GroupsNoGaps(ModuleForFitnessFunctionBase):
         time = self.shared_data.current_timeline % AMOUNT_TIMELINES_IN_DAY
         ret = 0
         if self.shared_data.current_lesson:
+            group = self.shared_data.current_lesson[0]
             if day in self.shared_data.dict_count_group_windows.keys():
-                if self.shared_data.current_lesson[0] in self.shared_data.dict_count_group_windows[day].keys():
-                    if time > self.shared_data.dict_count_group_windows[day][self.shared_data.current_lesson[0]]:
-                        ret += (time - self.shared_data.dict_count_group_windows[day][self.shared_data.current_lesson[0]] - 1) \
+                if group in self.shared_data.dict_count_group_windows[day].keys():
+                    if time > self.shared_data.dict_count_group_windows[day][group]:
+                        ret += (time - self.shared_data.dict_count_group_windows[day][group] - 1) \
                                * self.PENALTY_WEIGHT
-                        self.shared_data.dict_count_group_windows[day][self.shared_data.current_lesson[0]] = time
+                        self.shared_data.dict_count_group_windows[day][group] = time
                 else:
-                    self.shared_data.dict_count_group_windows[day][self.shared_data.current_lesson[0]] = time
+                    self.shared_data.dict_count_group_windows[day][group] = time
             else:
-                self.shared_data.dict_count_group_windows[day] = {self.shared_data.current_lesson[0]: time}
+                self.shared_data.dict_count_group_windows[day] = {group: time}
         return ret
 
     def get_module_description(self):

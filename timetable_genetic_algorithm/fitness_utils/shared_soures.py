@@ -24,8 +24,10 @@ class SharedData:
     dict_count_group_nosingle: Dict[Timeline, Dict[Group, AmountMentions]] = field(default_factory=dict)
     dict_count_pedago_windows: Dict[DayOfWeek, Dict[Pedagog, NumberLessons]] = field(default_factory=dict)
     dict_count_group_windows: Dict[DayOfWeek, Dict[Group, NumberLessons]] = field(default_factory=dict)
-    # dict_count_disc_name: Dict[DayOfWeek, Dict[Group, Discipline]]
-    # dict_count_disc_type: Dict[DayOfWeek, Dict[Group, TypeDiscipline]]
+    dict_count_disc_name: Dict[DayOfWeek, Dict[Group, Discipline]] = field(default_factory=dict)
+    dict_count_disc_type: Dict[DayOfWeek, Dict[Group, TypeDiscipline]] = field(default_factory=dict)
+    dict_count_disc_weight_day: Dict[DayOfWeek, Dict[Group, List[AmountMentions]]] = field(default_factory=dict)
+    dict_count_disc_weight_week: Dict[Group, List[AmountMentions]] = field(default_factory=dict)
 
     current_timeline: int = 0
     current_audience: Tuple[str, int] = 0

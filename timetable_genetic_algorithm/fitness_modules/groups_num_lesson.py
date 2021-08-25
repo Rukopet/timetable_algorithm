@@ -12,8 +12,9 @@ class GroupsNumLesson(ModuleForFitnessFunctionBase):
         timeline = self.shared_data.current_timeline % AMOUNT_TIMELINES_IN_DAY
         ret = 0
         if self.shared_data.current_lesson:
-            if self.shared_data.current_lesson[4] > timeline or timeline > self.shared_data.current_lesson[4] \
-                    + MAX_LESSONS_IN_DAY[self.shared_data.current_lesson[0][0]]:
+            first_lesson = self.shared_data.current_lesson[4]
+            num_group = self.shared_data.current_lesson[0][0]
+            if first_lesson > timeline or timeline > first_lesson + MAX_LESSONS_IN_DAY[num_group]:
                 ret += self.PENALTY_WEIGHT
         return ret
 
