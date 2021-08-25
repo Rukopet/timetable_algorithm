@@ -10,7 +10,7 @@ from timetable_genetic_algorithm.utils.Individ import Individ
 # don`t touch this imports ->>>
 from timetable_genetic_algorithm.fitness_modules import groups_no_gaps, pedagogs_no_gaps, pedagogs_uniqueness, \
     groups_uniqueness, groups_num_lesson, discipline_name, discipline_type, audience_specialization, \
-    audience_hard_link, discipline_weight_day_dict, discipline_weight_day, discipline_weight_week
+    audience_hard_link, discipline_weight_day, discipline_weight_week
 
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.our_typing import Audience
