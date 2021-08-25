@@ -63,7 +63,7 @@ def main():
     # print("Pedagog error (No single):", draft.count_pedag_error_nosingle)
     # #print(draft.dict_count_pedago_windows)
     # print("Pedagog error (windows):", draft.count_pedag_error_window)
-    # #print(draft.dict_count_group_nosingle)
+    # print(draft.dict_count_group_nosingle)
     # print("Group error (No single):", draft.count_group_error_nosingle)
     # print("Group error (first lesson):", draft.count_group_error_first_lesson)
     # #print(draft.dict_count_group_windows)

@@ -27,7 +27,8 @@ def generate_individ(table_settings: AlgorithmSettings):
 
     for timeline in get_time_line_sequence(table_settings):
         tmp = {}
-        for audience in cur.get_shuffled_audiences():
+        shuffled_audiences = cur.get_shuffled_audiences()
+        for audience in shuffled_audiences:
             if cur.included_list_main_tuple.__len__() == 0:
                 break
             trust_list = cur.get_true_list_time_line_search(main_tuple, timeline,
@@ -57,6 +58,7 @@ def generate_individ(table_settings: AlgorithmSettings):
                                                             audience_tuple[audience][0],
                                                             table_settings)
             tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
+
 
         pop[timeline] = tmp
         cur.drop_included_audience_tuple()
