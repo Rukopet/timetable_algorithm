@@ -16,6 +16,7 @@ class ModuleRegistration(metaclass=SingletonBaseClass):
         return self.__list_of_registered_modules
 
     @reg_module.setter
+    # TODO fix dir(__builtins__) not true implement!
     def reg_module(self, value: Type[ModuleForFitnessFunctionBase]):
         if issubclass(value, ModuleForFitnessFunctionBase) and value.__name__ not in dir(__builtins__):
             self.__list_of_registered_modules.append(value)
