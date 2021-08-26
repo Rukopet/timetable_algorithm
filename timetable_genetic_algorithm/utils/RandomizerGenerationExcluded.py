@@ -130,6 +130,16 @@ class RandomizerGenerationIncluded:
             if MAX_LESSONS_IN_DAY.get(main_tuple[index][0][0], 7) > timemode - main_tuple[index][4] >= 0
             and timeline < main_tuple[index][3] * amount_timelines_in_day
             and not self.__check_is_group_have_lesson_already(main_tuple[index][0])
+
+        ]
+
+    def get_true_list_no_spec(self, trust_list: List[int], main_tuple: tuple,
+                              table_settings: AlgorithmSettings) -> list:
+        return [
+            index for index in trust_list
+            if main_tuple[index][0] not in table_settings.GROUPS_AUDIENCE_LINK
+            and main_tuple[index][1] not in table_settings.DISCIPLINES_AUDIENCE_LINK
+            and main_tuple[index][1] not in table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK
         ]
 
     def get_true_list_audience_disc(self, trust_list: List[int], main_tuple: tuple, audience: int,

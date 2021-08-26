@@ -79,6 +79,11 @@ def main():
     # print("Disciplines error (weight week):", draft.count_disc_error_weight_week)
     # print("Audiences error (specialization):", draft.count_aud_error_spec)
     # print("Audiences error (hard link):", draft.count_aud_error_hard_link)
+    # print(table_settings.DISCIPLINES_AUDIENCE_LINK)
+    # print(table_settings.GROUPS_AUDIENCE_LINK)
+    # print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK)
+    print(table_settings.DISCIPLINES_AUDIENCE_LINK)
+    print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
 
 
 if __name__ == "__main__":

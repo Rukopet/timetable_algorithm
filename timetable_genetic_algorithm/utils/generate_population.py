@@ -42,8 +42,9 @@ def generate_individ(table_settings: AlgorithmSettings):
             elif auidinect -> 1 if 2 -> found num letter -> checkin maintuple True | false
             elif auidinect -> 1 if 3 -> 
             """
-
-            if audience_tuple[audience][1] == 1:
+            if audience_tuple[audience][1] == 0:
+                trust_list = cur.get_true_list_no_spec(trust_list, main_tuple, table_settings)
+            elif audience_tuple[audience][1] == 1:
                 trust_list = cur.get_true_list_audience_disc(trust_list, main_tuple,
                                                              audience_tuple[audience][0],
                                                              table_settings)
@@ -60,9 +61,13 @@ def generate_individ(table_settings: AlgorithmSettings):
             tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
             # if tmp[audience_tuple[audience]] is not None:
             #     print("Trust list:", trust_list, main_tuple, tmp[audience_tuple[audience]], sep='\n')
-
+            if tmp[audience_tuple[audience]] is not None \
+                    and tmp[audience_tuple[audience]][1] in table_settings.DISCIPLINES_LIST_WITH_PAIR:
+                print(tmp[audience_tuple[audience]], audience, audience_tuple[audience], shuffled_audiences, sep='\t\t')
+                i = shuffled_audiences.index(audience)
+                if i < len(shuffled_audiences) - 1:
+                    print(shuffled_audiences[i + 1], audience_tuple[shuffled_audiences[i + 1]])
         pop[timeline] = tmp
         cur.drop_included_audience_tuple()
         cur.drop_bool_copy_matrix()
-    print(len(main_tuple))
     return pop
