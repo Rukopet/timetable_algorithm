@@ -58,9 +58,11 @@ def generate_individ(table_settings: AlgorithmSettings):
                                                             audience_tuple[audience][0],
                                                             table_settings)
             tmp[audience_tuple[audience]] = cur.get_tuple_include_with_trust(trust_list, main_tuple)
-
+            # if tmp[audience_tuple[audience]] is not None:
+            #     print("Trust list:", trust_list, main_tuple, tmp[audience_tuple[audience]], sep='\n')
 
         pop[timeline] = tmp
         cur.drop_included_audience_tuple()
         cur.drop_bool_copy_matrix()
+    print(len(main_tuple))
     return pop
