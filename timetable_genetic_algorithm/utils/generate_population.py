@@ -65,7 +65,7 @@ def check_pair_discipline(shuffled_audiences, audience, tmp, table_settings, aud
                     trust_list = cur.get_true_list_time_line_search_pair(main_tuple,
                                                                          timeline,
                                                                          table_settings.AMOUNT_TIMELINES_IN_DAY,
-                                                                         group)
+                                                                         group, pair_disc)
                     if audience_tuple[id_aud][1] == 0:
                         trust_list = cur.get_true_list_no_spec(trust_list, main_tuple, table_settings)
                     elif audience_tuple[id_aud][1] == 1:

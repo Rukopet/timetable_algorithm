@@ -137,7 +137,8 @@ class RandomizerGenerationIncluded:
                                             main_tuple: list,
                                             timeline: int,
                                             amount_timelines_in_day: int,
-                                            group: tuple) -> List[int]:
+                                            group: tuple,
+                                            pair_disc: str) -> List[int]:
         """
             runs over the list and forms a sheet that satisfies the conditions
 
@@ -155,7 +156,7 @@ class RandomizerGenerationIncluded:
             index for index in self.included_list_main_tuple
             if MAX_LESSONS_IN_DAY.get(main_tuple[index][0][0], 7) > timemode - main_tuple[index][4] >= 0
             and timeline < main_tuple[index][3] * amount_timelines_in_day
-            and main_tuple[index][0] == group
+            and main_tuple[index][0] == group and main_tuple[index][1] == pair_disc
 
         ]
 
