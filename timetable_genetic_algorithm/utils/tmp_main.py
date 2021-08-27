@@ -84,6 +84,7 @@ def main():
     # print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK)
     print(table_settings.DISCIPLINES_AUDIENCE_LINK)
     print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
+    print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK)
 
 
 if __name__ == "__main__":

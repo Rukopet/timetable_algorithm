@@ -133,6 +133,32 @@ class RandomizerGenerationIncluded:
 
         ]
 
+    def get_true_list_time_line_search_pair(self,
+                                            main_tuple: list,
+                                            timeline: int,
+                                            amount_timelines_in_day: int,
+                                            group: tuple) -> List[int]:
+        """
+            runs over the list and forms a sheet that satisfies the conditions
+
+            :param group:
+            :var main_tuple[index][0]: is some group(1, "А"), in main_tuple
+
+            :param main_tuple: tuple with sig: write signature
+            :param timeline: int num, what is the account
+            :param amount_timelines_in_day: need MOD big timeline on AMOUNT_TIMELINES_IN_DAY in settings+generations.py -> 53 % 14
+            :return: list with int`s, for get needed tuples sig: List[int]
+        """
+
+        timemode = timeline % amount_timelines_in_day
+        return [
+            index for index in self.included_list_main_tuple
+            if MAX_LESSONS_IN_DAY.get(main_tuple[index][0][0], 7) > timemode - main_tuple[index][4] >= 0
+            and timeline < main_tuple[index][3] * amount_timelines_in_day
+            and main_tuple[index][0] == group
+
+        ]
+
     def get_true_list_no_spec(self, trust_list: List[int], main_tuple: tuple,
                               table_settings: AlgorithmSettings) -> list:
         return [
@@ -170,6 +196,14 @@ class RandomizerGenerationIncluded:
         ret = choice(trust_list)
         self.included_list_main_tuple.remove(ret)
         self.__add_group_to_have_lesson_already(main_tuple[ret][0])
+        return main_tuple[ret]
+
+    def get_tuple_include_with_pair(self, trust_list: List[int], main_tuple: list) -> tuple or None:
+        if trust_list.__len__() == 0:
+            return None
+        ret = choice(trust_list)
+        self.included_list_main_tuple.remove(ret)
+        # self.__add_group_to_have_lesson_already(main_tuple[ret][0])
         return main_tuple[ret]
 
     def drop_included_main_tuple(self) -> None:
