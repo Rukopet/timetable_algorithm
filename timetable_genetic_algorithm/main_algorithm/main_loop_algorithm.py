@@ -25,3 +25,7 @@ def main_loop(table_settings: AlgorithmSettings, population: List[Individ]):
     for generation in range(get_count_generation()):
         for individ in population:
             fitness_function(table_settings, individ, log)
+        best_individ = log.best_individ
+        if best_individ.get("penalty") == 0:
+            break
+

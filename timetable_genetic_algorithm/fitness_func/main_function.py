@@ -3,7 +3,7 @@ from typing import Type, List
 from timetable_genetic_algorithm.fitness_utils import ModuleRegistration
 from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.fitness_utils.shared_soures import Lesson, SharedData
-from timetable_genetic_algorithm.logger import LoggerUtils
+from timetable_genetic_algorithm.logger.logger import LoggerUtils
 from timetable_genetic_algorithm.utils.Individ import Individ
 
 # don`t touch this imports ->>>
@@ -45,3 +45,4 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ, log: L
         sum_penalty += current_individ_dict[module.get_module_naming()]
     current_individ_dict["sum"] = sum_penalty
 
+    log.set_best_individ_if_best(individ)
