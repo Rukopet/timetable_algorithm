@@ -28,4 +28,3 @@ def main_loop(table_settings: AlgorithmSettings, population: List[Individ]):
         best_individ = log.best_individ
         if best_individ.get("penalty") == 0:
             break
-
