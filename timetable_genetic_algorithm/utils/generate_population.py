@@ -90,13 +90,9 @@ def check_pair_discipline(shuffled_audiences, audience, tmp, table_settings, aud
                 break
 
 
-def generate_individ(table_settings: AlgorithmSettings):
-    main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
-    audience_tuple = table_settings.get_audience_for_generation()
+def generate_individ(table_settings: AlgorithmSettings, main_tuple: tuple, audience_tuple: tuple, index: int):
 
-    if table_settings.OTHER_DATA.get("whole_time") != len(main_tuple):
-        raise ValueError("cheto ne cxodutcya brat")
-
+    print(index, end=' ')
     pop = {}
     cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple),
                                        table_settings.GROUPS_LIST)

@@ -3,6 +3,7 @@ import pandas as pd
 
 from timetable_genetic_algorithm.main_algorithm.main_loop_algorithm import main_loop
 from timetable_genetic_algorithm.utils.DraftFitness import FitnessSettingData
+from timetable_genetic_algorithm.utils.GeneratorLessons import GeneratorLessons
 from timetable_genetic_algorithm.utils.Individ import Individ
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
@@ -42,21 +43,24 @@ def main():
     front_data = get_data_from_front()
 
     table_settings = AlgorithmSettings(front_data)
-    individ = generate_individ(table_settings)
     # pop = Individ(individ, table_settings)
     # pop.into_excel_file()
     # print(*[(key, i) for key, i in individ.items()], sep='\n')
-    individ = group_sort(individ)
+    main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
+    audience_tuple = table_settings.get_audience_for_generation()
+    individ = dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple, 0).items()))
     pop2 = Individ(individ, table_settings, 0)
-    pop2.into_excel_file(file_name="pop2.xls")
-
+    pop2.into_excel_file(file_name="pop_debug.xls")
     # print(groups)
     # print(table_settings.GROUPS_LIST)
     # print(table_settings.GROUPS_RANGE)
     # fit = Fitness(table_settings, groups)
     # print(fit.get_one_group())
+    # main_loop(table_settings, [
+    #     generate_individ(table_settings, main_tuple, audience_tuple, i)
+    #     for i in range(table_settings.TOTAL_POPULATION)
+    # ])
 
-    main_loop(table_settings, [individ])
 
     # draft = FitnessSettingData(table_settings, individ)
     # draft.main_loop()
