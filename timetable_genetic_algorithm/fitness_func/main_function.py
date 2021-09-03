@@ -39,7 +39,10 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ):
                 name_dict_log[module.get_module_naming()] = \
                     name_dict_log.get(module.get_module_naming(), 0) + module.get_fitness_penalty()
 
+    sum_penalty = 0
     for module in modules:
         name_dict_log[module.get_module_naming()] = \
             name_dict_log.get(module.get_module_naming(), 0) + module.final_action()
         print(module.get_module_naming(), name_dict_log[module.get_module_naming()])
+        sum_penalty += name_dict_log[module.get_module_naming()]
+    print("Whole Penalty: ", sum_penalty)

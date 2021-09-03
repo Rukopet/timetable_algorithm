@@ -3,6 +3,7 @@ import pandas as pd
 
 from timetable_genetic_algorithm.main_algorithm.main_loop_algorithm import main_loop
 from timetable_genetic_algorithm.utils.DraftFitness import FitnessSettingData
+from timetable_genetic_algorithm.utils.Individ import Individ
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils.generate_population import generate_individ
@@ -46,8 +47,8 @@ def main():
     # pop.into_excel_file()
     # print(*[(key, i) for key, i in individ.items()], sep='\n')
     individ = group_sort(individ)
-    # pop2 = Individ(groups, table_settings)
-    # pop2.into_excel_file(file_name="pop2.xls")
+    pop2 = Individ(individ, table_settings, 0)
+    pop2.into_excel_file(file_name="pop2.xls")
 
     # print(groups)
     # print(table_settings.GROUPS_LIST)
@@ -78,8 +79,10 @@ def main():
     # print("Disciplines error (weight week):", draft.count_disc_error_weight_week)
     # print("Audiences error (specialization):", draft.count_aud_error_spec)
     # print("Audiences error (hard link):", draft.count_aud_error_hard_link)
-
-
+    # print(table_settings.GROUPS_AUDIENCE_LINK)
+    # print(table_settings.DISCIPLINES_AUDIENCE_LINK)
+    # print(table_settings.DISCIPLINE_DICT_WITH_LIST_PAIR)
+    # print(table_settings.DISCIPLINES_GROUPS_FOR_AUDIENCE_LINK)
 
 
 if __name__ == "__main__":
