@@ -90,15 +90,12 @@ def check_pair_discipline(shuffled_audiences, audience, tmp, table_settings, aud
                 break
 
 
-def generate_individ(table_settings: AlgorithmSettings, main_tuple: tuple, audience_tuple: tuple, index: int):
-
-    print(index, end=' ')
-    pop = {}
+def generate_individ(table_settings: AlgorithmSettings, main_tuple: List[tuple], audience_tuple: List[tuple]):
+    individ = {}
     cur = RandomizerGenerationIncluded(table_settings.OTHER_DATA.get("whole_time"), len(audience_tuple),
                                        table_settings.GROUPS_LIST)
 
     table_settings.DEBUG = 1
-
     for timeline in get_time_line_sequence(table_settings):
         tmp = {}
         shuffled_audiences = cur.get_shuffled_audiences()
@@ -111,7 +108,7 @@ def generate_individ(table_settings: AlgorithmSettings, main_tuple: tuple, audie
                     and tmp[audience_tuple[audience]][1] in table_settings.DISCIPLINES_LIST_WITH_PAIR:
                 check_pair_discipline(shuffled_audiences, audience, tmp, table_settings, audience_tuple, cur,
                                       main_tuple, timeline)
-        pop[timeline] = tmp
+        individ[timeline] = tmp
         cur.drop_included_audience_tuple()
         cur.drop_bool_copy_matrix()
-    return pop
+    return individ

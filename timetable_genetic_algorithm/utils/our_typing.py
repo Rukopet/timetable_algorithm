@@ -1,5 +1,7 @@
 from typing import Tuple, List
 
+from timetable_genetic_algorithm.utils.Individ import Individ
+
 """
 
     alias for Tuple with [0] == class(groups) number; [1] == letter
@@ -17,7 +19,7 @@ Groups = List[Group]
 Audience = Tuple[int, int]
 Audiences = List[Audience]
 
-Individ = tuple
+# Individ = dict
 Population = List[Individ]
 """
     

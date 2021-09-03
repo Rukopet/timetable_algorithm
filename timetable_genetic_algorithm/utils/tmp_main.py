@@ -1,4 +1,6 @@
 import json
+from typing import List
+
 import pandas as pd
 
 from timetable_genetic_algorithm.main_algorithm.main_loop_algorithm import main_loop
@@ -40,27 +42,24 @@ def group_sort(individ: dict) -> dict:
     return individ_sort
 
 
-def generate_population(table_settings: AlgorithmSettings, main_tuple: tuple, audience_tuple: tuple) -> Population:
-    ...
+def generate_population_sorted(table_settings: AlgorithmSettings,
+                               main_tuple: List[tuple],
+                               audience_tuple: List[tuple]) -> Population:
+    return [
+        Individ(dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple).items())), table_settings, individ_id)
+        for individ_id in range(table_settings.TOTAL_POPULATION)
+    ]
+
 
 def main():
     front_data = get_data_from_front()
-
     table_settings = AlgorithmSettings(front_data)
-    # pop = Individ(individ, table_settings)
-    # pop.into_excel_file()
-    # print(*[(key, i) for key, i in individ.items()], sep='\n')
+
     main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
     audience_tuple = table_settings.get_audience_for_generation()
-    individ = dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple, 0).items()))
-    pop2 = Individ(individ, table_settings, 0)
-    pop2.into_excel_file(file_name="pop_debug.xls")
-    # fit = Fitness(table_settings, groups)
-    # print(fit.get_one_group())
-    # main_loop(table_settings, [
-    #     generate_individ(table_settings, main_tuple, audience_tuple, i)
-    #     for i in range(table_settings.TOTAL_POPULATION)
-    # ])
+
+    population = generate_population_sorted(table_settings, main_tuple, audience_tuple)
+    main_loop(table_settings, population)
 
 
     # draft = FitnessSettingData(table_settings, individ)
