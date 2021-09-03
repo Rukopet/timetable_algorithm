@@ -11,7 +11,6 @@ def get_count_generation():
 
 def main_loop(table_settings: AlgorithmSettings, population: List[Dict]):
     tmp_ind = Individ(population[0], table_settings, 0)
-    print(1)
     for generation in range(get_count_generation()):
         ...
     fitness_function(table_settings, tmp_ind)

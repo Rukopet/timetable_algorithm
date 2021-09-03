@@ -8,6 +8,7 @@ from timetable_genetic_algorithm.utils.Individ import Individ
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils.generate_population import generate_individ
+from timetable_genetic_algorithm.utils.our_typing import Population
 
 
 def get_data_from_front() -> DataFromFront:
@@ -39,6 +40,9 @@ def group_sort(individ: dict) -> dict:
     return individ_sort
 
 
+def generate_population(table_settings: AlgorithmSettings, main_tuple: tuple, audience_tuple: tuple) -> Population:
+    ...
+
 def main():
     front_data = get_data_from_front()
 
@@ -51,9 +55,6 @@ def main():
     individ = dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple, 0).items()))
     pop2 = Individ(individ, table_settings, 0)
     pop2.into_excel_file(file_name="pop_debug.xls")
-    # print(groups)
-    # print(table_settings.GROUPS_LIST)
-    # print(table_settings.GROUPS_RANGE)
     # fit = Fitness(table_settings, groups)
     # print(fit.get_one_group())
     # main_loop(table_settings, [

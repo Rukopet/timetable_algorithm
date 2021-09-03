@@ -17,6 +17,8 @@ Groups = List[Group]
 Audience = Tuple[int, int]
 Audiences = List[Audience]
 
+Individ = tuple
+Population = List[Individ]
 """
     
     alias for list tuples

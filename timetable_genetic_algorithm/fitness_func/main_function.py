@@ -1,6 +1,5 @@
 from typing import Type, List
 
-from timetable_genetic_algorithm.fitness_func import generator_rules_matrix
 from timetable_genetic_algorithm.fitness_utils import ModuleRegistration
 from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.fitness_utils.shared_soures import Lesson, SharedData
@@ -13,7 +12,6 @@ from timetable_genetic_algorithm.fitness_modules import groups_no_gaps, pedagogs
     audience_hard_link, discipline_weight_day, discipline_weight_week
 
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
-from timetable_genetic_algorithm.utils.our_typing import Audience
 
 
 def get_list_modules_object_list() -> List[ModuleForFitnessFunctionBase]:
