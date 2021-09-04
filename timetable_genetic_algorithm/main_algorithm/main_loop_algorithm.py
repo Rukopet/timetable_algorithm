@@ -14,7 +14,7 @@ def generate_dict_for_logger(population: PopulationType) -> Dict[int, Dict[str, 
         ind.id_individ: {"instance": ind}
         for ind in population
     }
-    ret["max"] = None
+    ret["sum_all_individs"] = 0
     return ret
 
 
@@ -45,10 +45,22 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
     return ret_offspring
 
 
-def main_loop(table_settings: AlgorithmSettings, population: PopulationType):
-    log = LoggerUtils()
-    log.penalty = generate_dict_for_logger(population)
+def crossover(table_settings: AlgorithmSettings, current_population: PopulationType):
+    ...
+
+
+def mutation(table_settings: AlgorithmSettings, current_population: PopulationType):
+    ...
+
+
+def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> Individ:
+    penalty_for_log = generate_dict_for_logger(population)
+    best_individ = None
+    from timetable_genetic_algorithm.utils.plot_drawer import PlotDrawer
+    draw = PlotDrawer()
     for generation in range(table_settings.COUNT_GENERATIONS):
+        log = LoggerUtils()
+        log.penalty = penalty_for_log
         for individ in population:
             fitness_function(table_settings, individ, log)
         best_individ = log.best_individ
@@ -56,3 +68,17 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType):
             break
         offspring = tournament_selection(table_settings, population, log)
         offspring = copy_offspring(offspring, table_settings)
+
+        crossover(table_settings, offspring)
+        mutation(table_settings, offspring)
+
+        population = offspring
+
+        draw.max_append(best_individ.get("sum"))
+        draw.mean_append(log.get_mean(table_settings.TOTAL_POPULATION))
+
+        log.drop_sum_all_individs()
+
+    if table_settings.DEBUG == 1:
+        draw.show_plot()
+    return best_individ.get("instance")
