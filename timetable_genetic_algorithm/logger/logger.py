@@ -28,6 +28,8 @@ class LoggerUtils:
 
     def penalty_for_individ(self, id_individ: int):
         ind = self.penalty.get(id_individ)
+        if ind is None:
+            logging.debug("incorrect id in |LoggerUtils|.|penalty_for_individ|")
         return ind.get("penalty", float('inf'))
 
     def set_best_individ_if_best(self, current_individ):
