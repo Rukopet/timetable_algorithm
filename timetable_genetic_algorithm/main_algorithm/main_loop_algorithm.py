@@ -54,13 +54,12 @@ def mutation(table_settings: AlgorithmSettings, current_population: PopulationTy
 
 
 def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> Individ:
-    penalty_for_log = generate_dict_for_logger(population)
     best_individ = None
     from timetable_genetic_algorithm.utils.plot_drawer import PlotDrawer
     draw = PlotDrawer()
     for generation in range(table_settings.COUNT_GENERATIONS):
         log = LoggerUtils()
-        log.penalty = penalty_for_log
+        log.penalty = generate_dict_for_logger(population)
         for individ in population:
             fitness_function(table_settings, individ, log)
         best_individ = log.best_individ
@@ -74,10 +73,9 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> 
 
         population = offspring
 
-        draw.max_append(best_individ.get("sum"))
+        best = best_individ.get("sum")
+        draw.max_append(best)
         draw.mean_append(log.get_mean(table_settings.TOTAL_POPULATION))
-
-        log.drop_sum_all_individs()
 
     if table_settings.DEBUG == 1:
         draw.show_plot()

@@ -35,11 +35,11 @@ class LoggerUtils:
     def set_best_individ_if_best(self, current_individ):
         penalty = self.penalty_for_individ(current_individ.id_individ)
         if self.best_individ.get("penalty", float('inf')) > penalty:
-            self.best_individ["instance"] = current_individ
-            self.best_individ["penalty"] = penalty
+            self.best_individ = self.penalty.get(current_individ.id_individ)
 
     def drop_sum_all_individs(self):
         self.penalty["sum_all_individs"] = 0
 
     def get_mean(self, population_len: int) -> int:
-        return int(self.penalty.get("sum_all_individs") / population_len)
+        mean = int(self.penalty.get("sum_all_individs") / population_len)
+        return mean
