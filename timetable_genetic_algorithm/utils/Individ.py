@@ -1,12 +1,12 @@
 from typing import List, Generator, Tuple, Dict, Optional
-from timetable_genetic_algorithm.utils.our_typing import Group
 
-from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 
 import openpyxl
 from openpyxl.worksheet.worksheet import Worksheet
+
 from timetable_genetic_algorithm.utils.constants import DAYS_OF_WEEK_RUSSIAN
 import logging
+from timetable_genetic_algorithm.utils.our_typing import Group
 
 
 def util_diff_tuples(x):
@@ -29,7 +29,7 @@ class Individ:
 
     moderation_ident_from_left = 0
 
-    def __init__(self, dict_ind: dict, settings: AlgorithmSettings, id_individ: int):
+    def __init__(self, dict_ind: dict, settings, id_individ: int):
         self.id_individ = id_individ
         self.dict_individ = dict_ind
         self.settings = settings

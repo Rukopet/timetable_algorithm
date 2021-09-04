@@ -1,6 +1,4 @@
-from typing import Tuple, List
-
-from timetable_genetic_algorithm.utils.Individ import Individ
+from typing import Tuple, List, Any
 
 """
 
@@ -20,7 +18,7 @@ Audience = Tuple[int, int]
 Audiences = List[Audience]
 
 # Individ = dict
-Population = List[Individ]
+Population = List[Any]
 """
     
     alias for list tuples

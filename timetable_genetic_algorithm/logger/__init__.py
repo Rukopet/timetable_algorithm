@@ -1,1 +1,1 @@
-from .loger import LoggerPenalty, LoggerUtils
+from .logger import LoggerPenalty, LoggerUtils

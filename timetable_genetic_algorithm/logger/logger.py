@@ -2,8 +2,6 @@ import logging
 from dataclasses import dataclass, field
 from typing import Dict, Any
 
-from timetable_genetic_algorithm.utils.Individ import Individ
-
 
 class LoggerPenalty:
     def __init__(self) -> None:
@@ -36,7 +34,7 @@ class LoggerUtils:
             raise ValueError
         return sum(whole_penalties.values())
 
-    def set_best_individ_if_best(self, current_individ: Individ):
+    def set_best_individ_if_best(self, current_individ):
         penalty = self.penalty_for_individ(current_individ.id_individ)
         if self.best_individ.get("penalty", float('inf')) > penalty:
             self.best_individ["instance"] = current_individ
