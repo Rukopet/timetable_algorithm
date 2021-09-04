@@ -9,10 +9,6 @@ from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettin
 PopulationType = List[Individ]
 
 
-def get_count_generation():
-    return 200
-
-
 def generate_dict_for_logger(population: PopulationType) -> Dict[int, Dict[str, int]]:
     ret = {
         ind.id_individ: {"instance": ind}
@@ -52,7 +48,7 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
 def main_loop(table_settings: AlgorithmSettings, population: PopulationType):
     log = LoggerUtils()
     log.penalty = generate_dict_for_logger(population)
-    for generation in range(get_count_generation()):
+    for generation in range(table_settings.COUNT_GENERATIONS):
         for individ in population:
             fitness_function(table_settings, individ, log)
         best_individ = log.best_individ

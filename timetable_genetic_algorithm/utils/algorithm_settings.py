@@ -81,6 +81,7 @@ class AlgorithmSettings:
     P_MUTATION = settings_generations.P_MUTATION
     AMOUNT_TIMELINES_IN_DAY = settings_generations.AMOUNT_TIMELINES_IN_DAY
     TIME_FIRST_LESSON_SECOND_SHIFT = settings_generations.TIME_FIRST_LESSON_SECOND_SHIFT
+    COUNT_GENERATIONS = settings_generations.COUNT_GENERATIONS
     MAX_DAYS_FROM_JSON = 5
 
     def __init__(self, data_front: DataFromFront):
