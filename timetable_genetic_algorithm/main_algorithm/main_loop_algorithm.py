@@ -3,6 +3,7 @@ from typing import List, Dict
 
 from timetable_genetic_algorithm.fitness_func.main_function import fitness_function
 from timetable_genetic_algorithm.logger.logger import LoggerUtils
+from timetable_genetic_algorithm.main_algorithm.generators_for_mutation import GeneratorsForMutation
 from timetable_genetic_algorithm.utils.Individ import Individ
 from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 
@@ -49,21 +50,26 @@ def crossover(table_settings: AlgorithmSettings, current_population: PopulationT
     ...
 
 
-def mutation(table_settings: AlgorithmSettings, current_population: PopulationType):
-    from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation
-    from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_range_for_mutation
-    from timetable_genetic_algorithm.main_algorithm.mutation_utils import swap_for_mutations
+def mutation(table_settings: AlgorithmSettings,
+             current_population: PopulationType,
+             mut_gen: GeneratorsForMutation):
+    from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation, \
+        get_range_for_mutation, swap_for_mutations
     shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
     number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
     for number_ind in range(number_of_mutations):
-        current_id = shuffled_list[number_ind]
-        swap_for_mutations(current_population[current_id], table_settings.P_MUTATION)
+        current_individ = current_population[shuffled_list[number_ind]]
+        current_individ.into_excel_file(file_name="1.xls")
+        swap_for_mutations(current_individ, table_settings, mut_gen)
+        current_individ.into_excel_file(file_name="2.xls")
 
 
-def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> Individ:
-    best_individ = None
+def main_loop(table_settings: AlgorithmSettings, population: PopulationType, audience_tuple: tuple) -> Individ:
     from timetable_genetic_algorithm.utils.plot_drawer import PlotDrawer
+
+    best_individ = None
     draw = PlotDrawer()
+    mutation_generators = GeneratorsForMutation(table_settings, audience_tuple)
     for generation in range(table_settings.COUNT_GENERATIONS):
         log = LoggerUtils()
         log.penalty = generate_dict_for_logger(population)
@@ -74,9 +80,9 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> 
             break
         offspring = tournament_selection(table_settings, population, log)
         offspring = copy_offspring(offspring, table_settings)
-
+        print(generation)
         crossover(table_settings, offspring)
-        mutation(table_settings, offspring)
+        mutation(table_settings, offspring, mutation_generators)
 
         population = offspring
 

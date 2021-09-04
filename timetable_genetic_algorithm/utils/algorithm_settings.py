@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Union, List, Any, Final
+from typing import Dict, Tuple, Union, List, Any
 
 import pandas as pd
 
@@ -7,6 +7,10 @@ from timetable_genetic_algorithm.utils.constants import RUSSIAN_ALPHABET, TYPE_D
 from timetable_genetic_algorithm.utils.custom_settings import DataFromFront
 from timetable_genetic_algorithm.utils import settings_generations
 from timetable_genetic_algorithm.utils.our_typing import Audience, Group
+try:
+    from typing import Final
+except ImportError:
+    from typing_extensions import Final
 
 
 def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> List[str]:
@@ -83,6 +87,8 @@ class AlgorithmSettings:
     TIME_FIRST_LESSON_SECOND_SHIFT = settings_generations.TIME_FIRST_LESSON_SECOND_SHIFT
     COUNT_GENERATIONS = settings_generations.COUNT_GENERATIONS
     PRE_GENERATED_LIST_RANGE_POPULATION: Final = list(range(settings_generations.TOTAL_POPULATION))
+    PRE_GENERATED_LIST_TIMELINES = []
+    NUMBER_CELLS_FOR_SWAP_MUTATION = 0
     MAX_DAYS_FROM_JSON = 5
 
     def __init__(self, data_front: DataFromFront):
@@ -138,9 +144,13 @@ class AlgorithmSettings:
             self.DISCIPLINE_DICT_WITH_LIST_PAIR = self.__gen_disciplines_list_with_pair(
                 data_front.disciplinesJSON.valueDF
             )
+            self.NUMBER_CELLS_FOR_SWAP_MUTATION = self.__get_number_cells_for_swap_mutation()
 
         except Exception as e:
             raise e
+
+    def __get_number_cells_for_swap_mutation(self) -> int:
+        return int(self.OTHER_DATA["whole_time"] / 10)
 
     @staticmethod
     def __gen_groups_audience_disciplines_link(df: pd.DataFrame) -> Tuple[Dict[Group, Audience],
