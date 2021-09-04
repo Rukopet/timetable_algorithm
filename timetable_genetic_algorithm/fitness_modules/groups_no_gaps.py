@@ -41,3 +41,4 @@ class GroupsNoGaps(ModuleForFitnessFunctionBase):
 
     def change_shared_data(self):
         pass
+
