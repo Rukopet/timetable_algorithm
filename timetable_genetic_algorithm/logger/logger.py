@@ -27,12 +27,8 @@ class LoggerUtils:
     best_individ: Dict[str, Any] = field(default_factory=dict)
 
     def penalty_for_individ(self, id_individ: int):
-        whole_penalties = self.penalty.get(id_individ)
-        if whole_penalties is None:
-            msg = f'id={id_individ} not in dict penalty'
-            logging.debug(msg)
-            raise ValueError
-        return sum(whole_penalties.values())
+        ind = self.penalty.get(id_individ)
+        return ind.get("penalty", float('inf'))
 
     def set_best_individ_if_best(self, current_individ):
         penalty = self.penalty_for_individ(current_individ.id_individ)
