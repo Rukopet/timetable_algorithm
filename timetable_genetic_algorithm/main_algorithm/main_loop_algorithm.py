@@ -52,8 +52,7 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
 
 
 def crossover(table_settings: AlgorithmSettings, current_population: PopulationType):
-    for individ in current_population:
-        print(individ.id_individ, individ.dict_individ)
+    ...
 
 
 def mutation(table_settings: AlgorithmSettings, current_population: PopulationType):
