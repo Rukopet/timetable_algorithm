@@ -59,7 +59,7 @@ def main():
     audience_tuple = table_settings.get_audience_for_generation()
 
     population = generate_population_sorted(table_settings, main_tuple, audience_tuple)
-    main_loop(table_settings, population)
+    main_loop(table_settings, population, audience_tuple)
 
 
     # draft = FitnessSettingData(table_settings, individ)
