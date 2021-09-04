@@ -23,6 +23,7 @@ def tournament_selection(table_settings: AlgorithmSettings,
                          log: LoggerUtils) -> PopulationType:
     offspring = []
     END_OF_WHILE = 10
+
     # p_len = table_settings.TOTAL_POPULATION
     p_len = len(population)
     for n in range(p_len // 3 + 1):
