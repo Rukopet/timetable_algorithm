@@ -40,7 +40,7 @@ def tournament_selection(table_settings: AlgorithmSettings,
 def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings) -> PopulationType:
     ret_offspring: PopulationType = [
         Individ(population[new_id_individ].dict_individ.copy(), table_settings, new_id_individ)
-        for new_id_individ in table_settings.TOTAL_POPULATION
+        for new_id_individ in range(table_settings.TOTAL_POPULATION)
     ]
     return ret_offspring
 
