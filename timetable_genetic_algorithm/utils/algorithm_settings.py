@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Union, List, Any
+from typing import Dict, Tuple, Union, List, Any, Final
 
 import pandas as pd
 
@@ -82,6 +82,7 @@ class AlgorithmSettings:
     AMOUNT_TIMELINES_IN_DAY = settings_generations.AMOUNT_TIMELINES_IN_DAY
     TIME_FIRST_LESSON_SECOND_SHIFT = settings_generations.TIME_FIRST_LESSON_SECOND_SHIFT
     COUNT_GENERATIONS = settings_generations.COUNT_GENERATIONS
+    PRE_GENERATED_LIST_RANGE_POPULATION: Final = list(range(settings_generations.TOTAL_POPULATION))
     MAX_DAYS_FROM_JSON = 5
 
     def __init__(self, data_front: DataFromFront):

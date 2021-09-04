@@ -50,7 +50,14 @@ def crossover(table_settings: AlgorithmSettings, current_population: PopulationT
 
 
 def mutation(table_settings: AlgorithmSettings, current_population: PopulationType):
-    ...
+    from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation
+    from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_range_for_mutation
+    from timetable_genetic_algorithm.main_algorithm.mutation_utils import swap_for_mutations
+    shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
+    number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
+    for number_ind in range(number_of_mutations):
+        current_id = shuffled_list[number_ind]
+        swap_for_mutations(current_population[current_id], table_settings.P_MUTATION)
 
 
 def main_loop(table_settings: AlgorithmSettings, population: PopulationType) -> Individ:
