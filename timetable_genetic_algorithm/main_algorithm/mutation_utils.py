@@ -22,4 +22,3 @@ def swap_for_mutations(individ, table_settings: AlgorithmSettings, mut_gen: Gene
         second = individ.dict_individ[second_timeline][second_audience]
         individ.dict_individ[first_timeline][first_audience] = second
         individ.dict_individ[second_timeline][second_audience] = first
-        p = 1

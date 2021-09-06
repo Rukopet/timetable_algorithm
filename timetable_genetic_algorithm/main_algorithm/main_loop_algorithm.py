@@ -59,6 +59,10 @@ def crossover(table_settings: AlgorithmSettings, current_population: PopulationT
 def mutation(table_settings: AlgorithmSettings,
              current_population: PopulationType,
              mut_gen: GeneratorsForMutation):
+    """
+
+    :type mut_gen: object
+    """
     from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation, \
         get_range_for_mutation, swap_for_mutations
     shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
@@ -82,13 +86,13 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType, aud
         for individ in population:
             fitness_function(table_settings, individ, log)
         best_individ = log.best_individ
-        if best_individ.get("penalty") == 0:
+        if best_individ.get("sum") <= table_settings.EXIT_OF_ALGORITHM:
             break
         offspring = tournament_selection(table_settings, population, log)
         offspring = copy_offspring(offspring, table_settings)
         print(generation)
         crossover(table_settings, offspring)
-        mutation(table_settings, offspring, mutation_generators)
+        #mutation(table_settings, offspring, mutation_generators)
 
         population = offspring
 
