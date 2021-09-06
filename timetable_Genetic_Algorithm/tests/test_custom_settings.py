@@ -5,6 +5,7 @@ class TestDataFromFront(TestCase):
     def test_set_pedagogs_json(self):
         pass
 
+
     def test_set_groups_json(self):
         pass
 
