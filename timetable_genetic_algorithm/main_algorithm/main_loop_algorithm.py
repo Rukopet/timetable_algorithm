@@ -64,6 +64,7 @@ def mutation(table_settings: AlgorithmSettings,
     shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
     number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
     for number_ind in range(number_of_mutations):
+        print(number_ind)
         current_individ = current_population[shuffled_list[number_ind]]
         current_individ.into_excel_file(file_name="1.xls")
         swap_for_mutations(current_individ, table_settings, mut_gen)
