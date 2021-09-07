@@ -394,6 +394,12 @@ function reset(group1, group2, group3, group4, group5, group6) {
     }
 }
 
+function addCheckbox(group, value){
+    document.getElementById(group).innerHTML = '';
+    let innergroup = $("." + group);
+    innergroup.append(value);
+}
+
 $("#class1_par").change(function () {
 
     console.log("hello 1");
@@ -403,10 +409,9 @@ $("#class1_par").change(function () {
         reset(group1a, group1b, group1c, group1d, group1e, group1f);
         groupsArray.push(group1a)
 
-        console.log(groupsArray)
-        document.getElementById('group1').innerHTML = '';
-        let innergroup = $(".group1");
-        innergroup.append("<input type='checkbox' name='group1a' value='group1a'>");
+        console.log(groupsArray)   
+        addCheckbox('group1', "<input type='checkbox' name='group1a' value='group1a'>");
+
         console.log("hello 1/1");
     } else {
         if ($(this).val() == 'class1_par-2') {
@@ -415,11 +420,9 @@ $("#class1_par").change(function () {
             reset(group1a, group1b, group1c, group1d, group1e, group1f);
             
             groupsArray.push(group1a, group1b)
-
             console.log(groupsArray);
-            document.getElementById('group1').innerHTML = '';
-            let innergroup = $(".group1");
-            innergroup.append("<input type='checkbox' name='group1a' value='group1a'> <input type='checkbox' name='group1b' value='group1b'>");
+
+            addCheckbox('group1', "<input type='checkbox' name='group1a' value='group1a'> <input type='checkbox' name='group1b' value='group1b'>");
             console.log("hello 2/1");
         }
         else {
@@ -497,11 +500,10 @@ $("#class2_par").change(function () {
         reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
         groupsArray.push(group2a)
-
         console.log(groupsArray)
-        document.getElementById('group2').innerHTML = '';
-        let innergroup = $(".group2");
-        innergroup.append("<input type='checkbox' name='group2a' value='group2a'>");
+
+        addCheckbox('group2', "<input type='checkbox' name='group2a' value='group2a'>");
+
         console.log("hello 1.2/1");
     } else {
         if ($(this).val() == 'class2_par-2') {
@@ -510,10 +512,9 @@ $("#class2_par").change(function () {
 
             groupsArray.push(group2a, group2b)
 
-            console.log(groupsArray);
-            document.getElementById('group2').innerHTML = '';
-            let innergroup = $(".group2");
-            innergroup.append("<input type='checkbox' name='group2a' value='group2a'> <input type='checkbox' name='group2b' value='group2b'>");
+            console.log(groupsArray);            
+
+            addCheckbox('group2', "<input type='checkbox' name='group2a' value='group2a'> <input type='checkbox' name='group2b' value='group2b'>");
             console.log("hello 2.2/1");
         }
         else {
