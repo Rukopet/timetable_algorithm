@@ -360,42 +360,47 @@ let groups11 = [
     }
 ]
 
+
+function reset(group1, group2, group3, group4, group5, group6) {
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group1) {
+            groupsArray.splice(i, 1);
+        }
+    }
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group2) {
+            groupsArray.splice(i, 1);
+        }
+    }
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group3) {
+            groupsArray.splice(i, 1);
+        }
+    }
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group4) {
+            groupsArray.splice(i, 1);
+        }
+    }
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group5) {
+            groupsArray.splice(i, 1);
+        }
+    }
+    for (i = 0; i < groupsArray.length; i++) {
+        if (groupsArray[i] == group6) {
+            groupsArray.splice(i, 1);
+        }
+    }
+}
+
 $("#class1_par").change(function () {
 
     console.log("hello 1");
 
     if ($(this).val() == 'class1_par-1') {
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1a) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1b) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1c) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1d) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1e) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group1f) {
-                groupsArray.splice(i, 1);
-            }
-        }
-
+        
+        reset(group1a, group1b, group1c, group1d, group1e, group1f);
         groupsArray.push(group1a)
 
         console.log(groupsArray)
@@ -406,37 +411,9 @@ $("#class1_par").change(function () {
     } else {
         if ($(this).val() == 'class1_par-2') {
             console.log("hello2")
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1a) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1b) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1c) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1d) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1e) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group1f) {
-                    groupsArray.splice(i, 1);
-                }
-            }
 
+            reset(group1a, group1b, group1c, group1d, group1e, group1f);
+            
             groupsArray.push(group1a, group1b)
 
             console.log(groupsArray);
@@ -448,36 +425,8 @@ $("#class1_par").change(function () {
         else {
             if ($(this).val() == 'class1_par-3') {
                 console.log("hello3")
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1a) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1b) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1c) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1d) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1e) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group1f) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
+                
+                reset(group1a, group1b, group1c, group1d, group1e, group1f);
 
                 groupsArray.push(group1a, group1b, group1c)
 
@@ -491,36 +440,8 @@ $("#class1_par").change(function () {
             else {
                 if ($(this).val() == 'class1_par-4') {
                     console.log("hello4")
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1a) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1b) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1c) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1d) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1e) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group1f) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
+                    
+                    reset(group1a, group1b, group1c, group1d, group1e, group1f);
 
                     groupsArray.push(group1a, group1b, group1c, group1d)
 
@@ -533,36 +454,8 @@ $("#class1_par").change(function () {
                 else {
                     if ($(this).val() == 'class1_par-5') {
                         console.log("hello3")
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1a) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1b) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1c) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1d) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1e) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group1f) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
+                        
+                        reset(group1a, group1b, group1c, group1d, group1e, group1f);
 
                         groupsArray.push(group1a, group1b, group1c, group1d, group1e)
 
@@ -576,36 +469,8 @@ $("#class1_par").change(function () {
                     else {
                         if ($(this).val() == 'class1_par-6') {
                             console.log("hello3")
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1a) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1b) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1c) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1d) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1e) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group1f) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
+                            
+                            reset(group1a, group1b, group1c, group1d, group1e, group1f);
 
                             groupsArray.push(group1a, group1b, group1c, group1d, group1e, group1f)
 
@@ -628,36 +493,8 @@ $("#class2_par").change(function () {
     console.log("hello 1.2");
 
     if ($(this).val() == 'class2_par-1') {
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2a) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2b) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2c) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2d) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2e) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group2f) {
-                groupsArray.splice(i, 1);
-            }
-        }
+        
+        reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
         groupsArray.push(group2a)
 
@@ -669,36 +506,7 @@ $("#class2_par").change(function () {
     } else {
         if ($(this).val() == 'class2_par-2') {
             console.log("hello2.2")
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2a) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2b) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2c) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2d) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2e) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group2f) {
-                    groupsArray.splice(i, 1);
-                }
-            }
+            reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
             groupsArray.push(group2a, group2b)
 
@@ -711,36 +519,8 @@ $("#class2_par").change(function () {
         else {
             if ($(this).val() == 'class2_par-3') {
                 console.log("hello3.2")
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2a) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2b) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2c) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2d) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2e) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group2f) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
+                
+                reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
                 groupsArray.push(group2a, group2b, group2c)
 
@@ -754,36 +534,8 @@ $("#class2_par").change(function () {
             else {
                 if ($(this).val() == 'class2_par-4') {
                     console.log("hello4.2")
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2a) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2b) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2c) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2d) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2e) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group2f) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
+                    
+                    reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
                     groupsArray.push(group2a, group2b, group2c, group2d)
 
@@ -796,36 +548,8 @@ $("#class2_par").change(function () {
                 else {
                     if ($(this).val() == 'class2_par-5') {
                         console.log("hello3.2")
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2a) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2b) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2c) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2d) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2e) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group2f) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
+                        
+                        reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
                         groupsArray.push(group2a, group2b, group2c, group2d, group2e)
 
@@ -839,36 +563,8 @@ $("#class2_par").change(function () {
                     else {
                         if ($(this).val() == 'class2_par-6') {
                             console.log("hello3.2")
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2a) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2b) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2c) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2d) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2e) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group2f) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
+                            
+                            reset(group2a, group2b, group2c, group2d, group2e, group2f);
 
                             groupsArray.push(group2a, group2b, group2c, group2d, group2e, group2f)
 
@@ -885,41 +581,14 @@ $("#class2_par").change(function () {
 
     }
 });
+
 $("#class3_par").change(function () {
 
     console.log("hello 1.3");
 
     if ($(this).val() == 'class3_par-1') {
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3a) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3b) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3c) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3d) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3e) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group3f) {
-                groupsArray.splice(i, 1);
-            }
-        }
+
+        reset(group3a, group3b, group3c, group3d, group3e, group3f);        
 
         groupsArray.push(group3)
 
@@ -931,36 +600,8 @@ $("#class3_par").change(function () {
     } else {
         if ($(this).val() == 'class3_par-2') {
             console.log("hello2.3")
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3a) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3b) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3c) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3d) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3e) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group3f) {
-                    groupsArray.splice(i, 1);
-                }
-            }
+            
+            reset(group3a, group3b, group3c, group3d, group3e, group3f);
 
             groupsArray.push(group3a, group3b)
 
@@ -973,36 +614,8 @@ $("#class3_par").change(function () {
         else {
             if ($(this).val() == 'class3_par-3') {
                 console.log("hello3.3")
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3a) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3b) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3c) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3d) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3e) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group3f) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
+                
+                reset(group3a, group3b, group3c, group3d, group3e, group3f);
 
                 groupsArray.push(group3a, group3b, group3c)
 
@@ -1016,36 +629,8 @@ $("#class3_par").change(function () {
             else {
                 if ($(this).val() == 'class3_par-4') {
                     console.log("hello4.3")
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3a) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3b) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3c) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3d) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3e) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group3f) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
+                    
+                    reset(group3a, group3b, group3c, group3d, group3e, group3f);
 
                     groupsArray.push(group3a, group3b, group3c, group3d)
 
@@ -1058,36 +643,8 @@ $("#class3_par").change(function () {
                 else {
                     if ($(this).val() == 'class3_par-5') {
                         console.log("hello3.3")
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3a) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3b) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3c) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3d) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3e) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group3f) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
+                        
+                        reset(group3a, group3b, group3c, group3d, group3e, group3f);
 
                         groupsArray.push(group3a, group3b, group3c, group3d, group3e)
 
@@ -1101,37 +658,8 @@ $("#class3_par").change(function () {
                     else {
                         if ($(this).val() == 'class3_par-6') {
                             console.log("hello3.3")
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3a) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3b) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3c) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3d) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3e) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group3f) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-
+                            
+                            reset(group3a, group3b, group3c, group3d, group3e, group3f);
                             groupsArray.push(group3a, group3b, group3c, group3d, group3e, group3)
 
                             console.log(groupsArray);
@@ -1153,36 +681,8 @@ $("#class4_par").change(function () {
     console.log("hello 1.4");
 
     if ($(this).val() == 'class4_par-1') {
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4a) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4b) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4c) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4d) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4e) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group4f) {
-                groupsArray.splice(i, 1);
-            }
-        }
+
+        reset(group4a, group4b, group4c, group4d, group4e, group4f);        
 
         groupsArray.push(group4a)
 
@@ -1194,36 +694,8 @@ $("#class4_par").change(function () {
     } else {
         if ($(this).val() == 'class4_par-2') {
             console.log("hello2.4")
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4a) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4b) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4c) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4d) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4e) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group4f) {
-                    groupsArray.splice(i, 1);
-                }
-            }
+            
+            reset(group4a, group4b, group4c, group4d, group4e, group4f);
 
             groupsArray.push(group4a, group4b)
 
@@ -1236,36 +708,8 @@ $("#class4_par").change(function () {
         else {
             if ($(this).val() == 'class4_par-3') {
                 console.log("hello3.4")
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4a) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4b) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4c) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4d) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4e) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group4f) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
+                
+                reset(group4a, group4b, group4c, group4d, group4e, group4f);
 
                 groupsArray.push(group4a, group4b, group4c)
 
@@ -1279,36 +723,8 @@ $("#class4_par").change(function () {
             else {
                 if ($(this).val() == 'class4_par-4') {
                     console.log("hello4.4")
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4a) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4b) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4c) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4d) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4e) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group4f) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
+                    
+                    reset(group4a, group4b, group4c, group4d, group4e, group4f);
 
                     groupsArray.push(group4a, group4b, group4c, group4d)
 
@@ -1321,36 +737,8 @@ $("#class4_par").change(function () {
                 else {
                     if ($(this).val() == 'class4_par-5') {
                         console.log("hello3.4")
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4a) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4b) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4c) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4d) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4e) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group4f) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
+                        
+                        reset(group4a, group4b, group4c, group4d, group4e, group4f);
 
                         groupsArray.push(group4a, group4b, group4c, group4d, group4e)
 
@@ -1364,36 +752,8 @@ $("#class4_par").change(function () {
                     else {
                         if ($(this).val() == 'class4_par-6') {
                             console.log("hello3.4")
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4a) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4b) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4c) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4d) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4e) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group4f) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
+                            
+                            reset(group4a, group4b, group4c, group4d, group4e, group4f);
 
                             groupsArray.push(group4a, group4b, group4c, group4d, group4e, group4f)
 
@@ -1416,37 +776,9 @@ $("#class5_par").change(function () {
     console.log("hello 1.5");
 
     if ($(this).val() == 'class5_par-1') {
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5a) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5b) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5c) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5d) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5e) {
-                groupsArray.splice(i, 1);
-            }
-        }
-        for (i = 0; i < groupsArray.length; i++) {
-            if (groupsArray[i] == group5f) {
-                groupsArray.splice(i, 1);
-            }
-        }
 
+        reset(group5a, group5b, group5c, group5d, group5e, group5f);
+        
         groupsArray.push(group5a)
 
         console.log(groupsArray)
@@ -1457,36 +789,8 @@ $("#class5_par").change(function () {
     } else {
         if ($(this).val() == 'class5_par-2') {
             console.log("hello2.5")
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5a) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5b) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5c) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5d) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5e) {
-                    groupsArray.splice(i, 1);
-                }
-            }
-            for (i = 0; i < groupsArray.length; i++) {
-                if (groupsArray[i] == group5f) {
-                    groupsArray.splice(i, 1);
-                }
-            }
+            
+            reset(group5a, group5b, group5c, group5d, group5e, group5f);
 
             groupsArray.push(group5a, group5b)
 
@@ -1499,36 +803,8 @@ $("#class5_par").change(function () {
         else {
             if ($(this).val() == 'class5_par-3') {
                 console.log("hello3.5")
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5a) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5b) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5c) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5d) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5e) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
-                for (i = 0; i < groupsArray.length; i++) {
-                    if (groupsArray[i] == group5f) {
-                        groupsArray.splice(i, 1);
-                    }
-                }
+                
+                reset(group5a, group5b, group5c, group5d, group5e, group5f);
 
                 groupsArray.push(group5a, group5b, group5c)
 
@@ -1542,36 +818,8 @@ $("#class5_par").change(function () {
             else {
                 if ($(this).val() == 'class5_par-4') {
                     console.log("hello4.5")
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5a) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5b) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5c) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5d) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5e) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
-                    for (i = 0; i < groupsArray.length; i++) {
-                        if (groupsArray[i] == group5f) {
-                            groupsArray.splice(i, 1);
-                        }
-                    }
+                    
+                    reset(group5a, group5b, group5c, group5d, group5e, group5f);
 
                     groupsArray.push(group5a, group5b, group5c, group5d)
 
@@ -1584,36 +832,8 @@ $("#class5_par").change(function () {
                 else {
                     if ($(this).val() == 'class5_par-5') {
                         console.log("hello3.5")
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5a) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5b) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5c) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5d) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5e) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
-                        for (i = 0; i < groupsArray.length; i++) {
-                            if (groupsArray[i] == group5f) {
-                                groupsArray.splice(i, 1);
-                            }
-                        }
+                        
+                        reset(group5a, group5b, group5c, group5d, group5e, group5f);
 
                         groupsArray.push(group5a, group5b, group5c, group5d, group5e)
 
@@ -1627,36 +847,8 @@ $("#class5_par").change(function () {
                     else {
                         if ($(this).val() == 'class5_par-6') {
                             console.log("hello3.5")
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5a) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5b) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5c) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5d) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5e) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
-                            for (i = 0; i < groupsArray.length; i++) {
-                                if (groupsArray[i] == group5f) {
-                                    groupsArray.splice(i, 1);
-                                }
-                            }
+                            
+                            reset(group5a, group5b, group5c, group5d, group5e, group5f);
 
                             groupsArray.push(group5a, group5b, group5c, group5d, group5e, group5f)
 
@@ -1675,9 +867,12 @@ $("#class5_par").change(function () {
 });
 $("#class6_par").change(function () {
 
-    console.log("hello 1.6");
+    console.log("hello 1.6");    
 
     if ($(this).val() == 'class6_par-1') {
+
+        //todo reset
+
         for (i = 0; i < groupsArray.length; i++) {
             if (groupsArray[i] == group6a) {
                 groupsArray.splice(i, 1);
