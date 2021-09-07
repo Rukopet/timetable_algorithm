@@ -1411,7 +1411,7 @@ $("#class4_par").change(function () {
     }
 });
 
-$("#clas54_par").change(function () {
+$("#class5_par").change(function () {
 
     console.log("hello 1.5");
 
