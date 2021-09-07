@@ -1673,7 +1673,6 @@ $("#class5_par").change(function () {
 
     }
 });
-
 $("#class6_par").change(function () {
 
     console.log("hello 1.6");
