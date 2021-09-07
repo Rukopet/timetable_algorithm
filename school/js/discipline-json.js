@@ -359,18 +359,18 @@ let groups11 = [
         "saturday_not_study": false
     }
 ]
-function updateButton() {
-    console.log("Hello, button!")
-  if (button.value === "Добавить предмет") {
-    button.value = 'Выключить ПК';
-  } else {
-    button.value = 'Добавить предмет';
-  }
-}
-const button = document.getElementById('button_disc');
-console.log(button)
-button.addEventListener('button_disc', updateButton);
-console.log(button)
+//function updateButton() {
+//    console.log("Hello, button!")
+//  if (button.value === "Добавить предмет") {
+//    button.value = 'Выключить ПК';
+//  } else {
+//    button.value = 'Добавить предмет';
+//  }
+//}
+//const button = document.getElementById('button_disc');
+//console.log(button)
+//button.addEventListener('button_disc', updateButton);
+//console.log(button)
 
 
 $("#class1_par").change(function () {
