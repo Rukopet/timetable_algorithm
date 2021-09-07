@@ -3447,3 +3447,41 @@ for (let i = 0; i < discipline.length; i++) {
     var innerParent = $("#" + id);
     innerParent.append("<div class='discipline-chek'> <input type='checkbox'  name='discipline" + i + "' " + " value='discipline" + i + "' " + " checked>     <input type='checkbox' name='discipline1-pair' value='discipline1-pair'> </div>");
 }
+
+let themeButton = document.querySelector('.disc-button');
+themeButton.onclick = function(){
+  console.log('Кнопка нажата!');
+  $('<input type="text" class="searchbtn" value="Новый предмет" />').insertBefore(".disc-button");
+
+};
+
+let groupButton = document.querySelector('.dalee');
+groupButton.onclick = function(){
+  console.log('Кнопка нажата!');
+
+};
+//let themeButton = document.querySelector('.disc-button');
+//themeButton.onclick = function() {
+//  console.log('Кнопка нажата!');
+//  $('<input type="text" class="searchbtn" value="Новый предмет" />').insertBefore(".disc-button");
+//
+//};
+//let themeButton = document.querySelector('.disc-button');
+//themeButton.onclick = function() {
+//  console.log('Кнопка нажата!');
+//  $('<input type="text" class="searchbtn" value="Новый предмет" />').insertBefore(".disc-button");
+//
+//};
+//let themeButton = document.querySelector('.disc-button');
+//themeButton.onclick = function() {
+//  console.log('Кнопка нажата!');
+//  $('<input type="text" class="searchbtn" value="Новый предмет" />').insertBefore(".disc-button");
+//
+//};
+//let themeButton = document.querySelector('.disc-button');
+//themeButton.onclick = function() {
+//  console.log('Кнопка нажата!');
+//  $('<input type="text" class="searchbtn" value="Новый предмет" />').insertBefore(".disc-button");
+//
+//};
+

@@ -218,3 +218,8 @@ th {
     background-color: #0fe2ad;
     margin-left: 715px;
 }
+
+.dalee{
+right: 10%; /* смещение от правого края */
+background-color: #0fe2ad; /* цвет заднего фона */
+}
