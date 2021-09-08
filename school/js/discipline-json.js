@@ -1425,3 +1425,10 @@ for (let i = 0; i < discipline.length; i++) {
     var innerParent = $("#" + id);
     innerParent.append("<div class='discipline-chek'> <input type='checkbox'  name='discipline" + i + "' " + " value='discipline" + i + "' " + " checked>     <input type='checkbox' name='discipline1-pair' value='discipline1-pair'> </div>");
 }
+
+let themeButton = document.querySelector('.theme-button');
+themeButton.onclick = function() {
+  console.log('Кнопка нажата!');
+
+
+};
