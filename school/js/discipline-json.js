@@ -193,7 +193,7 @@ let groups6 = [
         "count": "д",
         "saturday_not_study": false
     },
-    group26 = {
+    group6f = {
         "number": 6,
         "count": "е",
         "saturday_not_study": false
