@@ -474,9 +474,9 @@ $("#class1_par").change(function () {
                         groupsArray.push(group1a, group1b, group1c, group1d, group1e)
 
                         console.log(groupsArray);
-                        document.getElementById('group1').innerHTML = '';
-                        let innergroup = $(".group1");
-                        innergroup.append("<input type='checkbox' name='group1a' value='group1a'> <input type='checkbox' name='group1b' value='group1b'> <input type='checkbox' name='group1c' value='group1c'> <input type='checkbox' name='group1d' value='group1d'> <input type='checkbox' name='group1e' value='group1e'>");
+                        
+                        addCheckbox('group1', "<div class='first-shift'><input type='checkbox' name='group1a' value='group1a'> <input type='checkbox' name='group1b' value='group1b'><input type='checkbox' name='group1c' value='group1c'><input type='checkbox' name='group1d' value='group1d'><input type='checkbox' name='group1e' value='group1e'></div><div class='second-shift'><input type='checkbox' name='group1a-second' value='group1a-second'> <input type='checkbox' name='group1b-second' value='group1b-second'><input type='checkbox' name='group1c-second' value='group1c-second'><input type='checkbox' name='group1d-second' value='group1d-second'><input type='checkbox' name='group1e-second' value='group1e-second'></div>");
+
                         console.log("hello 5/1");
                     }
 
