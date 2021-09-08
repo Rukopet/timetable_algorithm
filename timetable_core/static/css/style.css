@@ -1,0 +1,327 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header__title {
+    background-color: #0fe2ad;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.header__text {
+    margin: 30px;
+    text-align: center;
+}
+
+.header__secondshift {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.header__secondshift-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+.parallel__days {
+    margin: 35px auto;
+    max-width: 550px;
+    padding: 25px;
+    border: 2px solid #000;
+    background-color: #e0d9d9;
+}
+
+.parallel__groups {
+    padding: 25px;
+    border: 2px solid #000;
+    background-color: #e0d9d9;
+}
+
+.parallel__groups-sat {
+    margin-top: 15px;
+}
+
+.parallel__groups ul {
+    display: flex;
+    margin-top: 15px;
+}
+
+.parallel__groups li+li {
+    padding-left: 20px;
+}
+
+.parallel__groups li {
+    display: grid;
+    text-align: center;
+}
+
+.max_par-1,
+.max_par-2,
+.max_par-3 {
+    display: none;
+}
+
+.class1_par-2,
+.class1_par-3,
+.class1_par-4,
+.class1_par-5,
+.class1_par-23,
+.class1_par-24,
+.class1_par-34,
+.class1_par-25,
+.class1_par-35,
+.class1_par-45,
+.class2_par-2,
+.class2_par-3,
+.class2_par-4,
+.class2_par-5,
+.class2_par-23,
+.class2_par-24,
+.class2_par-34,
+.class2_par-25,
+.class2_par-35,
+.class2_par-45,
+.class3_par-2,
+.class3_par-3,
+.class3_par-4,
+.class3_par-5,
+.class3_par-23,
+.class3_par-24,
+.class3_par-34,
+.class3_par-25,
+.class3_par-35,
+.class3_par-45,
+.class4_par-2,
+.class4_par-3,
+.class4_par-4,
+.class4_par-5,
+.class4_par-23,
+.class4_par-24,
+.class4_par-34,
+.class4_par-25,
+.class4_par-35,
+.class4_par-45,
+.class5_par-2,
+.class5_par-3,
+.class5_par-4,
+.class5_par-5,
+.class5_par-23,
+.class5_par-24,
+.class5_par-34,
+.class5_par-25,
+.class5_par-35,
+.class5_par-45,
+.class6_par-2,
+.class6_par-3,
+.class6_par-4,
+.class6_par-5,
+.class6_par-23,
+.class6_par-24,
+.class6_par-34,
+.class6_par-25,
+.class6_par-35,
+.class6_par-45,
+.class7_par-2,
+.class7_par-3,
+.class7_par-4,
+.class7_par-5,
+.class7_par-23,
+.class7_par-24,
+.class7_par-34,
+.class7_par-25,
+.class7_par-35,
+.class7_par-45,
+.class8_par-2,
+.class8_par-3,
+.class8_par-4,
+.class8_par-5,
+.class8_par-23,
+.class8_par-24,
+.class8_par-34,
+.class8_par-25,
+.class8_par-35,
+.class8_par-45,
+.class9_par-2,
+.class9_par-3,
+.class9_par-4,
+.class9_par-5,
+.class9_par-23,
+.class9_par-24,
+.class9_par-34,
+.class9_par-25,
+.class9_par-35,
+.class9_par-45,
+.class10_par-2,
+.class10_par-3,
+.class10_par-4,
+.class10_par-5,
+.class10_par-23,
+.class10_par-24,
+.class10_par-34,
+.class10_par-25,
+.class10_par-35,
+.class10_par-45,
+.class11_par-2,
+.class11_par-3,
+.class11_par-4,
+.class11_par-5,
+.class11_par-23,
+.class11_par-24,
+.class11_par-34,
+.class11_par-25,
+.class11_par-35,
+.class11_par-45 {
+    display: none;
+}
+
+.next {
+    width: 75px;
+    background-color: #0fe2ad;
+    border-radius: 5px;
+    margin: 25px;
+}
+
+.discipline-info {
+    display: flex;
+}
+
+.discipline-name,
+.discipline-chek1,
+.discipline-chek2 {
+    max-width: 150px;
+    margin-top: 15px;
+}
+
+.discipline-name {
+    margin-right: 90px;
+}
+
+.discipline-chek1 {
+    margin-right: 25px;
+}
+
+.discipline {
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pair {
+    display: none;
+}
+
+.school-discipline input {
+    margin: 6px 60px;
+}
+
+hr {
+    max-width: 800px;
+    border: 2px solid #0fe2ad;
+}
+
+table,
+th,
+td {
+    margin: 10px 0;
+    border: solid 1px #333;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+.table {
+    margin: 50px;
+}
+
+.table input {
+    width: 50px;
+    text-align: center;
+}
+
+.table-teacher {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.teacher-discipline caption {
+    padding-bottom: 25px;
+}
+
+.auditory-title {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.auditory-title p {
+    width: 210px;
+}
+
+.auditory-box {
+    background-color: #e0d9d9;
+}
+
+.auditory-1,
+.auditory-2,
+.auditory-3,
+.auditory-4,
+.auditory-5,
+.auditory-6,
+.auditory-7,
+.auditory-8,
+.auditory-9,
+.auditory-10,
+.auditory-11,
+.auditory-12 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.auditory-btn {
+    width: 150px;
+    height: 55px;
+    background-color: #0fe2ad;
+    margin: 15px;
+}
+
+.result {
+    width: 150px;
+    height: 55px;
+    background-color: #0fe2ad;
+    margin-left: 715px;
+}

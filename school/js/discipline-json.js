@@ -359,6 +359,19 @@ let groups11 = [
         "saturday_not_study": false
     }
 ]
+//function updateButton() {
+//    console.log("Hello, button!")
+//  if (button.value === "Добавить предмет") {
+//    button.value = 'Выключить ПК';
+//  } else {
+//    button.value = 'Добавить предмет';
+//  }
+//}
+//const button = document.getElementById('button_disc');
+//console.log(button)
+//button.addEventListener('button_disc', updateButton);
+//console.log(button)
+
 
 
 function reset(group1, group2, group3, group4, group5, group6) {
