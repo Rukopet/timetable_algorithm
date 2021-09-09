@@ -11,352 +11,418 @@ let groups1 = [
     group1a = {
         "number": 1,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group1b = {
         "number": 1,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group1c = {
         "number": 1,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group1d = {
         "number": 1,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group1e = {
         "number": 1,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group1f = {
         "number": 1,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups2 = [
     group2a = {
         "number": 2,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group2b = {
         "number": 2,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group2c = {
         "number": 2,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group2d = {
         "number": 2,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group2e = {
         "number": 2,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group2f = {
         "number": 2,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups3 = [
     group3a = {
         "number": 3,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group3b = {
         "number": 3,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group3c = {
         "number": 3,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group3d = {
         "number": 3,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group3e = {
         "number": 3,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group3f = {
         "number": 3,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups4 = [
     group4a = {
         "number": 4,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group4b = {
         "number": 4,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group4c = {
         "number": 4,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group4d = {
         "number": 4,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group4e = {
         "number": 4,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group4f = {
         "number": 4,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups5 = [
     group5a = {
         "number": 5,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group5b = {
         "number": 5,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group5c = {
         "number": 5,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group5d = {
         "number": 5,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group5e = {
         "number": 5,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group5f = {
         "number": 5,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups6 = [
     group6a = {
         "number": 6,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group6b = {
         "number": 6,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group6c = {
         "number": 6,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group6d = {
         "number": 6,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group6e = {
         "number": 6,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group6f = {
         "number": 6,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups7 = [
     group7a = {
         "number": 7,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group7b = {
         "number": 7,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group7c = {
         "number": 7,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group7d = {
         "number": 7,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group7e = {
         "number": 7,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group7f = {
         "number": 7,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups8 = [
     group8a = {
         "number": 8,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group8b = {
         "number": 8,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group8c = {
         "number": 8,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group8d = {
         "number": 8,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group8e = {
         "number": 8,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group8f = {
         "number": 8,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups9 = [
     group9a = {
         "number": 9,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group9b = {
         "number": 9,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group9c = {
         "number": 9,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group9d = {
         "number": 9,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group9e = {
         "number": 9,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group9f = {
         "number": 9,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups10 = [
     group10a = {
         "number": 10,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group10b = {
         "number": 10,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group10c = {
         "number": 10,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group10d = {
         "number": 10,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group10e = {
         "number": 10,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group10f = {
         "number": 10,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 let groups11 = [
     group11a = {
         "number": 11,
         "count": "а",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group11b = {
         "number": 11,
         "count": "б",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group11c = {
         "number": 11,
         "count": "в",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group11d = {
         "number": 11,
         "count": "г",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group11e = {
         "number": 11,
         "count": "д",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     },
     group11f = {
         "number": 11,
         "count": "е",
-        "saturday_not_study": false
+        "saturday_not_study": false,
+        "second-shift": false
     }
 ]
 //function updateButton() {
