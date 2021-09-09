@@ -98,8 +98,12 @@ li {
     display: grid;
 }
 .max_par-1 select{
-    width: 40px;
-    height: 20px;
+    width: 45px;
+    height: 25px;
+}
+.first-shift input,
+.second-shift input{
+    margin: 5px;
 }
 .next {
     width: 75px;
