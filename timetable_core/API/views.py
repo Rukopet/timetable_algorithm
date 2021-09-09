@@ -18,6 +18,7 @@ class DisciplinesView(View):
         return render(request, 'API/disciplines.html')
 
     def post(self):
+
         ...
 
 

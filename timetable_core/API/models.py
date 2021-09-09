@@ -12,29 +12,29 @@ class SchoolModel(models.Model):
 
 class GroupsModel(models.Model):
     json_data = jsonfield.JSONField()
-    school_id = models.ManyToManyField(SchoolModel, related_name='school')
+    school_id = models.ManyToManyField('SchoolModel', related_name='Groups')
     date_create = models
 
 
 class DisciplinesModel(models.Model):
     json_data = jsonfield.JSONField()
-    school_id = models.ManyToManyField(SchoolModel, related_name='school')
+    school_id = models.ManyToManyField('SchoolModel', related_name='Disciplines')
     date_create = models
 
 
 class LoadPlanModel(models.Model):
     json_data = jsonfield.JSONField()
-    school_id = models.ManyToManyField(SchoolModel, related_name='school')
+    school_id = models.ManyToManyField('SchoolModel', related_name='LoadPlan')
     date_create = models
 
 
 class PedagogsModel(models.Model):
     json_data = jsonfield.JSONField()
-    school_id = models.ManyToManyField(SchoolModel, related_name='school')
+    school_id = models.ManyToManyField('SchoolModel', related_name='Pedagogs')
     date_create = models
 
 
 class AudiencesModel(models.Model):
     json_data = jsonfield.JSONField()
-    school_id = models.ManyToManyField(SchoolModel, related_name='school')
+    school_id = models.ManyToManyField('SchoolModel', related_name='Audiences')
     date_create = models
