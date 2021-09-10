@@ -11,3 +11,5 @@ sqlparse==0.4.1
 typing-extensions==3.10.0.0
 openpyxl~=3.0.7
 matplotlib~=3.4.3
+djangorestframework~=3.12.4
+django-jsonfield~=1.4.1
