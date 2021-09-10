@@ -477,6 +477,11 @@ function addCheckbox(group, value){
     document.getElementById(group).innerHTML = '';
     let innergroup = $("." + group);
     innergroup.append(value);
+    if ($('input#second_shift').prop('checked')) {
+        $('.second-shift').fadeIn().show();
+      } else {
+        $('.second-shift').fadeOut(300); 
+      }
 }
 
 $("#class1_par").change(function() {
