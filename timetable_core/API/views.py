@@ -20,8 +20,7 @@ class GroupsView(APIView):
         return render(request, 'API/groups.html')
 
     def post(self, request, slug=None):
-        ...
-
+        return MyAnswer.json_answer(True, 'yes', 200)
 
 
 class AudiencesView(APIView):
@@ -34,6 +33,7 @@ class DisciplinesView(APIView):
         return render(request, 'API/disciplines.html')
 
     def post(self):
+        ...
 
 
 

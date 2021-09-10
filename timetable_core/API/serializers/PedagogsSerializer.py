@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework import serializers
 
 from GroupSerializer import GroupSerializer
@@ -19,33 +20,3 @@ class PedagogUnitSerializer(serializers.Serializer):
 
 class PedagogsSerializer(serializers.Serializer):
     pedagogs = serializers.ListSerializer(required=True, child=PedagogUnitSerializer())
-
-
-p = [
-    {
-        "ped_name": "teacher",
-        "disciplines": [
-            {
-                "discipline": "Русский язык",
-                "groups": [
-                    {
-                        "num": 1,
-                        "letter": "А"
-                    }
-                ]
-            },
-            {
-                "discipline": "Литература",
-                "groups": [
-                    {
-                        "num": 1,
-                        "letter": "А"
-                    }
-                ]
-            }
-        ]
-    }
-]
-
-t = PedagogsSerializer(data=p)
-print(t.is_valid())
