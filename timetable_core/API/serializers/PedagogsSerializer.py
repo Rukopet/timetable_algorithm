@@ -1,7 +1,5 @@
-from django.conf import settings
 from rest_framework import serializers
-
-from GroupSerializer import GroupSerializer
+from . import GroupSerializer
 
 
 class GroupsForDisciplinesSerializer(serializers.Serializer):
