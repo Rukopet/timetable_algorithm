@@ -1,7 +1,7 @@
 FROM python:3.7.8-alpine
 
 COPY requirements.txt ./
-COPY CRM ./
+COPY timetable_core ./
 
 RUN apk update
 RUN apk add busybox-extras vim bash expect npm
