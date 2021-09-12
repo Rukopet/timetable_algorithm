@@ -7,6 +7,9 @@ discipline = ["Математика", "Русский язык", "Литерат
 
 var groupsArray = []
 
+// todo groups1 - нет смысла нигде не используется
+// todo вместо group1a надо оперировать groups1 и индексами в массиве, а не group1a
+
 let groups1 = [
     group1a = {
         "number": 1,
@@ -425,19 +428,14 @@ let groups11 = [
         "second-shift": false
     }
 ]
-//function updateButton() {
-//    console.log("Hello, button!")
-//  if (button.value === "Добавить предмет") {
-//    button.value = 'Выключить ПК';
-//  } else {
-//    button.value = 'Добавить предмет';
-//  }
-//}
-//const button = document.getElementById('button_disc');
-//console.log(button)
-//button.addEventListener('button_disc', updateButton);
-//console.log(button)
 
+// todo
+// function addClassToGroup(group, itemGroup, number, counters) {
+//     for (let i = 0; i < counters.length; i++) {
+//         const count = counters[i];
+//         group.add();
+//     }
+// }
 
 
 function reset(group1, group2, group3, group4, group5, group6) {
@@ -1414,26 +1412,29 @@ $("#class11_par").change(function() {
     }
 });
 
-
-
-discipline.forEach((item, i, discipline) => {
-    $('#pair').append('<option value="pair1">' + discipline[i] + '</option>');
+$(function() {
+    discipline.forEach((item, i, discipline) => {
+        $('#pair').append('<option value="pair1">' + discipline[i] + '</option>');
+    });
+    
+    var parent = $(".discipline_container");
+    for (let i = 0; i < discipline.length; i++) {
+        const item = discipline[i];
+        var id = "disp_one_cont" + i;
+        parent.append("<div class='discipline' id='" + id + "' " +
+            +"> <div class='discipline" + i + "' " + "id='discipline" + i + "' " + "> " + item + "  </div>   </div>");
+    
+        var innerParent = $("#" + id);
+        innerParent.append("<div class='discipline-chek'> <input type='checkbox'  name='discipline" + i + "' " + " value='discipline" + i + "' " + " checked>     <input type='checkbox' name='discipline1-pair' value='discipline1-pair'> </div>");
+    }        
+    
+    $("#groups_next_page").click(function(){
+        console.log('Кнопка нажата!');
+        localStorage.setItem("groups", JSON.stringify(groupsArray));
+      
+        if(groupsArray.length === 0) {
+          alert("Не выбрали классы");
+        }          
+    })
 });
 
-var parent = $(".discipline_container");
-for (let i = 0; i < discipline.length; i++) {
-    const item = discipline[i];
-    var id = "disp_one_cont" + i;
-    parent.append("<div class='discipline' id='" + id + "' " +
-        +"> <div class='discipline" + i + "' " + "id='discipline" + i + "' " + "> " + item + "  </div>   </div>");
-
-    var innerParent = $("#" + id);
-    innerParent.append("<div class='discipline-chek'> <input type='checkbox'  name='discipline" + i + "' " + " value='discipline" + i + "' " + " checked>     <input type='checkbox' name='discipline1-pair' value='discipline1-pair'> </div>");
-}
-
-let themeButton = document.querySelector('.theme-button');
-themeButton.onclick = function() {
-  console.log('Кнопка нажата!');
-
-
-};

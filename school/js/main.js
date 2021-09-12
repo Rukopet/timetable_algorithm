@@ -1,4 +1,7 @@
 $(function() {
+
+    // todo $(function() { и  $(document).ready(function() { - одно и тоже
+
     $(document).ready(function() {
         $('#max_par').change(function() {
             $('#max_par-1')[$(this).val() == 'max_par-1' ? 'show' : 'hide']();
@@ -161,13 +164,5 @@ $(function() {
             $('#class11_par-45')[$(this).val() == 'class11_par-5' ? 'show' : 'hide']();
         });
     });
-    // $('input').on('click', function(){     
-    //     if($(this).attr("checked") == 'checked') {  
-    //         $(this).removeAttr('checked');
-    //     } else {
-    //         $(this).attr('checked', 'checked')
-    //     }
-    // });
-
 
 });
