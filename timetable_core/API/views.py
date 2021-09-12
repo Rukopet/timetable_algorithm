@@ -19,16 +19,17 @@ class MyUtils:
                             content_type='application/json')
 
 
-class MyBaseView(APIView):
+class TimetableBaseView(APIView):
     HTML_FOR_VIEW: str
     SERIALIZER_FOR_VIEW: Type[serializers.Serializer]
+    MANY: bool = False
 
     def get(self, request, slug=None):
         return render(request, self.HTML_FOR_VIEW)
 
     def post(self, request, slug=None):
         try:
-            serializer = self.SERIALIZER_FOR_VIEW(data=request.data)
+            serializer = self.SERIALIZER_FOR_VIEW(data=request.data, many=self.MANY)
             if serializer.is_valid(raise_exception=True):
                 return MyUtils.json_answer(True, "Valid data", 200)
         except ValidationError as e:
@@ -37,26 +38,30 @@ class MyBaseView(APIView):
             return MyUtils.json_answer(False, f"Unknown error {e.__str__()}", 404)
 
 
-class GroupsView(MyBaseView):
+class GroupsView(TimetableBaseView):
     HTML_FOR_VIEW = 'API/groups.html'
     SERIALIZER_FOR_VIEW = GroupsSerializer
 
 
-class AudiencesView(MyBaseView):
+class AudiencesView(TimetableBaseView):
     HTML_FOR_VIEW = 'API/audiences.html'
     SERIALIZER_FOR_VIEW = AudiencesSerializer
+    MANY = True
 
 
-class DisciplinesView(MyBaseView):
+class DisciplinesView(TimetableBaseView):
     HTML_FOR_VIEW = 'API/disciplines.html'
-    SERIALIZER_FOR_VIEW = GroupsSerializer
+    SERIALIZER_FOR_VIEW = DisciplinesSerializer
+    MANY = True
 
 
-class LoadPlanView(MyBaseView):
+class LoadPlanView(TimetableBaseView):
     HTML_FOR_VIEW = 'API/loadplan.html'
-    SERIALIZER_FOR_VIEW = GroupsSerializer
+    SERIALIZER_FOR_VIEW = LoadPlanSerializer
+    MANY = True
 
 
-class PedagogsView(MyBaseView):
+class PedagogsView(TimetableBaseView):
     HTML_FOR_VIEW = 'API/pedagogs.html'
-    SERIALIZER_FOR_VIEW = GroupsSerializer
+    SERIALIZER_FOR_VIEW = PedagogsSerializer
+    MANY = True

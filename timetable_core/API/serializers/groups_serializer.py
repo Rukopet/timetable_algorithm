@@ -12,3 +12,4 @@ class GroupsSerializer(serializers.Serializer):
     second_shift = serializers.BooleanField(required=True)
     max_days = serializers.IntegerField(required=True, min_value=1, max_value=7)
     groups = serializers.ListSerializer(required=True, child=GroupsListSerializer())
+
