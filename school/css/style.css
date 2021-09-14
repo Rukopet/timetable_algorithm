@@ -83,28 +83,52 @@ li {
 .parallel__groups li {
     display: grid;
     text-align: center;
+    padding-left: 20px;
 }
+
 
 /* .max_par-1,
 .max_par-2,
 .max_par-3 {
     display: none;
 } */
-.group1, .group2, .group3, .group4, .group5, .group6, .group7, .group8, .group9, .group10, .group11{
-    display: flex;
+
+.par-table table {
+    margin: 30px;
+    border: none;
 }
-.first-shift,
-.second-shift {
-    display: grid;
+
+.group1,
+.group2,
+.group3,
+.group4,
+.group5,
+.group6,
+.group7,
+.group8,
+.group9,
+.group10,
+.group11 {
+    display: block;
 }
-.max_par-1 select{
+
+
+/* tr,
+td {
+    height: 25px;
+} */
+
+.max_par-1 select {
     width: 45px;
     height: 25px;
 }
-.first-shift input,
+
+
+/* .first-shift input,
 .second-shift input{
     margin: 5px;
-}
+} */
+
 .next {
     width: 75px;
     background-color: #0fe2ad;
