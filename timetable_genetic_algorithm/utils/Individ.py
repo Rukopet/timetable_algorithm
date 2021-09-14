@@ -33,6 +33,9 @@ class Individ:
         self.id_individ = id_individ
         self.dict_individ = dict_ind
         self.settings = settings
+        self.penalty = 0
+        # TODO where is best_individ False back
+        self.best_individ = False
 
     def into_excel_file(self, path: str = "", file_name: str = "default.xlsx", axis: bool = False):
 

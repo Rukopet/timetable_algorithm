@@ -28,7 +28,9 @@ def swap_for_mutations(individ, table_settings: AlgorithmSettings, mut_gen: Gene
     for _ in range(table_settings.NUMBER_CELLS_FOR_SWAP_MUTATION):
         first, first_timeline, first_audience = get_dict_individ(mut_gen, individ)
         second, second_timeline, second_audience = get_dict_individ(mut_gen, individ)
-        individ.dict_individ[first_timeline][first_audience] = second
-        individ.dict_individ[second_timeline][second_audience] = first
+        if individ.dict_individ[first_timeline][first_audience][0]\
+                == individ.dict_individ[second_timeline][second_audience][0]:
+            individ.dict_individ[first_timeline][first_audience] = second
+            individ.dict_individ[second_timeline][second_audience] = first
 
 
