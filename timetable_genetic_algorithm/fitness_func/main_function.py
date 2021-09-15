@@ -45,4 +45,5 @@ def fitness_function(table_settings: AlgorithmSettings, individ: Individ, log: L
         sum_penalty += current_individ_dict[module.get_module_naming()]
     log.penalty["sum_all_individs"] += sum_penalty
     current_individ_dict["sum"] = sum_penalty
+    individ.penalty = sum_penalty
     log.set_best_individ_if_best(individ)

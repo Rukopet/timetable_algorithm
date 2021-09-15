@@ -14,11 +14,23 @@ def get_range_for_mutation(population_len: int, mutation_probability: float) -> 
     return int(population_len * mutation_probability)
 
 
+def get_dict_individ(mut_gen: GeneratorsForMutation, individ):
+    import itertools
+    for i in itertools.count():
+        timeline = next(mut_gen.next_random_timeline)
+        audience = next(mut_gen.next_random_cell)
+        gen = individ.dict_individ[timeline][audience]
+        if gen is not None:
+            return gen, timeline, audience
+
+
 def swap_for_mutations(individ, table_settings: AlgorithmSettings, mut_gen: GeneratorsForMutation):
     for _ in range(table_settings.NUMBER_CELLS_FOR_SWAP_MUTATION):
-        first_timeline, second_timeline = next(mut_gen.next_random_timeline), next(mut_gen.next_random_timeline)
-        first_audience, second_audience = next(mut_gen.next_random_cell), next(mut_gen.next_random_cell)
-        first = individ.dict_individ[first_timeline][first_audience]
-        second = individ.dict_individ[second_timeline][second_audience]
-        individ.dict_individ[first_timeline][first_audience] = second
-        individ.dict_individ[second_timeline][second_audience] = first
+        first, first_timeline, first_audience = get_dict_individ(mut_gen, individ)
+        second, second_timeline, second_audience = get_dict_individ(mut_gen, individ)
+        if individ.dict_individ[first_timeline][first_audience][0]\
+                == individ.dict_individ[second_timeline][second_audience][0]:
+            individ.dict_individ[first_timeline][first_audience] = second
+            individ.dict_individ[second_timeline][second_audience] = first
+
+

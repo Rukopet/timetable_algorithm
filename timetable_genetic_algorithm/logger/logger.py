@@ -36,6 +36,7 @@ class LoggerUtils:
         penalty = self.penalty_for_individ(current_individ.id_individ)
         if self.best_individ.get("penalty", float('inf')) > penalty:
             self.best_individ = self.penalty.get(current_individ.id_individ)
+            current_individ.best_individ = True
 
     def drop_sum_all_individs(self):
         self.penalty["sum_all_individs"] = 0
