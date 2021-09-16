@@ -72,8 +72,11 @@ def server_entry_point():
 def console_entry_point(source_path: str, out_file: str = 'out_timetable.xlsx'):
     from timetable_genetic_algorithm.utils import FILENAMES_FOR_DATA
 
-    table_settings = DataFromFront()
+    data = DataFromFront()
     for json_name in FILENAMES_FOR_DATA:
+        data.setter_for_json_data(source_path, json_name)
+    table_setting = AlgorithmSettings(data)
+    main(table_setting)
 
 
 
