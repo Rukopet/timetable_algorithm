@@ -75,8 +75,8 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
 
 def parent_crossover(general_parent: Individ, second_parent: Individ) -> Individ:
     child = deepcopy(general_parent)
-    count = int(child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY * child.settings.P_CROSSOVER)
-    # count = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY)
+    # count = int(child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY * child.settings.P_CROSSOVER)
+    count = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY)
     for _ in range(count):
         timeline = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY - 1)
         audience = random.choice(child.settings.get_audience_for_generation())
@@ -138,7 +138,8 @@ def mutation(table_settings: AlgorithmSettings,
     from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation, \
         get_range_for_mutation, swap_for_mutations
     shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
-    number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
+    # number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
+    number_of_mutations = random.randint(0, table_settings.MAX_DAYS_FROM_JSON * table_settings.AMOUNT_TIMELINES_IN_DAY)
     for number_ind in range(number_of_mutations):
         current_individ = current_population[shuffled_list[number_ind]]
         if current_individ.best_individ == False:
