@@ -1,7 +1,5 @@
-import json
 from typing import List
 
-import pandas as pd
 
 from timetable_genetic_algorithm.main_algorithm.main_loop_algorithm import main_loop
 from timetable_genetic_algorithm.utils.GeneratorLessons import GeneratorLessons

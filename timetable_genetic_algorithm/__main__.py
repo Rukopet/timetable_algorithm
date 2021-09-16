@@ -1,4 +1,5 @@
 import sys
+import json
 
 
 def console_main():
@@ -13,8 +14,16 @@ def console_main():
 
 
 def server_main():
-    print(11)
-    ...
+    from aiohttp import web
+
+    async def generate_timetable(request):
+        response_obj = {'status': 'success'}
+        web.Response(text=json.dumps(response_obj), status=200)
+        # server_entry_point()
+
+    app = web.Application()
+    app.router.add_get('/generate', generate_timetable)
+    web.run_app(app)
 
 
 if __name__ == "__main__":
