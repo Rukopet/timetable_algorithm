@@ -1,3 +1,5 @@
+import json
+
 from abc import abstractmethod, ABCMeta
 import pandas as pd
 
@@ -89,3 +91,20 @@ class DataFromFront(IDataFromFront):
         df = pd.DataFrame(data=audiencesJSON)
         self.audiencesJSON.set_value_df(df)
 
+    def __get_field(self, json_filename: str):
+        if json_filename == 'auditories.json':
+            return self.set_audiences_json
+        elif json_filename == 'group_model.json':
+            return self.set_groups_json
+        elif json_filename == 'load_plan.json':
+            return self.set_load_plan_json
+        elif json_filename == 'pedagogs_model.json':
+            return self.set_pedagogs_json
+        elif json_filename == 'disciplines_model.json':
+            return self.set_disciplines_json
+
+    def setter_for_json_data(self, json_file: str, filename: str):
+        json_file = json_file + '/' + filename
+        method_for_set = self.__get_field(filename)
+        with open(json_file) as file:
+            method_for_set(json.load(file))
