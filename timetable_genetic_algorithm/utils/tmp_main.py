@@ -46,7 +46,8 @@ def generate_population_sorted(table_settings: AlgorithmSettings,
                                main_tuple: List[tuple],
                                audience_tuple: List[tuple]) -> Population:
     return [
-        Individ(dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple).items())), table_settings, individ_id)
+        Individ(dict(sorted(generate_individ(table_settings, main_tuple, audience_tuple).items())), \
+                table_settings, individ_id)
         for individ_id in range(table_settings.TOTAL_POPULATION)
     ]
 
@@ -59,9 +60,8 @@ def main():
     audience_tuple = table_settings.get_audience_for_generation()
 
     population = generate_population_sorted(table_settings, main_tuple, audience_tuple)
-    print(population[0].dict_individ)
+    # print(population[0].dict_individ)
     main_loop(table_settings, population, audience_tuple)
-
 
     # draft = FitnessSettingData(table_settings, individ)
     # draft.main_loop()

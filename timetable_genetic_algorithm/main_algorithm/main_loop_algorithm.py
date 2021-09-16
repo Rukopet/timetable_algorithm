@@ -75,7 +75,8 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
 
 def parent_crossover(general_parent: Individ, second_parent: Individ) -> Individ:
     child = deepcopy(general_parent)
-    count = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY)
+    count = int(child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY * child.settings.P_CROSSOVER)
+    # count = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY)
     for _ in range(count):
         timeline = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY - 1)
         audience = random.choice(child.settings.get_audience_for_generation())
@@ -141,20 +142,29 @@ def mutation(table_settings: AlgorithmSettings,
     for number_ind in range(number_of_mutations):
         current_individ = current_population[shuffled_list[number_ind]]
         if current_individ.best_individ == False:
-            current_individ.into_excel_file(file_name="1.xls")
+            # current_individ.into_excel_file(file_name="1.xls")
             swap_for_mutations(current_individ, table_settings, mut_gen)
-            current_individ.into_excel_file(file_name="2.xls")
+            # current_individ.into_excel_file(file_name="2.xls")
 
 
 def best_individ_search(population: PopulationType) -> int:
     list_penalty = [ind.penalty for ind in population]
     best = min(list_penalty)
+    flag = 0
     for ind in population:
-        if ind.penalty == best:
+        if ind.penalty == best and flag == 0:
             ind.best_individ = True
+            flag = 1
         else:
             ind.best_individ = False
     return best
+
+
+def search_best_individ_finally(population: PopulationType, best: int) -> None:
+    for individ in population:
+        if individ.penalty == best:
+            individ.into_excel_file(file_name="result.xls")
+            break
 
 
 def main_loop(table_settings: AlgorithmSettings, population: PopulationType, audience_tuple: tuple) -> Individ:
@@ -179,6 +189,9 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType, aud
 
         best = best_individ_search(offspring)
         print("-------------------Best:", best, "-------------------\n")
+        if best <= table_settings.EXIT_OF_ALGORITHM:
+            search_best_individ_finally(offspring, best)
+            break
         # print(list_penalty)
         # print(best_individ.get("sum"))
         # print(log.penalty.values())

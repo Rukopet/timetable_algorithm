@@ -72,6 +72,9 @@ class Individ:
         elif self.settings.DEBUG == 1:
             return current_value + audience_number + ' ' + ', '.join(map(str, lesson_tuple))\
                 if current_value else audience_number + ' ' + ', '.join(map(str, lesson_tuple))
+        else:
+            return f'{current_value}\n{lesson_tuple[1]}' if current_value else \
+                lesson_tuple[1] + '\n' + lesson_tuple[2] + '\naud: ' + audience_number
 
     @staticmethod
     def __print_out(out_dict: Dict[Group, str], groups: List[Group], ws: Worksheet,
