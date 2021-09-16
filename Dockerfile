@@ -1,14 +1,12 @@
 FROM python:3.7.8-alpine
 
 COPY requirements.txt ./
-COPY timetable_core ./
+COPY timetable_genetic_algorithm ./
 
 RUN apk update
 RUN apk add busybox-extras vim bash expect npm
 RUN apk add make automake gcc g++ subversion python3-dev
-RUN apk add postgresql-dev
-RUN npm install --global newman@latest
 RUN pip install -r requirements.txt
-RUN cd CRM
+RUN cd timetable_genetic_algorithm
 
-CMD ["python", "./manage.py", "runserver", "0.0.0.0:5000"]
+CMD ["python", "-m", "timetable_genetic_algorithm"]

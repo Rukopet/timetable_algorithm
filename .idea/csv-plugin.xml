@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/timetable_genetic_algorithm/data_example/groups.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/timetable_genetic_algorithm/data_for_test/audiences.csv">
           <value>
             <Attribute>
