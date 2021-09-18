@@ -3,7 +3,7 @@ from typing import Type
 from timetable_genetic_algorithm.fitness_utils.shared_soures import SharedData
 from timetable_genetic_algorithm.fitness_utils.module_for_fitness_function_base import ModuleForFitnessFunctionBase
 from timetable_genetic_algorithm.utils.SingletonBaseClass import SingletonBaseClass
-from timetable_genetic_algorithm.utils import AlgorithmSettings
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 
 
 class ModuleRegistration(metaclass=SingletonBaseClass):

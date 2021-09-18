@@ -2,7 +2,7 @@ from random import shuffle
 from typing import List
 
 from timetable_genetic_algorithm.main_algorithm.generators_for_mutation import GeneratorsForMutation
-from timetable_genetic_algorithm.utils import AlgorithmSettings
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 
 
 def get_shuffled_list_for_mutation(list_for_shuffle: List[int]) -> List[int]:

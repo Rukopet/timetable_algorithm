@@ -1,4 +1,4 @@
-from timetable_genetic_algorithm.utils import AlgorithmSettings
+from timetable_genetic_algorithm.utils.algorithm_settings import AlgorithmSettings
 from random import choice
 from typing import Generator, NoReturn
 
