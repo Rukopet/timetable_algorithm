@@ -1,3 +1,4 @@
+import logging
 import sys
 import json
 
@@ -21,9 +22,14 @@ def server_main():
         try:
             file = server_entry_point(request.data)
             response_obj = {'status': 'success', 'file': file, 'file_type': 'xls'}
+            return web.Response(text=json.dumps(response_obj), status=200)
         except Exception as e:
             response_obj = {'status': 'failure', 'description': e}
-        return web.Response(text=json.dumps(response_obj), status=200)
+            logging.error(f'error -> {response_obj}'
+                          f'============================================='
+                          f'data ->'
+                          f'{request.data}')
+            return web.Response(text=json.dumps(response_obj), status=400)
 
         # server_entry_point()
 

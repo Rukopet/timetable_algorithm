@@ -48,6 +48,18 @@ class IDataFromFront:
         pass
 
 
+class DataOut:
+    def __init__(self, email: str = None, path_filename: str = None):
+        if email is None and path_filename is None:
+            raise AttributeError('It is necessary to indicate in what format and how to output data')
+        if email is not None:
+            self.type_out = 'email'
+            self.email = email
+        else:
+            self.type_out = 'file'
+            self.email = path_filename
+
+
 class DataFromFront(IDataFromFront):
     """ This class collect data, and parsing into needed shape """
 
@@ -57,6 +69,7 @@ class DataFromFront(IDataFromFront):
         self.loadPlanJSON = OurJsonClass(loadPlanJSON)
         self.pedagogsJSON = OurJsonClass(pedagogsJSON)
         self.audiencesJSON = OurJsonClass(audiencesJSON)
+        self.data_out = None
 
     def set_groups_json(self, groupsJSON):
         self.groupsJSON = OurJsonClass(groupsJSON)
