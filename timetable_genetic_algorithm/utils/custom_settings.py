@@ -1,3 +1,5 @@
+import json
+
 from abc import abstractmethod, ABCMeta
 import pandas as pd
 
@@ -46,6 +48,18 @@ class IDataFromFront:
         pass
 
 
+class DataOut:
+    def __init__(self, email: str = None, path_filename: str = None):
+        if email is None and path_filename is None:
+            raise AttributeError('It is necessary to indicate in what format and how to output data')
+        if email is not None:
+            self.type_out = 'email'
+            self.email = email
+        else:
+            self.type_out = 'file'
+            self.email = path_filename
+
+
 class DataFromFront(IDataFromFront):
     """ This class collect data, and parsing into needed shape """
 
@@ -55,6 +69,7 @@ class DataFromFront(IDataFromFront):
         self.loadPlanJSON = OurJsonClass(loadPlanJSON)
         self.pedagogsJSON = OurJsonClass(pedagogsJSON)
         self.audiencesJSON = OurJsonClass(audiencesJSON)
+        self.data_out = None
 
     def set_groups_json(self, groupsJSON):
         self.groupsJSON = OurJsonClass(groupsJSON)
@@ -89,3 +104,20 @@ class DataFromFront(IDataFromFront):
         df = pd.DataFrame(data=audiencesJSON)
         self.audiencesJSON.set_value_df(df)
 
+    def __get_field(self, json_filename: str):
+        if json_filename == 'auditories.json':
+            return self.set_audiences_json
+        elif json_filename == 'group_model.json':
+            return self.set_groups_json
+        elif json_filename == 'load_plan.json':
+            return self.set_load_plan_json
+        elif json_filename == 'pedagogs_model.json':
+            return self.set_pedagogs_json
+        elif json_filename == 'disciplines_model.json':
+            return self.set_disciplines_json
+
+    def setter_for_json_data(self, json_file: str, filename: str):
+        json_file = json_file + '/' + filename
+        method_for_set = self.__get_field(filename)
+        with open(json_file) as file:
+            method_for_set(json.load(file))

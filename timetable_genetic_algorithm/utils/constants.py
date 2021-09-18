@@ -348,3 +348,9 @@ DAYS_OF_WEEK_RUSSIAN = [
     "Пятница",
     "Суббота"
 ]
+
+FILENAMES_FOR_DATA = ['auditories.json',
+                      'group_model.json',
+                      'load_plan.json',
+                      'pedagogs_model.json',
+                      'disciplines_model.json']
