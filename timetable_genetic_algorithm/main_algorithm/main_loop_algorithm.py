@@ -147,10 +147,10 @@ def best_individ_search(population: PopulationType) -> int:
     return best
 
 
-def search_best_individ_finally(population: PopulationType, best: int) -> None:
+def search_best_individ_finally(population: PopulationType, best: int, path: str, filename: str):
     for individ in population:
         if individ.penalty == best:
-            individ.into_excel_file(file_name="result.xls")
+            individ.into_excel_file(path=path, file_name=filename)
             break
 
 
@@ -189,7 +189,10 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType, aud
         draw.mean_append(log.get_mean(table_settings.TOTAL_POPULATION))
         del log
 
-    search_best_individ_finally(population, best)
-    if table_settings.DEBUG == 1:
+    search_best_individ_finally(population,
+                                best,
+                                table_settings.DATA_PATH,
+                                table_settings.data_from_front.data_out.filename)
+    if table_settings.DEBUG == 2:
         draw.show_plot()
     return best_individ.get("instance")

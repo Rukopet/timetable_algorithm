@@ -49,15 +49,16 @@ class IDataFromFront:
 
 
 class DataOut:
-    def __init__(self, email: str = None, path_filename: str = None):
-        if email is None and path_filename is None:
+    def __init__(self, email: str = None, filename: str = None):
+        if email is None and filename is None:
             raise AttributeError('It is necessary to indicate in what format and how to output data')
         if email is not None:
             self.type_out = 'email'
+            self.filename = email + '_' + filename
             self.email = email
         else:
             self.type_out = 'file'
-            self.email = path_filename
+            self.filename = filename
 
 
 class DataFromFront(IDataFromFront):

@@ -31,8 +31,6 @@ def server_main():
                           f'{request.data}')
             return web.Response(text=json.dumps(response_obj), status=400)
 
-        # server_entry_point()
-
     app = web.Application()
     app.router.add_get('/generate', generate_timetable)
     web.run_app(app)

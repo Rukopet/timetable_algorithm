@@ -12,7 +12,6 @@ try:
 except ImportError:
     from typing_extensions import Final
 
-
 def from_list_of_dicts_to_list_values(list_dicts: List[Dict], column: str) -> List[str]:
     return [
         d.get(column, 'Unknown')
@@ -91,6 +90,7 @@ class AlgorithmSettings:
     PRE_GENERATED_LIST_TIMELINES = []
     NUMBER_CELLS_FOR_SWAP_MUTATION = 0
     MAX_DAYS_FROM_JSON = 5
+    DATA_PATH: str = settings_generations.DATA_PATH
 
     def __init__(self, data_front: DataFromFront):
         self.data_from_front = data_front
