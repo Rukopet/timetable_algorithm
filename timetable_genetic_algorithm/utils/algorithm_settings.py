@@ -29,7 +29,7 @@ def get_appended_default_list(dict_with_list, key: Any, appended_val: Any) -> Li
 
 class AlgorithmSettings:
     """ settings for whole project """
-    DEBUG = 2
+    DEBUG = 1
 
     GROUPS_RANGE = {"min": 1, "max": 11}
 

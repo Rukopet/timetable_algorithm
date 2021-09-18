@@ -24,20 +24,11 @@ def tournament_selection(table_settings: AlgorithmSettings,
                          population: List[Individ],
                          log: LoggerUtils) -> PopulationType:
     offspring = []
-    # END_OF_WHILE = 10
-
-    # p_len = table_settings.TOTAL_POPULATION
-
     list_ind = [ind.id_individ for ind in population]
     random.shuffle(list_ind)
     p_len = len(list_ind)
-    # print(list_ind)
+
     for n in range(0, p_len - 1, 3):
-        # i1 = i2 = i3 = 0
-        # flag = 0
-        # while (i1 == i2 or i1 == i3 or i2 == i3) and flag < END_OF_WHILE:
-        #     i1, i2, i3 = random.randint(0, p_len - 1), random.randint(0, p_len - 1), random.randint(0, p_len - 1)
-        #     flag += 1
         if n < p_len - 2:
             i1 = list_ind[n]
             i2 = list_ind[n + 1]
@@ -55,10 +46,7 @@ def tournament_selection(table_settings: AlgorithmSettings,
             i2: population[i2].penalty,
             i3: population[i3].penalty
         }
-        # print(i1, i2, i3)
-        # print(take_three)
         best_individ = min(take_three, key=take_three.get)
-        # print(best_individ, "----", population[best_individ].penalty)
         if population[best_individ] not in offspring:
             population[best_individ].id_individ = n // 3
             offspring.append(population[best_individ])
@@ -75,7 +63,7 @@ def copy_offspring(population: PopulationType, table_settings: AlgorithmSettings
 
 def parent_crossover(general_parent: Individ, second_parent: Individ) -> Individ:
     child = deepcopy(general_parent)
-    # count = int(child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY * child.settings.P_CROSSOVER)
+# count = int(child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY * child.settings.P_CROSSOVER)
     count = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY)
     for _ in range(count):
         timeline = random.randint(0, child.settings.MAX_DAYS_FROM_JSON * child.settings.AMOUNT_TIMELINES_IN_DAY - 1)
@@ -138,14 +126,12 @@ def mutation(table_settings: AlgorithmSettings,
     from timetable_genetic_algorithm.main_algorithm.mutation_utils import get_shuffled_list_for_mutation, \
         get_range_for_mutation, swap_for_mutations
     shuffled_list = get_shuffled_list_for_mutation(table_settings.PRE_GENERATED_LIST_RANGE_POPULATION.copy())
-    # number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
-    number_of_mutations = random.randint(0, table_settings.MAX_DAYS_FROM_JSON * table_settings.AMOUNT_TIMELINES_IN_DAY)
+    number_of_mutations = get_range_for_mutation(table_settings.TOTAL_POPULATION, table_settings.P_MUTATION)
+# number_of_mutations = random.randint(0, table_settings.MAX_DAYS_FROM_JSON * table_settings.AMOUNT_TIMELINES_IN_DAY)
     for number_ind in range(number_of_mutations):
         current_individ = current_population[shuffled_list[number_ind]]
         if current_individ.best_individ == False:
-            # current_individ.into_excel_file(file_name="1.xls")
             swap_for_mutations(current_individ, table_settings, mut_gen)
-            # current_individ.into_excel_file(file_name="2.xls")
 
 
 def best_individ_search(population: PopulationType) -> int:
@@ -175,8 +161,10 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType, aud
     draw = PlotDrawer()
     mutation_generators = GeneratorsForMutation(table_settings, audience_tuple)
 
+    best = 0
+
     for generation in range(table_settings.COUNT_GENERATIONS):
-        print("\n-------------------generation", generation, "-------------------")
+        print("\n------------------- generation", generation, "-------------------")
         log = LoggerUtils()
         log.penalty = generate_dict_for_logger(population)
 
@@ -186,33 +174,22 @@ def main_loop(table_settings: AlgorithmSettings, population: PopulationType, aud
         if best_individ.get("sum") <= table_settings.EXIT_OF_ALGORITHM:
             break
         offspring = tournament_selection(table_settings, population, log)
-        # offspring = copy_offspring(offspring, table_settings)
 
         best = best_individ_search(offspring)
-        print("-------------------Best:", best, "-------------------\n")
+        print("-------------------  Best:", best, " -------------------\n")
         if best <= table_settings.EXIT_OF_ALGORITHM:
-            search_best_individ_finally(offspring, best)
             break
-        # print(list_penalty)
-        # print(best_individ.get("sum"))
-        # print(log.penalty.values())
-        # best_individ.get("instance").into_excel_file(file_name=str(best_individ.get("instance").id_individ) + ".xls")
 
         crossover(table_settings, offspring, log)
         mutation(table_settings, offspring, mutation_generators)
 
-        # for individ in population:
-        #     fitness_function(table_settings, individ, log)
-        # list_penalty = [ind.penalty for ind in offspring]
-        # print(list_penalty)
         population = offspring
-
-        # best = log.best_individ.get("sum")
 
         draw.max_append(best)
         draw.mean_append(log.get_mean(table_settings.TOTAL_POPULATION))
         del log
 
+    search_best_individ_finally(population, best)
     if table_settings.DEBUG == 1:
         draw.show_plot()
     return best_individ.get("instance")

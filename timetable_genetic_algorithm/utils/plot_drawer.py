@@ -13,8 +13,8 @@ class PlotDrawer:
         self._max_fitness_values.append(best)
 
     def show_plot(self):
-        plt.plot(self._max_fitness_values, color='red')
-        plt.plot(self._mean_fitness_values, color='green')
+        plt.plot(self._max_fitness_values, color='green')
+        plt.plot(self._mean_fitness_values, color='red')
         plt.xlabel('Поколение')
         plt.ylabel('Макс/средняя приспособленность')
         plt.title('Зависимость максимальной и средней приспособленности от поколения')
