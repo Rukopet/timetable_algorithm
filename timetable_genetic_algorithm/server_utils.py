@@ -1,8 +1,8 @@
 from pathlib import Path
 
-import psycopg2 as psycopg2
+import psycopg2
+from . import config
 
-import config
 
 def send_email(to_email: str, file, filename: str = 'Timetable.xls'):
     import smtplib
@@ -41,10 +41,11 @@ def send_email(to_email: str, file, filename: str = 'Timetable.xls'):
         server.sendmail('example.timetable.ru@gmail.com', to_email, text)
 
 
-class Postgres:
+class PostgresClass:
     @classmethod
     def _connection_with_db(cls):  # returning psycopg2 connect
         return psycopg2.connect(dbname=config.POSTGRES_DB,
                                 user=config.POSTGRES_USER,
                                 password=config.POSTGRES_PASSWORD,
                                 host=config.DB_HOST)
+

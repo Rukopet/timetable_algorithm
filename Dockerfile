@@ -19,5 +19,5 @@ RUN pip install -r requirements.txt
 
 RUN cd algorithm_app
 
-# CMD ["python", "-m", "timetable_genetic_algorithm"]
- CMD ["bash"]
+CMD ["python", "-m", "timetable_genetic_algorithm"]
+#  CMD ["bash"]

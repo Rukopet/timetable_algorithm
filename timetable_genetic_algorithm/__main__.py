@@ -2,6 +2,8 @@ import logging
 import sys
 import json
 
+from timetable_genetic_algorithm import config
+
 
 def console_main():
     from timetable_genetic_algorithm.utils.tmp_main import console_entry_point
@@ -38,7 +40,7 @@ def server_main():
 
     app = web.Application()
     app.router.add_post('/generate', generate_timetable)
-    web.run_app(app)
+    web.run_app(app, port=int(config.ALGORITHM_PORT_IN))
 
 
 if __name__ == "__main__":
