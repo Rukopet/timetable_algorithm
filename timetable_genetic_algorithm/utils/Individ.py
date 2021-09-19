@@ -64,7 +64,10 @@ class Individ:
                 whole_groups.append(val[0])
             not_in_timetable = [group for group in self.settings.GROUPS_LIST if group not in whole_groups]
             Individ.__print_out(output, not_in_timetable, ws, dict_of_generators)
-        wb.save(path + file_name)
+        path_for_save = path + file_name
+        wb.save(path_for_save)
+        from pathlib import Path
+        return Path(path_for_save)
 
     def __get_str_from_tuple(self, lesson_tuple: tuple, current_value: Optional[str], audience_number: tuple) -> str:
         if self.settings.DEBUG == 0:

@@ -27,9 +27,8 @@ def generate_population_sorted(table_settings: AlgorithmSettings,
 def main(table_settings: AlgorithmSettings):
     main_tuple = GeneratorLessons.gen_overall_pool(table_settings)
     audience_tuple = table_settings.get_audience_for_generation()
-
     population = generate_population_sorted(table_settings, main_tuple, audience_tuple)
-    main_loop(table_settings, population, audience_tuple)
+    return main_loop(table_settings, population, audience_tuple)
 
 
 def get_data_from_request(request_data: dict) -> DataFromFront:
@@ -54,7 +53,7 @@ def server_entry_point(request_data):
     data = get_data_from_request(request_data)
     table_settings = AlgorithmSettings(data)
     table_settings.DEBUG = 1
-    main(table_settings)
+    return main(table_settings), data.data_out.filename
 
 
 def console_entry_point(source_path: str, out_file: str = 'out_timetable.xls'):
@@ -66,4 +65,4 @@ def console_entry_point(source_path: str, out_file: str = 'out_timetable.xls'):
     data.data_out = DataOut(filename=out_file)
     table_setting = AlgorithmSettings(data)
     table_setting.DEBUG = 1
-    main(table_setting)
+    return main(table_setting)

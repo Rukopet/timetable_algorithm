@@ -17,11 +17,16 @@ def console_main():
 def server_main():
     from aiohttp import web
     from timetable_genetic_algorithm.utils.tmp_main import server_entry_point
+    from timetable_genetic_algorithm.server_utils import send_email
 
     async def generate_timetable(request):
         try:
-            file = server_entry_point(request.data)
-            response_obj = {'status': 'success', 'file': file, 'file_type': 'xls'}
+            request_data = json.loads(await request.content.read())
+            file, filename = server_entry_point(request_data)
+            logging.info(f'file={file} || filename={filename}')
+            send_email(request_data["client_email"], file, filename)
+
+            response_obj = {'status': 'success', 'file_type': 'xls'}
             return web.Response(text=json.dumps(response_obj), status=200)
         except Exception as e:
             response_obj = {'status': 'failure', 'description': e}
@@ -32,7 +37,7 @@ def server_main():
             return web.Response(text=json.dumps(response_obj), status=400)
 
     app = web.Application()
-    app.router.add_get('/generate', generate_timetable)
+    app.router.add_post('/generate', generate_timetable)
     web.run_app(app)
 
 
