@@ -1,6 +1,6 @@
 {
   "client_mail": "pupkin@gmail.com",
-  "groups": {
+  "groups_list": {
   "second_shift": true,
   "max_days": 6,
   "groups": [
@@ -6488,7 +6488,6 @@
           }
         ]
       }
-
     ]
   },
   {
@@ -6501,7 +6500,6 @@
             "num": 9,
             "letter": "А"
           },
-
           {
             "num": 9,
             "letter": "Б"
@@ -6522,7 +6520,6 @@
           }
         ]
       }
-
     ]
   }
 ]

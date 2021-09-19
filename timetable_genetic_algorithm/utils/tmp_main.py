@@ -35,8 +35,8 @@ def get_data_from_request(request_data: dict) -> DataFromFront:
     from datetime import datetime
     return_data = DataFromFront(request_data)
     return_data.data_out = DataOut(email=request_data["client_mail"],
-                                   filename=datetime.now().strftime("%d/%m/%Y %H:%M:%S") + '.xls')
-    return_data.set_groups_json(request_data['groups'])
+                                   filename=datetime.now().strftime("%d/%m/%Y_%H:%M:%S") + '.xls')
+    return_data.set_groups_json(request_data['groups_list'])
     return_data.set_disciplines_json(request_data['disciplines'])
     return_data.set_audiences_json(request_data['audiences'])
     return_data.set_load_plan_json(request_data['load_plan'])

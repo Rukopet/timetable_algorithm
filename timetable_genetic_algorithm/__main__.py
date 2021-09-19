@@ -23,19 +23,20 @@ def server_main():
 
     async def generate_timetable(request):
         try:
-            request_data = json.loads(await request.content.read())
+            request_data = await request.json()
+            print(request_data)
+            response_obj = {'status': 'success', 'file_type': 'xls'}
             file, filename = server_entry_point(request_data)
             logging.info(f'file={file} || filename={filename}')
             send_email(request_data["client_email"], file, filename)
 
-            response_obj = {'status': 'success', 'file_type': 'xls'}
             return web.Response(text=json.dumps(response_obj), status=200)
         except Exception as e:
             response_obj = {'status': 'failure', 'description': e}
-            logging.error(f'error -> {response_obj}'
-                          f'============================================='
-                          f'data ->'
-                          f'{request.data}')
+            logging.error(
+                f'error -> {response_obj}'
+                f'============================================='
+            )
             return web.Response(text=json.dumps(response_obj), status=400)
 
     app = web.Application()
