@@ -23,7 +23,7 @@ def server_main():
 
     async def generate_timetable(request):
         try:
-            request_data = await request.json()
+            request_data = await request.json(encoding='utf-8')
             print(request_data)
             response_obj = {'status': 'success', 'file_type': 'xls'}
             file, filename = server_entry_point(request_data)
