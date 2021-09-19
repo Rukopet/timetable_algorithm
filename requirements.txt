@@ -4,3 +4,4 @@ numpy~=1.21.2
 matplotlib~=3.4.3
 aiohttp~=3.7.4.post0
 typing-extensions==3.10.0.2
+psycopg2~=2.7.7
